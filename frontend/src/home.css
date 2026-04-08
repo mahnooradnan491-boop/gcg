@@ -11,3 +11,30 @@
 .hero p {
     font-style: italic;
 }
+
+/* Success Stories Section  */
+.bg-light-grey {
+    background-color: #e3dfdf7b;
+ }
+
+.box-orange {
+    background-color: #ffe0b2 ; 
+}
+
+.box-green {
+    background-color: #a5d6a7 ; 
+}
+
+.flex-fill {
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+@media (max-width: 768px) {
+    .d-flex {
+        flex-direction: column;
+    }
+}
