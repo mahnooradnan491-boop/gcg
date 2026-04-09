@@ -55,6 +55,228 @@ function Home() {
 </div>
                 </div>
             </div>
+           <section className="news-section" id="newsevents">
+
+<div className="container">
+
+<h3 className="text-center mb-4">
+Stay Update With News & Events
+</h3>
+
+{/* Tabs */}
+<div className="news-tabs">
+
+<button className="active"> <img src="/icons/info.png" alt="icon" General width="25px"></img> Genral notice</button>
+<button> <img src="/icons/info.png" alt="icon" General width="25px"></img>News & Events</button>
+<button><img src="/icons/calender.png" alt="icon" General width="25px"></img>Exams Date Sheet</button>
+<button><img src="/icons/clock.png" alt="icon" General width="25px"></img>Time Table</button>
+
+</div>
+
+
+<div className="row mt-4">
+
+{/* Left Side Notices */}
+
+<div className="col-md-6">
+
+<div className="notice-box">
+
+<div className="date-box">
+<span>20</span>
+<small>March</small>
+</div>
+
+<p>Registration Deadline for Summer is 31 March</p>
+
+</div>
+
+
+<div className="notice-box">
+
+<div className="date-box">
+<span>10</span>
+<small>August</small>
+</div>
+
+<p>Registration Deadline for Summer is 10 August</p>
+
+</div>
+
+
+<div className="notice-box">
+
+<div className="date-box">
+<span>03</span>
+<small>December</small>
+</div>
+
+<p>Registration Deadline for Summer is 03 December</p>
+
+</div>
+
+</div>
+
+
+{/* Right Side Description */}
+
+<div className="col-md-6">
+
+<div className="news-detail">
+
+<h6>10 August, 2026</h6>
+
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+</p>
+
+<p>
+Regards <br/>
+Head of Department
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+                         <section className="py-5 bg-light">
+<div className="container">
+
+<h3 className="mb-4">Search for a program</h3>
+
+<div className="d-flex mb-4">
+
+<input 
+type="text" 
+placeholder="Search for a course"
+className="form-control rounded-0"
+/>
+
+<button className="btn btn-outline-dark rounded-0">Bachelor</button>
+<button className="btn btn-outline-dark rounded-0">Masters</button>
+<button className="btn btn-outline-dark rounded-0">Diploma</button>
+<button className="btn btn-success rounded-0">View All</button>
+
+</div>
+
+<div className="row">
+
+<div className="col-md-4 mb-4">
+<div className="card">
+<img src="/public/computerscience.png" className="card-img-top"/>
+<div className="card-body">
+<h6>Computer Science and Engineering</h6>
+</div>
+</div>
+</div>
+
+<div className="col-md-4 mb-4">
+<div className="card">
+<img src="/public/civileng.png" className="card-img-top"/>
+<div className="card-body">
+<h6>Civil Engineering</h6>
+</div>
+</div>
+</div>
+
+<div className="col-md-4 mb-4">
+<div className="card">
+<img src="/public/law.png" className="card-img-top"/>
+<div className="card-body">
+<h6>Department of Law</h6>
+</div>
+</div>
+</div>
+
+<div className="col-md-4 mb-4">
+<div className="card">
+<img src="/public/civileng.png" className="card-img-top"/>
+<div className="card-body">
+<h6>Civil Engineering</h6>
+</div>
+</div>
+</div>
+
+<div className="col-md-4 mb-4">
+<div className="card">
+<img src="/public/computerscience.png" className="card-img-top"/>
+<div className="card-body">
+<h6>Computer Science and Engineering</h6>
+</div>
+</div>
+</div>
+
+
+
+<div className="col-md-4 mb-4">
+<div className="card">
+<img src="/public/web.png" className="card-img-top"/>
+<div className="card-body">
+<h6>Web design and development</h6>
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
+</section>
+
+
+<section className="research-section">
+
+<h2 className="research-title">Research & Publications</h2>
+
+<div className="research-container">
+
+{/* Left Box */}
+
+<div className="research-left">
+
+<p>
+Our college values the role of University of the Punjab’s Office of
+Research, Innovation & Commercialization (ORIC). Established in March
+2010, ORIC is entrusted with the management of all financed
+research-related activities conducted by academic and research units
+within the institution. By adhering to the directives of the Higher
+Education Commission (HEC) and ORIC, our academic staff contributes
+to the advancement of research and innovation.
+</p>
+
+<div className="info-circle">i</div>
+
+</div>
+
+
+{/* Right Box */}
+
+<div className="research-right">
+
+<h3>Free Online Research Resources</h3>
+
+<div className="research-links">
+
+<p>View ↗</p>
+
+<div className="links">
+<p>Online Databases</p>
+<p>PU Library</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
         </>
     );
 }
