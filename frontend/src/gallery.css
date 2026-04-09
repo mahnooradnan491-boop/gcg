@@ -1,0 +1,149 @@
+.gallery-wrapper { 
+    background: #fff; 
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden;
+}
+
+/* HERO SECTION */
+.hero-flex { 
+    display: flex; 
+    background: #f0f0f0; 
+    height: 400px; 
+    align-items: center;
+    overflow: hidden;
+}
+
+.hero-text { 
+    flex: 1;
+    padding-left: 8%; 
+}
+
+.hero-top {
+    color: #4CAF50;
+    font-size: 14px;
+    font-style: italic;
+    margin-bottom: 15px; 
+}
+
+.hero-h1 { 
+    font-size: 58px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #000;
+    margin: 0;
+}
+
+.hero-img-box { 
+    flex: 1.2; 
+    height: 10%;
+}
+
+.hero-main-img { 
+    width: 100%; 
+    height: 100%;
+    object-fit: cover; 
+    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%); 
+}
+
+/* GREEN BANNER */
+.recent-banner { 
+    background: #449d44;
+    color: #fff; 
+    text-align: center;
+    padding: 25px 0;
+    margin: -35px auto 0; 
+    width: 80%; 
+    position: relative;
+    z-index: 10;
+    border-radius: 4px;
+}
+
+.recent-banner h2 {
+    font-size: 30px; 
+    font-weight: 500;
+    margin: 0; 
+}
+
+/* MAIN CONTENT */
+.main-content { 
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.label {
+    text-align: center; 
+    font-size: 11px;
+    font-weight: bold; 
+    color: #888; 
+    letter-spacing: 2px;
+}
+
+.main-title { 
+    text-align: center; 
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+/* STORIES BOX */
+.stories-container { 
+    display: flex; 
+    border: 1px solid #eee;
+}
+
+.stories-left { flex: 1.3; }
+.story-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.stories-right { flex: 1; display: flex; flex-direction: column; }
+
+.story-list-item { 
+    display: flex; 
+    align-items: center; 
+    padding: 20px; 
+    border-bottom: 1px solid #eee; 
+    position: relative;
+    height: 33.33%;
+}
+
+.highlighted { background: #e8f5e9; }
+
+.green-accent { 
+    position: absolute; 
+    right: 0; 
+    height: 70%; 
+    width: 6px; 
+    background: #2e7d32; 
+}
+
+.date-tag {
+    border-top: 4px solid #4CAF50; 
+    padding-top: 5px;
+    margin-right: 20px; 
+    text-align: center; 
+    min-width: 50px; 
+}
+
+.day { display: block; font-size: 22px; font-weight: bold; }
+.mon { font-size: 9px; font-weight: bold; }
+
+/* UPCOMING EVENTS */
+.upcoming-title { font-size: 28px; font-weight: bold; margin: 50px 0 20px; }
+
+.event-row { 
+    background: #f4f5f7;
+    padding: 18px 25px;
+    margin-bottom: 10px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+
+.small-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.event-date { font-size: 13px; font-weight: bold; color: #666; }
