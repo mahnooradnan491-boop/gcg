@@ -3,6 +3,8 @@ font-family: Arial;
 }
 
 
+/* HERO */
+
 .contact-hero{
 text-align:center;
 padding:80px 20px;
@@ -13,6 +15,9 @@ background:#eee;
 font-size:40px;
 margin-top:10px;
 }
+
+
+/* FORM */
 
 .contact-form-box{
 background:#3a9444;

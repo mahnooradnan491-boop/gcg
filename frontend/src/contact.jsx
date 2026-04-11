@@ -4,11 +4,14 @@ function Contact() {
   return (
     <div className="contact-page">
 
+
       <div className="contact-hero">
         <p>Having a questions ?</p>
        <b> <h2>Contact us or <br/> Make a Visit</h2></b>
       </div>
 
+
+      {/* Contact Form */}
 
       <div className="contact-form-box">
 
