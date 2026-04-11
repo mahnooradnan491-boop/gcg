@@ -116,7 +116,7 @@ function Home() {
                     <div className="row">
                         <div className="col-md-4 mb-4">
                             <div className="card">
-                                <img src="/public/computerscience.png" className="card-img-top" />
+                                <img src="/computerscience.png" className="card-img-top" />
                                 <div className="card-body">
                                     <h6>Computer Science and Engineering</h6>
                                 </div>
@@ -124,7 +124,7 @@ function Home() {
                         </div>
                         <div className="col-md-4 mb-4">
                             <div className="card">
-                                <img src="/public/civileng.png" className="card-img-top" />
+                                <img src="/civileng.png" className="card-img-top" />
                                 <div className="card-body">
                                     <h6>Civil Engineering</h6>
                                 </div>
@@ -132,7 +132,7 @@ function Home() {
                         </div>
                         <div className="col-md-4 mb-4">
                             <div className="card">
-                                <img src="/public/law.png" className="card-img-top" />
+                                <img src="/law.png" className="card-img-top" />
                                 <div className="card-body">
                                     <h6>Department of Law</h6>
                                 </div>
@@ -140,7 +140,7 @@ function Home() {
                         </div>
                         <div className="col-md-4 mb-4">
                             <div className="card">
-                                <img src="/public/civileng.png" className="card-img-top" />
+                                <img src="/civileng.png" className="card-img-top" />
                                 <div className="card-body">
                                     <h6>Civil Engineering</h6>
                                 </div>
@@ -148,7 +148,7 @@ function Home() {
                         </div>
                         <div className="col-md-4 mb-4">
                             <div className="card">
-                                <img src="/public/computerscience.png" className="card-img-top" />
+                                <img src="/computerscience.png" className="card-img-top" />
                                 <div className="card-body">
                                     <h6>Computer Science and Engineering</h6>
                                 </div>
@@ -156,7 +156,7 @@ function Home() {
                         </div>
                         <div className="col-md-4 mb-4">
                             <div className="card">
-                                <img src="/public/web.png" className="card-img-top" />
+                                <img src="/web.png" className="card-img-top" />
                                 <div className="card-body">
                                     <h6>Web design and development</h6>
                                 </div>
