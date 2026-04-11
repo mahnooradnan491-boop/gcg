@@ -1,32 +1,29 @@
-
 .about-page-wrapper {
     background-color: #f3efefb5;
     overflow-x: hidden;
 }
-
 
 .principal-image-style {
     width: 100%;
     max-width: 380px;
     border-radius: 4px;
     position: relative;
-    z-index: 2; 
+    z-index: 2;
 }
 
 .principal-circle-overlay {
     width: 85px;
     height: 85px;
-    background-color: #4CAF50;
+    background-color: var(--primary-color);
     border-radius: 50%;
     position: absolute;
     top: 50px;
     left: -15px;
-    z-index: 3; 
+    z-index: 3;
 }
 
-
 .label-box {
-    background-color: #4CAF50 !important;
+    background-color: var(--primary-color) !important;
     color: white !important;
     padding: 10px 35px !important;
     display: inline-block;
@@ -35,7 +32,6 @@
     margin: 0;
     border-radius: 2px;
 }
-
 
 .about-title-container {
     position: relative;
@@ -49,14 +45,14 @@
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: #4CAF50;
+    background-color: var(--secondary-color);
     opacity: 0.3;
     z-index: 1;
 }
 
 .label-box {
     position: relative;
-    z-index: 2; 
+    z-index: 2;
 }
 
 
@@ -69,31 +65,27 @@
 }
 
 .affiliation-title {
-    color: #4CAF50;
+    color: var(--primary-color);
     font-weight: bold;
     font-size: 38px;
     margin-bottom: 20px;
 }
-
 
 .find-us-label-outside {
     text-align: right;
     font-size: 32px;
     font-weight: 500;
     margin-bottom: 25px;
-    color: #000;
+    text-align: right;
 }
-
 
 .black-info-card {
     background-color: #050a1b !important;
     color: white;
     padding: 60px 40px;
-    min-height: 520px;
     border-radius: 4px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
 .info-list {
@@ -107,9 +99,5 @@
     font-weight: 600;
     padding: 22px 0;
     border-bottom: 1.5px solid rgba(255, 255, 255, 0.5);
-    text-align: right; 
-}
-
-.info-list li:last-child {
-    border-bottom: none;
+    text-align: right;
 }
