@@ -13,7 +13,7 @@ const Gallery = () => {
         </div>
         <div className="hero-img-box">
           
-          <img src="/gallerybg.png" alt="Students" className="hero-main-img" />
+          <img src="/public/gallerybg.png" alt="Students" width="50"height="50" displ className="hero-main-img" />
         </div>
       </div>
 
