@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 function Header() {
     return (
@@ -12,7 +12,7 @@ function Header() {
                     <marquee className="py-2 px-4 text-success border-1 border-bottom w-100">
                         This Place is for Moving Notification for visitor + Important Notice + Call Us etc.
                     </marquee>
-                    <div className="w-100 d-flex justify-content-between align-items-md-center flex-column flex-md-row">
+                    <div className="w-100 d-flex justify-content-between align-items-lg-center flex-column flex-lg-row">
                         <ul className="navbar-nav px-3">
                             <li>
                                 <Link to="/" className="nav-link">Home</Link>
@@ -47,7 +47,7 @@ function Header() {
                 </div>
             </div>
         </nav>
-    )
+    );
 }
 
 export default Header;

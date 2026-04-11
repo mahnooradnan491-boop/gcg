@@ -2,3 +2,9 @@
     padding: 0px;
     margin: 0px;
 }
+
+:root {
+    --primary-color: #198754;
+    --secondary-color: #4CAF50;
+    --text-color: #333;
+}
