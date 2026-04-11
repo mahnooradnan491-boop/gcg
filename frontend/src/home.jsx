@@ -113,7 +113,7 @@ function Home() {
                         <button className="btn btn-outline-secondary rounded-0">Diploma</button>
                         <button className="btn btn-success rounded-0 px-5 text-nowrap">View All</button>
                     </div>
-                    <div className="row">
+                    <div className="row mt-5">
                         <div className="col-md-4 mb-4">
                             <div className="card">
                                 <img src="/computerscience.png" className="card-img-top" />

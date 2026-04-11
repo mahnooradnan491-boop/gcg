@@ -21,7 +21,7 @@ function Header() {
                                 <Link to="/admission" className="nav-link">Admission</Link>
                             </li>
                             <li>
-                                <Link to="/program" className="nav-link">Programs</Link>
+                                <Link to="/programs" className="nav-link">Programs</Link>
                             </li>
                             <li>
                                 <Link to="/#timetable" className="nav-link">Time Table</Link>
