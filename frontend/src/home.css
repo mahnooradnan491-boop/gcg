@@ -47,7 +47,6 @@
 .news-tabs {
     display: flex;
     justify-content: center;
-    gap: 10px;
 }
 
 .news-tabs button {
@@ -74,13 +73,22 @@
 .date-box {
     background: white;
     color: black;
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     font-weight: bold;
+    position: relative;
+}
+
+.date-box .highlight {
+    background-color: var(--primary-color);
+    height: 10px;
+    width: inherit;
+    position: absolute;
+    top: 0px;
 }
 
 .news-detail {

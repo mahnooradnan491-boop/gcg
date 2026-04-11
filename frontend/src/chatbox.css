@@ -1,0 +1,14 @@
+.chatbox {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

@@ -1,9 +1,14 @@
 import { Link } from 'react-router-dom'
+import Chatbox from './chatbox'
+import Header from './header'
+import Footer from './footer'
 import './home.css'
 
 function Home() {
     return (
         <>
+            <Chatbox />
+            <Header />
             <div className="hero p-5">
                 <p className="text-success">The quality education is our priority</p>
                 <h1 className="mb-5">Government<br />Graduate College<br />Gujranwala.</h1>
@@ -37,14 +42,14 @@ function Home() {
                             <h2 className="fw-bold">10K+</h2>
                             <img src="/icons/graduate.png" alt="icon" width="25px" />
                         </div>
-                        <p className="mt-4 mb-0">Graduate Student</p>
+                        <Link to="/research" className="mt-4 nav-link">Graduate Student <img src="/icons/arrowup.png" alt="arrow-icon" width="10px" /></Link>
                     </div>
                     <div className="p-4 flex-fill box-green">
                         <div className="d-flex justify-content-between align-items-start">
                             <h2 className="fw-bold">140+</h2>
                             <img src="/icons/research.png" alt="icon" width="25px" />
                         </div>
-                        <p className="mt-4 mb-0">Research Publications ↗</p>
+                        <Link to="/research" className="mt-4 nav-link">Research Publications <img src="/icons/arrowup.png" alt="arrow-icon" width="10px" /></Link>
                     </div>
                 </div>
             </div>
@@ -63,6 +68,7 @@ function Home() {
                         <div className="col-md-6">
                             <div className="notice-box">
                                 <div className="date-box">
+                                    <div className='highlight'></div>
                                     <span>20</span>
                                     <small>March</small>
                                 </div>
@@ -70,6 +76,7 @@ function Home() {
                             </div>
                             <div className="notice-box">
                                 <div className="date-box">
+                                    <div className='highlight'></div>
                                     <span>10</span>
                                     <small>August</small>
                                 </div>
@@ -77,6 +84,7 @@ function Home() {
                             </div>
                             <div className="notice-box">
                                 <div className="date-box">
+                                    <div className='highlight'></div>
                                     <span>03</span>
                                     <small>December</small>
                                 </div>
@@ -194,7 +202,7 @@ function Home() {
                     </div>
                 </div>
             </section>
-
+            <Footer />
         </>
     );
 }
