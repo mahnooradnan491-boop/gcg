@@ -37,6 +37,11 @@ function Login() {
                   </div>
                   <button type="submit" className="btn btn-success w-100 fw-bold">Sign In</button>
                 </form>
+                <div className="mt-4 text-center">
+                  <p className="small text-muted">
+                    Don't have an account? <Link to="/register" className="forgot-link fw-bold">Sign Up</Link>
+                  </p>
+                </div>
                 <div className="footer-box mt-4 text-center">
                   <p className="text-muted" style={{ fontSize: '11px' }}>
                     Copyright © 2026 - All Rights Reserved. GCG | <Link to="/" className="back-link fw-bold">Back to Site</Link>
