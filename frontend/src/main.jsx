@@ -8,6 +8,7 @@ import Faculty from './faculty'
 import Gallery from './gallery'
 import Login from './login'
 import Register from './register'
+import Admin from './admin'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min'
 import './main.css'
@@ -23,6 +24,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
