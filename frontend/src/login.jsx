@@ -11,10 +11,13 @@ function Login() {
         <div className="row justify-content-center">
           <div className="col-12 col-md-11 col-lg-10 col-xl-9">
             <div className="main-login-card shadow d-flex flex-column flex-md-row">
-              <div className="left-panel-green bg-success p-4 d-flex flex-column justify-content-between">
-                <div className="panel-text text-white">
+              <div className="left-panel-green bg-success d-flex flex-column justify-content-between">
+                <div className="panel-text text-white p-4">
                   <h1 className="fw-bold">Let's Grow Up <br /> Your Future <br /> With</h1>
                   <p className="small opacity-75">Learn important new skills, discover passions or hobbies.</p>
+                </div>
+                <div>
+                  <img src="/loginbg.png" alt="students" width="100%" />
                 </div>
               </div>
               <div className="right-panel-white p-4 p-md-5 d-flex flex-column justify-content-center bg-white">

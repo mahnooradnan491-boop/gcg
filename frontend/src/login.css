@@ -18,10 +18,8 @@
     flex: 1;
 }
 
-.cs-image {
-    max-height: 200px;
-    object-fit: contain;
-    margin-bottom: -10px;
+.left-panel-green img {
+    border-radius: 30px;
 }
 
 .right-panel-white {
