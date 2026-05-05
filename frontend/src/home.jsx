@@ -13,10 +13,10 @@ function Home() {
                 <p className="text-success">The quality education is our priority</p>
                 <h1 className="mb-5">Government<br />Graduate College<br />Gujranwala.</h1>
                 <div className="mb-5">
-                    <Link to="" className="btn btn-success me-3 rounded-0 py-3 px-5">
+                    <Link to="/register" className="btn btn-success me-3 rounded-0 py-3 px-5">
                         Enroll Now <img src="/icons/arrowup.png" alt="arrow-icon" width="15px" />
                     </Link>
-                    <Link to="" className="btn btn-outline-success rounded-0 py-3 px-5">
+                    <Link to="/programs" className="btn btn-outline-success rounded-0 py-3 px-5">
                         Programs <img src="/icons/arrowup.png" alt="arrow-icon" className="green" width="15px" />
                     </Link>
                 </div>
@@ -42,14 +42,14 @@ function Home() {
                             <h2 className="fw-bold">10K+</h2>
                             <img src="/icons/graduate.png" alt="icon" width="25px" />
                         </div>
-                        <Link to="/research" className="mt-4 nav-link">Graduate Student <img src="/icons/arrowup.png" alt="arrow-icon" width="10px" /></Link>
+                        <Link to="/achievements" className="mt-4 nav-link">Graduate Student <img src="/icons/arrowup.png" alt="arrow-icon" width="10px" /></Link>
                     </div>
                     <div className="p-4 flex-fill box-green">
                         <div className="d-flex justify-content-between align-items-start">
                             <h2 className="fw-bold">140+</h2>
                             <img src="/icons/research.png" alt="icon" width="25px" />
                         </div>
-                        <Link to="/research" className="mt-4 nav-link">Research Publications <img src="/icons/arrowup.png" alt="arrow-icon" width="10px" /></Link>
+                        <Link to="/achievements" className="mt-4 nav-link">Research Publications <img src="/icons/arrowup.png" alt="arrow-icon" width="10px" /></Link>
                     </div>
                 </div>
             </div>

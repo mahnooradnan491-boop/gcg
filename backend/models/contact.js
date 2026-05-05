@@ -5,34 +5,29 @@ const contactSchema = mongoose.Schema({
         type: String,
         required: true
     },
-
     lastname: {
         type: String,
         required: true
     },
-
     email: {
         type: String,
         required: true
     },
-
     phoneno: {
         type: String
     },
-
     subject: {
         type: String,
         required: true
     },
-
     message: {
         type: String,
         required: true
     }
 },
-{
-    timestamps: true
-});
+    {
+        timestamps: true
+    });
 
 const Contact = mongoose.model("Contact", contactSchema);
 

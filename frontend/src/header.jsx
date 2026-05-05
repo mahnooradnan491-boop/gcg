@@ -18,7 +18,7 @@ function Header() {
                                 <Link to="/" className="nav-link">Home</Link>
                             </li>
                             <li>
-                                <Link to="/admission" className="nav-link">Admission</Link>
+                                <Link to="/achievements" className="nav-link">Achievements</Link>
                             </li>
                             <li>
                                 <Link to="/programs" className="nav-link">Programs</Link>
@@ -42,7 +42,7 @@ function Header() {
                                 <Link to="/contact" className="nav-link">Contact</Link>
                             </li>
                         </ul>
-                        <Link to="/login" className="btn btn-success rounded-0 py-3 px-5">Login <span className="ps-2"><img src="/icons/arrowup.png" alt="arrow-icon" width="12px" /></span></Link>
+                        <Link to="/register" className="btn btn-success rounded-0 py-3 px-5">Enroll Now <span className="ps-2"><img src="/icons/arrowup.png" alt="arrow-icon" width="12px" /></span></Link>
                     </div>
                 </div>
             </div>

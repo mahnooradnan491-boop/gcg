@@ -1,33 +1,15 @@
 import mongoose from 'mongoose'
 
 const timetableSchema = mongoose.Schema({
-    className: {
+    classname: {
         type: String,
         required: true
     },
-    subject: {
-        type: String,
+    date: {
+        type: Date,
         required: true
     },
-
-    day: {
-        type: String,
-        required: true
-    },
-     secondtime: {
-        type:String,
-        required: true
-     },
-
-    startTime: {
-        type: String,
-        required: true
-    },
-    endTime: {
-        type: String,
-        required: true
-    },
-    roomNo: {
+    image: {
         type: String,
         required: true
     }
