@@ -1,0 +1,37 @@
+import mongoose from 'mongoose'
+
+const newsSchema = mongoose.Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    day: {
+        type: String,
+        required: true
+    },
+    month: {
+        type: String,
+        required: true
+    },
+    category: {
+        type: String,
+        required: true,
+        enum: ['General Notice', 'News', 'Exam Date Sheet']
+    },
+    postedBy: {
+        type: String,
+        default: "Head of Department"
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
+})
+
+const News = mongoose.model('News', newsSchema)
+
+export default News
