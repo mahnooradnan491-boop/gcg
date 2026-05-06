@@ -1,5 +1,5 @@
 .hero {
-    background-image: url("./assets/herobg.png");
+    background-image: url("../assets/herobg.png");
     background-size: cover;
     background-repeat: no-repeat;
     height: calc(100vh - 100px);
