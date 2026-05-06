@@ -1,0 +1,112 @@
+
+.admission-page {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 15px;
+    background-color: #c8e2d4; 
+}
+
+
+.admission-card {
+    background: #ffffff;
+    border-radius: 50px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+    width: 100%;
+    transition: all 0.5s ease;
+}
+
+
+.admission-card h4 {
+    color: #000;
+    font-size: 20px;
+}
+
+.admission-card .text-muted {
+    font-size: 13px;
+    color: #777 !important;
+}
+
+
+.admission-form .form-label {
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #444;
+}
+
+.admission-form .form-control, 
+.admission-form .form-select {
+    background-color: #fcfcfc;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 10px 15px;
+    font-size: 15px;
+}
+
+.admission-form .form-control:focus {
+    border-color: #419a51;
+    box-shadow: 0 0 0 0.2rem rgba(65, 154, 81, 0.15);
+}
+
+/* Buttons */
+.admission-form .btn {
+    background-color: #419a51;
+    border: none;
+    font-size: 18px;
+    border-radius: 12px;
+    transition: transform 0.2s, background 0.3s;
+}
+
+.admission-form .btn:hover {
+    background-color: #357a41;
+    transform: translateY(-2px);
+}
+
+.admission-form .btn:active {
+    transform: translateY(0);
+}
+
+
+.thank-you-section h1 {
+    font-size: 56px;
+    font-weight: 800;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.thank-you-section p {
+    font-size: 18px;
+    color: #555;
+}
+
+
+.thank-you-section img {
+    max-width: 180px;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.border-top {
+    border-top: 1px solid #eee !important;
+}
+
+.text-success {
+    color: #419a51 !important;
+    font-weight: 600;
+}
+
+
+@media (max-width: 768px) {
+    .thank-you-section h1 {
+        font-size: 36px;
+    }
+    .admission-card {
+        border-radius: 30px;
+        padding: 30px 20px !important;
+    }
+}

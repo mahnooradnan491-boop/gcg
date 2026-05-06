@@ -47,8 +47,8 @@ function Program() {
 
         <div className="program-hero">
           <p className='program-top'>All the honours degree programs are offered with the affiliation of University of the Punjab</p>
-          <h1>Offering Following Programs <br /> At GCG.</h1>
-          <button>Enroll Now ↗</button>
+          <h1><b>Offering Following Programs <br /> At GCG.</b></h1>
+          <button>Enroll Now  <span className="ps-2"><img src="/icons/arrowup.png" alt="arrow-icon" width="12px" /></span></button>
         </div>
 
         <div className="program-search">
