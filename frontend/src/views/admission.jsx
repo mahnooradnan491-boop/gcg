@@ -1,19 +1,59 @@
 import React, { useState } from 'react'
 import './admission.css'
+import axios from 'axios'
 
 function Admission() {
   const [step, setStep] = useState(1);
+
+  const [formData, setFormData] = useState({
+    cnic: '',
+    dob: '',
+    gender: '',
+    phone: '',
+    fatherName: '',
+    fatherCnic: '',
+    guardianPhone: '',
+    address: '',
+    city: '',
+    matricRoll: '',
+    matricTotal: '',
+    matricObtained: '',
+    interRoll: '',
+    interTotal: '',
+    interObtained: ''
+  });
+
+  const [matricFile, setMatricFile] = useState(null);
+  const [interFile, setInterFile] = useState(null);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   const handleNext = (e) => {
     e.preventDefault();
     setStep(step + 1);
   };
 
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = new FormData();
+    Object.keys(formData).forEach(key => data.append(key, formData[key]));
+    data.append('matricSheet', matricFile);
+    data.append('interSheet', interFile);
+
+    try {
+       const res = await axios.post('/api/admission', data);
+      setStep(3);
+    } catch (err) {
+      alert("Submission failed!");
+    }
+  };
   return (
     <div className="admission-page container-fluid d-flex align-items-center justify-content-center" style={{ backgroundColor: '#c8e2d4', minHeight: '100vh' }}>
       <div className="admission-card bg-white p-4 p-md-5" style={{ borderRadius: '50px', maxWidth: '1000px', width: '95%' }}>
         
-        {/* Logo and Header Section */}
         <div className="d-flex justify-content-between align-items-center mb-5 flex-wrap">
           <div className="d-flex align-items-center">
             <img src="/logo.png" alt="GCG Logo" width="150" className="me-3" />
@@ -27,7 +67,7 @@ function Admission() {
         </div>
 
         <form className="admission-form">
-          {/* STEP 1: PERSONAL INFORMATION */}
+          
           {step === 1 && (
             <div className="personal-info">
               <div className="row mb-4">
@@ -71,13 +111,12 @@ function Admission() {
             </div>
           )}
 
-          {/* STEP 3: THANK YOU SCREEN */}
           {step === 3 && (
             <div className="thank-you-section text-center py-4">
               <h1 className="fw-bold mb-2" style={{ fontSize: '60px' }}>Thank You !</h1>
               <p className="text-muted mb-5">Your Request has been received, we will contact back you soon</p>
               
-              {/* Is image ka path apne folder ke mutabiq set kar lein */}
+              
               <div className="my-5">
                 <img 
                   src="/icons/thankyou-icon.png" 
@@ -88,8 +127,6 @@ function Admission() {
             </div>
           )}
         </form>
-
-        {/* Static Footer inside the card */}
         <div className="text-center mt-5 text-muted" style={{ fontSize: '14px' }}>
           Copyright © 2026 - All Rights Reserved. GCG | <a href="/" className="text-success text-decoration-none">Back to site</a>
         </div>

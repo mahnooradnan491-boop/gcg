@@ -1,8 +1,25 @@
 import { Link } from 'react-router-dom'
 import './login.css'
+import { useState } from 'react';
+import axios from 'axios'
 
 function Login() {
+        const[email, setEmail] = useState('')
+        const[passwrod, setpassword] = useState('')
+        const[message, setmessage] = useSate('')
 
+        const handleSubmit = async (e) =>{
+          e.preventDefault()
+          try{
+            const res= await axios.post('api/login',{email,password})
+            console.log(res.data)
+          
+          }
+          catch (err){
+            setMessage(err.response?.data?.message || "Login failed")
+          }
+
+        }
 
 
   return (
@@ -28,14 +45,14 @@ function Login() {
                 <form className="login-form">
                   <div className="mb-2">
                     <label className="form-label small fw-bold text-muted">Email Address</label>
-                    <input type="email" className="form-control input-style" placeholder="Enter your email" />
+                    <input type="email" className="form-control input-style" placeholder ="••••••••" value={email} onChange={(e) => setEmail(e.target.value)} />
                   </div>
                   <div className="mb-2">
                     <div className="d-flex justify-content-between">
                       <label className="form-label small fw-bold text-muted">Password</label>
                       <Link to="/forgotpassword" className="forgot-link">Forgot Password?</Link>
                     </div>
-                    <input type="password" className="form-control input-style" placeholder="••••••••" />
+                    <input type="password" className="form-control input-style" placeholder="••••••••" value={password} onChange={(e) => setpassword(e.target.value)} />
                   </div>
                   <div className="form-check mb-3">
                     <input className="form-check-input" type="checkbox" id="check" />
