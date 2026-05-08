@@ -11,6 +11,8 @@ import Login from './views/login'
 import Register from './views/register'
 import Admission from './views/admission'
 import Admin from './views/admin/admin'
+import ContactQuery from './Admin/pages/contactQuery'
+import NewsManagement from './Admin/pages/NewsManagement';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min'
 import './main.css'
@@ -28,7 +30,13 @@ createRoot(document.getElementById('root')).render(
         <Route path="/admission" element={<Admission />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
+        {/* Admin Routes */}
         <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/contact" element={<ContactQuery />} />
+        <Route path="/admin/news" element={<NewsManagement />} />
+       
+        
       </Routes>
     </BrowserRouter>
   </StrictMode>
