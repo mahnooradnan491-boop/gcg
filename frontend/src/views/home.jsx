@@ -121,93 +121,83 @@ function Home() {
                         <button className="btn btn-outline-secondary rounded-0">Diploma</button>
                         <button className="btn btn-success rounded-0 px-5 text-nowrap">View All</button>
                     </div>
-                   <div className="row mt-5">
-    
-    <div className="col-md-4 mb-4">
-        <div className="card">
-            <img src="/computerscience.png" className="card-img-top" alt="Computer Science" />
-            <div className="card-body">
-               
-                <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#fd7e14' }}>
-                    <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#fd7e14' }}></span>
-                    Bachelors
-                </div>
+                    <div className="row mt-5">
+                        <div className="col-md-4 mb-4">
+                            <div className="card">
+                                <img src="/computerscience.png" className="card-img-top" alt="Computer Science" />
+                                <div className="card-body">
 
-                
-                <h6>Computer Science and Engineering</h6>
-            </div>
-        </div>
-    </div>
+                                    <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#fd7e14' }}>
+                                        <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#fd7e14' }}></span>
+                                        Bachelors
+                                    </div>
+                                    <h6>Computer Science and Engineering</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-4 mb-4">
+                            <div className="card">
+                                <img src="/civileng.png" className="card-img-top" alt="Civil Engineering" />
+                                <div className="card-body">
+                                    <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#6f42c1' }}>
+                                        <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#6f42c1' }}></span>
+                                        Masters
+                                    </div>
+                                    <h6>Civil Engineering</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-4 mb-4">
+                            <div className="card">
+                                <img src="/computerscience.png" className="card-img-top" alt="Computer Science" />
+                                <div className="card-body">
 
-    <div className="col-md-4 mb-4">
-        <div className="card">
-            <img src="/civileng.png" className="card-img-top" alt="Civil Engineering" />
-            <div className="card-body">
-                <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#6f42c1' }}>
-                    <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#6f42c1' }}></span>
-                    Masters
-                </div>
-                <h6>Civil Engineering</h6>
-            </div>
-        </div>
-    </div>
+                                    <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#fd7e14' }}>
+                                        <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#fd7e14' }}></span>
+                                        Bachelors
+                                    </div>
 
-    <div className="col-md-4 mb-4">
-        <div className="card">
-            <img src="/computerscience.png" className="card-img-top" alt="Computer Science" />
-            <div className="card-body">
-            
-                <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#fd7e14' }}>
-                    <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#fd7e14' }}></span>
-                    Bachelors
-                </div>
-                
-                <h6>Computer Science and Engineering</h6>
-            </div>
-        </div>
-    </div>
-
-
-    <div className="col-md-4 mb-4">
-        <div className="card">
-            <img src="/law.png" className="card-img-top" alt="Law" />
-            <div className="card-body">
-                <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#fd7e14' }}>
-                    <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#fd7e14' }}></span>
-                    Bachelors
-                </div>
-                <h6>Department of law</h6>
-            </div>
-        </div>
-    </div>
-
- <div className="col-md-4 mb-4">
-        <div className="card">
-            <img src="/civileng.png" className="card-img-top" alt="Civil Engineering" />
-            <div className="card-body">
-                <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#6f42c1' }}>
-                    <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#6f42c1' }}></span>
-                    Masters
-                </div>
-                <h6>Civil Engineering</h6>
-            </div>
-        </div>
-    </div>
-
-
-    <div className="col-md-4 mb-4">
-        <div className="card">
-            <img src="/web.png" className="card-img-top" alt="Web Design" />
-            <div className="card-body">
-                <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#198754' }}>
-                    <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#198754' }}></span>
-                    Diploma
-                </div>
-                <h6>Web design and development</h6>
-            </div>
-        </div>
-    </div>
-</div>
+                                    <h6>Computer Science and Engineering</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-4 mb-4">
+                            <div className="card">
+                                <img src="/law.png" className="card-img-top" alt="Law" />
+                                <div className="card-body">
+                                    <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#fd7e14' }}>
+                                        <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#fd7e14' }}></span>
+                                        Bachelors
+                                    </div>
+                                    <h6>Department of law</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-4 mb-4">
+                            <div className="card">
+                                <img src="/civileng.png" className="card-img-top" alt="Civil Engineering" />
+                                <div className="card-body">
+                                    <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#6f42c1' }}>
+                                        <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#6f42c1' }}></span>
+                                        Masters
+                                    </div>
+                                    <h6>Civil Engineering</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-4 mb-4">
+                            <div className="card">
+                                <img src="/web.png" className="card-img-top" alt="Web Design" />
+                                <div className="card-body">
+                                    <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#198754' }}>
+                                        <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#198754' }}></span>
+                                        Diploma
+                                    </div>
+                                    <h6>Web design and development</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
             <section className="research-section">
