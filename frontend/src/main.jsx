@@ -14,6 +14,7 @@ import Achievements from './views/achievements'
 import Admin from './views/admin/admin'
 import ContactQuery from './views/admin/contactQuery'
 import NewsManagement from './views/admin/NewsManagement';
+import AdmissionInfo from './views/admin/admissionInfo';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min'
 import './main.css'
@@ -37,7 +38,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/contact" element={<ContactQuery />} />
         <Route path="/admin/news" element={<NewsManagement />} />
-
+        <Route path="/admin/admission" element={<AdmissionInfo />} />
 
       </Routes>
     </BrowserRouter>

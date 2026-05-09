@@ -1,162 +1,114 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 function Admin() {
-    const [activeTab, setActiveTab] = useState('admission');
+    const [activeTab, setActiveTab] = useState('admission')
+    const menuItems = [
+        { id: 'admission', label: 'Admission' },
+        { id: 'contact', label: 'Contact' },
+        { id: 'news', label: 'News' },
+        { id: 'events', label: 'Events' },
+        { id: 'timetable', label: 'Time Table' },
+        { id: 'faculty', label: 'Faculty' },
+        { id: 'achievement', label: 'Achievements' },
+    ];
 
     return (
-        <div className="container-fluid p-0">
+        <div className="container-fluid p-0" style={{ backgroundColor: '#f8f9fa' }}>
             <div className="row g-0">
-                <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark min-vh-100">
-                    <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                        <a href="/" className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                            <span className="fs-5 d-none d-sm-inline fw-bold mt-3">GCG Admin</span>
-                        </a>
-                        <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start w-100">
-                            <li className="nav-item w-100">
-                                <button onClick={() => setActiveTab('admission')} className={`nav-link text-white w-100 text-start border-0 ${activeTab === 'admission' ? 'bg-success' : ''}`}>Admission</button>
-                            </li>
-                            <li className="nav-item w-100">
-                                <button onClick={() => setActiveTab('contact')} className={`nav-link text-white w-100 text-start border-0 ${activeTab === 'contact' ? 'bg-success' : ''}`}>Contact</button>
-                            </li>
-                            <li className="nav-item w-100">
-                                <button onClick={() => setActiveTab('news')} className={`nav-link text-white w-100 text-start border-0 ${activeTab === 'news' ? 'bg-success' : ''}`}>News</button>
-                            </li>
-                            <li className="nav-item w-100">
-                                <button onClick={() => setActiveTab('events')} className={`nav-link text-white w-100 text-start border-0 ${activeTab === 'events' ? 'bg-success' : ''}`}>Events</button>
-                            </li>
-                            <li className="nav-item w-100">
-                                <button onClick={() => setActiveTab('timetable')} className={`nav-link text-white w-100 text-start border-0 ${activeTab === 'timetable' ? 'bg-success' : ''}`}>Timetable</button>
-                            </li>
-                            <li className="nav-item w-100">
-                                <button onClick={() => setActiveTab('faculty')} className={`nav-link text-white w-100 text-start border-0 ${activeTab === 'faculty' ? 'bg-success' : ''}`}>Faculty</button>
-                            </li>
-                            <li className="nav-item w-100">
-                                <button onClick={() => setActiveTab('achievement')} className={`nav-link text-white w-100 text-start border-0 ${activeTab === 'achievement' ? 'bg-success' : ''}`}>Achievement</button>
-                            </li>
+                <div className="col-auto col-md-3 col-xl-2 px-0 bg-dark min-vh-100" style={{ backgroundColor: '#1e2125 !important' }}>
+                    <div className="d-flex flex-column align-items-center align-items-sm-start px-4 pt-4 text-white min-vh-100">
+                        <h2 className="fs-3 fw-bold mb-5 mt-2">GCG Admin</h2>
+                        
+                        <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-sm-start w-100" id="menu">
+                            {menuItems.map((item) => (
+                                <li className="nav-item w-100 mb-2" key={item.id}>
+                                    <button 
+                                        onClick={() => setActiveTab(item.id)} 
+                                        className={`nav-link text-white w-100 text-start py-2 px-3 border-0 rounded-3 ${activeTab === item.id ? 'bg-success' : ''}`}
+                                        style={{ transition: '0.3s' }}
+                                    >
+                                        {item.label}
+                                    </button>
+                                </li>
+                            ))}
                         </ul>
-                        <hr />
-                        <div className="pb-4 w-100">
-                            <button className="btn btn-sm btn-outline-light w-100">Logout</button>
+                        
+                        <div className="pb-5 w-100 px-2">
+                            <button className="btn btn-outline-light w-100 rounded-pill py-2">Logout</button>
                         </div>
                     </div>
                 </div>
-
-                <div className="col py-3 bg-light">
-                    <div className="container">
-                        <header className="mb-4 d-flex justify-content-between align-items-center">
-                            <h2 className="fw-bold">Dashboard</h2>
-                            <div className="text-muted">Welcome, Administrator</div>
+                <div className="col py-4 px-5">
+                    <div className="container-fluid">
+                        <header className="mb-5 d-flex justify-content-between align-items-center">
+                            <h1 className="fw-bold text-dark display-6" style={{ letterSpacing: '-1px' }}>Dashboard</h1>
+                            <div className="fs-5">Welcome, <span className="fw-bold">Admin</span></div>
                         </header>
-
-                        <div className="row mb-4">
+                        <div className="row mb-5 g-4">
                             <div className="col-md-6">
-                                <div className="card bg-primary text-white border-0 shadow-sm">
-                                    <div className="card-body p-4">
-                                        <h6>Total Admission Received</h6>
-                                        <h3 className="fw-bold">1,240</h3>
+                                <div className="card border-0 shadow-sm p-4 text-white" style={{ backgroundColor: '#212529', borderRadius: '30px' }}>
+                                    <div className="card-body">
+                                        <h5 className="opacity-75 mb-3">Total Admissions Received</h5>
+                                        <h1 className="display-3 fw-bold">220</h1>
                                     </div>
                                 </div>
                             </div>
                             <div className="col-md-6">
-                                <div className="card bg-warning text-dark border-0 shadow-sm">
-                                    <div className="card-body p-4">
-                                        <h6>Total Contact Queries</h6>
-                                        <h3 className="fw-bold">42</h3>
+                                <div className="card border-0 shadow-sm p-4 text-white" style={{ backgroundColor: '#212529', borderRadius: '30px' }}>
+                                    <div className="card-body">
+                                        <h5 className="opacity-75 mb-3">Total Contact Queries</h5>
+                                        <h1 className="display-3 fw-bold">42</h1>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div className="card shadow-sm">
-                            <div className="card-header bg-white py-3 d-flex justify-content-between align-items-center">
-                                <h5 className="mb-0 fw-bold text-capitalize">{activeTab} Management</h5>
-                                {activeTab !== 'admission' && activeTab !== 'contact' && (
-                                    <button className="btn btn-success btn-sm">Add New {activeTab}</button>
-                                )}
-                            </div>
+                        <div className="card border-0 shadow-sm p-4 mt-2" style={{ borderRadius: '40px', minHeight: '400px' }}>
                             <div className="card-body">
+                                <div className="d-flex justify-content-between align-items-center mb-4 px-2">
+                                    <h3 className="fw-bold">{activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} Management</h3>
+                                    {activeTab === 'admission' && (
+                                        <div className="d-flex gap-2">
+                                            <button className="btn btn-outline-dark px-4 rounded-3">Approved</button>
+                                            <button className="btn btn-outline-dark px-4 rounded-3">Decline</button>
+                                        </div>
+                                    )}
+                                </div>
+
                                 <div className="table-responsive">
-                                    <table className="table table-hover border mt-2">
-                                        <thead className="table-light">
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Title / Name</th>
-                                                <th>Date</th>
-                                                <th>Actions</th>
+                                    <table className="table table-borderless align-middle">
+                                        <thead style={{ backgroundColor: '#eeeeee', borderRadius: '10px' }}>
+                                            <tr className="text-muted">
+                                                <th className="p-3">#</th>
+                                                {activeTab === 'admission' ? (
+                                                    <>
+                                                        <th>Full Name</th>
+                                                        <th>Father Name</th>
+                                                        <th>Program</th>
+                                                        <th>Timing</th>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <th>Date</th>
+                                                        <th>Title</th>
+                                                        <th>Posted By</th>
+                                                    </>
+                                                )}
+                                                <th className="text-end px-4">Actions</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            {activeTab === 'admission' && (
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>John Doe (Computer Science)</td>
-                                                    <td>2026-04-13</td>
-                                                    <td><button className="btn btn-sm btn-outline-primary">View Info</button></td>
-                                                </tr>
-                                            )}
-                                            {activeTab === 'contact' && (
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Inquiry about Hostel</td>
-                                                    <td>2026-04-12</td>
-                                                    <td><button className="btn btn-sm btn-outline-success">Reply</button></td>
-                                                </tr>
-                                            )}
-                                            {activeTab === 'news' && (
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Semester Results Declared</td>
-                                                    <td>2026-04-10</td>
-                                                    <td>
-                                                        <button className="btn btn-sm btn-outline-secondary me-2">Edit</button>
-                                                        <button className="btn btn-sm btn-outline-danger">Remove</button>
-                                                    </td>
-                                                </tr>
-                                            )}
-                                            {activeTab === 'events' && (
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Annual Sports Day 2026</td>
-                                                    <td>2026-04-15</td>
-                                                    <td>
-                                                        <button className="btn btn-sm btn-outline-secondary me-2">Edit</button>
-                                                        <button className="btn btn-sm btn-outline-danger">Remove</button>
-                                                    </td>
-                                                </tr>
-                                            )}
-                                            {activeTab === 'timetable' && (
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>BSc Semester 4 - Final</td>
-                                                    <td>2026-04-01</td>
-                                                    <td>
-                                                        <button className="btn btn-sm btn-outline-secondary me-2">Edit</button>
-                                                        <button className="btn btn-sm btn-outline-danger">Delete</button>
-                                                    </td>
-                                                </tr>
-                                            )}
-                                            {activeTab === 'faculty' && (
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Dr. Smith (Physics Dept)</td>
-                                                    <td>2026-03-20</td>
-                                                    <td>
-                                                        <button className="btn btn-sm btn-outline-secondary me-2">Edit</button>
-                                                        <button className="btn btn-sm btn-outline-danger">Delete</button>
-                                                    </td>
-                                                </tr>
-                                            )}
-                                            {activeTab === 'achievement' && (
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>National Quiz Winner</td>
-                                                    <td>2026-03-15</td>
-                                                    <td>
-                                                        <button className="btn btn-sm btn-outline-secondary me-2">Edit</button>
-                                                        <button className="btn btn-sm btn-outline-danger">Delete</button>
-                                                    </td>
-                                                </tr>
-                                            )}
+                                        <tbody className="mt-2">
+                                           
+                                            <tr>
+                                                <td className="p-3">1</td>
+                                                <td>John Doe</td>
+                                                <td>Doe Damn</td>
+                                                <td>BSCS</td>
+                                                <td>Morning</td>
+                                                <td className="text-end px-4">
+                                                    <a href="#" className="text-dark text-decoration-underline me-3">View</a>
+                                                    {activeTab === 'news' && <a href="#" className="text-dark text-decoration-underline">Remove</a>}
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -169,4 +121,4 @@ function Admin() {
     );
 }
 
-export default Admin
+export default Admin;
