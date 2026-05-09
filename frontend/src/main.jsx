@@ -10,6 +10,7 @@ import Programs from './views/programs'
 import Login from './views/login'
 import Register from './views/register'
 import Admission from './views/admission'
+import Achievements from './views/achievements'
 import Admin from './views/admin/admin'
 import ContactQuery from './Admin/pages/contactQuery'
 import NewsManagement from './Admin/pages/NewsManagement';
@@ -28,6 +29,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/programs" element={<Programs />} />
         <Route path="/admission" element={<Admission />} />
+         <Route path="/achievements" element={<Achievements />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
