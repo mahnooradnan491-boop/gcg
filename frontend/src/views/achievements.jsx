@@ -56,8 +56,8 @@ function Achievements() {
               <div key={index} className="d-flex justify-content-between align-items-center bg-light p-4 mb-2 rounded shadow-sm">
                 <span className="fw-medium text-dark">{pub.title}</span>
                 <div className="text-muted small">
-                  <i className="bi bi-calendar3 me-2"></i> {/* Bootstrap icon ya text */}
-                  <span style={{fontSize: '12px'}}>📅 {pub.date}</span>
+                  <i className="bi bi-calendar3 me-2"></i> 
+                  <span style={{fontSize: '12px'}}><img src="/icons/clndr.png" alt="clndr-icon" width="12px" /> {pub.date}</span>
                 </div>
               </div>
             ))}
