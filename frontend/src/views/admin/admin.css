@@ -18,7 +18,7 @@
 }
 
 .sidebar .active-link {
-    background-color: #419a51 !important; /* Green from your image */
+    background-color: #419a51 !important; 
 }
 
 .logout-btn {
@@ -26,8 +26,6 @@
     padding: 10px;
     margin-top: 50px;
 }
-
-/* Main Content Styling */
 .main-content {
     background-color: #f8f9fa;
 }
