@@ -1,8 +1,9 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
 
 function Register() {
+    const navigate = useNavigate()
     const [fullname, setFullname] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -10,15 +11,24 @@ function Register() {
     const [message, setMessage] = useState('')
     const handleSubmit = async (e) => {
         e.preventDefault()
-        
-        if(password !== confirmPassword) {
+
+        if (password !== confirmPassword) {
             setMessage("Passwords do not match!");
             return;
         }
 
+        if (password.length < 8) {
+            setMessage("Password must be 8 characters long!");
+            return;
+        }
+
         try {
-            const res = await axios.post('/api/register', { fullname, email, password })
-            setMessage(res.data.message || "Registration Successful!");
+            const res = await axios.post('http://localhost:3000/api/register', { fullname, email, password })
+            if (res.data.message == 'User Registered Successfully') {
+                navigate('/login')
+            } else {
+                setMessage(res.data.message)
+            }
         } catch (err) {
             setMessage(err.response?.data?.message || "Something went wrong!");
         }
@@ -36,7 +46,7 @@ function Register() {
                                 <h3 className="fw-bold mb-1">Create an Account</h3>
                                 <p className="text-muted small">Join us to start growing your future.</p>
                             </div>
-                            {message && <div className="alert alert-info py-2 small">{message}</div>}
+                            {message && <div className="alert alert-danger py-2 small">{message}</div>}
                             <form className="login-form" onSubmit={handleSubmit}>
                                 <div className="mb-2">
                                     <label className="form-label small fw-bold text-muted">Full Name</label>
@@ -49,11 +59,11 @@ function Register() {
                                 <div className="row">
                                     <div className="col-md-6 mb-2">
                                         <label className="form-label small fw-bold text-muted">Password</label>
-                                        <input type="password" className="form-control input-style" placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                                        <input type="password" className="form-control input-style" placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} required minLength="8" />
                                     </div>
                                     <div className="col-md-6 mb-3">
                                         <label className="form-label small fw-bold text-muted">Confirm Password</label>
-                                        <input type="password" className="form-control input-style" placeholder="••••••••" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
+                                        <input type="password" className="form-control input-style" placeholder="••••••••" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required minLength="8" />
                                     </div>
                                 </div>
                                 <button type="submit" className="btn btn-success w-100 fw-bold">Sign Up</button>

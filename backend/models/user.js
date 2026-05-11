@@ -19,15 +19,23 @@ const userSchema = mongoose.Schema({
 })
 
 userSchema.pre('save', async function () {
-    if (this.isModified('password')) {
-        this.password = await bcrypt.hash(this.password, 14)
+    try {
+        if (this.isModified('password')) {
+            this.password = await bcrypt.hash(this.password, 14)
+        }
+    } catch (error) {
+        console.error("Error hashing password:", error)
     }
 })
 
 userSchema.pre('findOneAndUpdate', async function () {
-    const update = this.getUpdate()
-    if (update.password) {
-        update.password = await bcrypt.hash(update.password, 14)
+    try {
+        const update = this.getUpdate()
+        if (update.password) {
+            update.password = await bcrypt.hash(update.password, 14)
+        }
+    } catch (error) {
+        console.error("Error hashing password:", error)
     }
 })
 
