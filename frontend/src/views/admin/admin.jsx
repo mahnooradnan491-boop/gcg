@@ -74,44 +74,108 @@ function Admin() {
                                     )}
                                 </div>
 
-                                <div className="table-responsive">
-                                    <table className="table table-borderless align-middle">
-                                        <thead style={{ backgroundColor: '#eeeeee', borderRadius: '10px' }}>
-                                            <tr className="text-muted">
-                                                <th className="p-3">#</th>
-                                                {activeTab === 'admission' ? (
-                                                    <>
-                                                        <th>Full Name</th>
-                                                        <th>Father Name</th>
-                                                        <th>Program</th>
-                                                        <th>Timing</th>
-                                                    </>
-                                                ) : (
-                                                    <>
-                                                        <th>Date</th>
-                                                        <th>Title</th>
-                                                        <th>Posted By</th>
-                                                    </>
-                                                )}
-                                                <th className="text-end px-4">Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody className="mt-2">
-                                           
-                                            <tr>
-                                                <td className="p-3">1</td>
-                                                <td>John Doe</td>
-                                                <td>Doe Damn</td>
-                                                <td>BSCS</td>
-                                                <td>Morning</td>
-                                                <td className="text-end px-4">
-                                                    <a href="#" className="text-dark text-decoration-underline me-3">View</a>
-                                                    {activeTab === 'news' && <a href="#" className="text-dark text-decoration-underline">Remove</a>}
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                {/* Conditional Rendering for Forms */}
+                                {activeTab === 'timetable' ? (
+                                    <form className="px-2">
+                                        <div className="mb-3">
+                                            <label className="form-label small fw-bold">Class Name</label>
+                                            <input type="text" className="form-control bg-light border-0 py-2" placeholder="Enter class name" style={{ borderRadius: '10px' }} />
+                                        </div>
+                                        <div className="mb-3">
+                                            <label className="form-label small fw-bold">Date</label>
+                                            <input type="date" className="form-control bg-light border-0 py-2" style={{ borderRadius: '10px' }} />
+                                        </div>
+                                        <div className="mb-4">
+                                            <label className="form-label small fw-bold">Image</label>
+                                            <input type="file" className="form-control bg-light border-0 py-2" style={{ borderRadius: '10px' }} />
+                                        </div>
+                                        <div className="text-end mt-4">
+                                            <button type="submit" className="btn btn-success px-5 py-2 rounded-3 border-0 shadow-sm">Add Timetable</button>
+                                        </div>
+                                    </form>
+                                ) : activeTab === 'achievement' ? (
+                                    <form className="px-2">
+                                        <div className="mb-3">
+                                            <label className="form-label small fw-bold text-muted">Title</label>
+                                            <input type="text" className="form-control bg-light border-0 py-2" placeholder="Achievement title" style={{ borderRadius: '10px' }} />
+                                        </div>
+                                        <div className="mb-3">
+                                            <label className="form-label small fw-bold text-muted">Description</label>
+                                            <textarea className="form-control bg-light border-0 py-2" rows="3" placeholder="Enter description" style={{ borderRadius: '10px' }}></textarea>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-md-6 mb-3">
+                                                <label className="form-label small fw-bold text-muted">Date</label>
+                                                <input type="date" className="form-control bg-light border-0 py-2" style={{ borderRadius: '10px' }} />
+                                            </div>
+                                            <div className="col-md-6 mb-3">
+                                                <label className="form-label small fw-bold text-muted">Category</label>
+                                                <select className="form-select bg-light border-0 py-2" style={{ borderRadius: '10px' }}>
+                                                    <option>Academic</option>
+                                                    <option>Sports</option>
+                                                    <option>Cultural</option>
+                                                    <option>Research</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className="mb-4">
+                                            <label className="form-label small fw-bold text-muted">Upload Photo</label>
+                                            <input type="file" className="form-control bg-light border-0 py-2" style={{ borderRadius: '10px' }} />
+                                        </div>
+                                        <div className="text-end mt-4">
+                                            <button type="submit" className="btn btn-success px-5 py-2 rounded-3 border-0 shadow-sm">Create Achievement</button>
+                                        </div>
+                                    </form>
+                                ) : (
+                                    /* Default Table View for other tabs */
+                                    <div className="table-responsive">
+                                        <table className="table table-borderless align-middle">
+                                            <thead style={{ backgroundColor: '#eeeeee', borderRadius: '10px' }}>
+                                                <tr className="text-muted">
+                                                    <th className="p-3">#</th>
+                                                    {activeTab === 'admission' ? (
+                                                        <>
+                                                            <th>Full Name</th>
+                                                            <th>Father Name</th>
+                                                            <th>Program</th>
+                                                            <th>Timing</th>
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            <th>Date</th>
+                                                            <th>Title</th>
+                                                            <th>Posted By</th>
+                                                        </>
+                                                    )}
+                                                    <th className="text-end px-4">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody className="mt-2">
+                                                <tr>
+                                                    <td className="p-3">1</td>
+                                                    {activeTab === 'admission' ? (
+                                                        <>
+                                                            <td>John Doe</td>
+                                                            <td>Doe Damn</td>
+                                                            <td>BSCS</td>
+                                                            <td>Morning</td>
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            <td>2026-05-11</td>
+                                                            <td>Sample Title</td>
+                                                            <td>Admin</td>
+                                                        </>
+                                                    )}
+                                                    <td className="text-end px-4">
+                                                        <a href="#" className="text-dark text-decoration-underline me-3">View</a>
+                                                        {activeTab === 'news' && <a href="#" className="text-dark text-decoration-underline">Remove</a>}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>

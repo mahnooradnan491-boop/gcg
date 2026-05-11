@@ -17,6 +17,8 @@ import NewsManagement from './views/admin/NewsManagement';
 import AdmissionInfo from './views/admin/admissionInfo';
 import FacultyInfo from './views/admin/facultyInfo';
 import EventManagement from './views/admin/event';
+import Timetable from './views/admin/timetable';
+import Achievement from './views/admin/achievement';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min'
 import './main.css'
@@ -43,6 +45,9 @@ createRoot(document.getElementById('root')).render(
         <Route path="/admin/admission" element={<AdmissionInfo />} />
         <Route path="/admin/faculty" element={<FacultyInfo />} />
         <Route path="/admin/event" element={<EventManagement />} />
+        <Route path="/admin/timetable" element={<timetable/>} />
+        <Route path="/admin/event" element={<achievement />} />
+        
       
       </Routes>
     </BrowserRouter>
