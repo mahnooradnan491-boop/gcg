@@ -22,6 +22,7 @@ import Achievement from './views/admin/achievement';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min'
 import './main.css'
+import LoginAdmin from './views/admin/LoginAdmin'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -42,11 +43,12 @@ createRoot(document.getElementById('root')).render(
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/contact" element={<ContactQuery />} />
         <Route path="/admin/news" element={<NewsManagement />} />
-        <Route path="/admin/admission" element={<AdmissionInfo />} />
+        <Route path="/admin/admissionInfo" element={<AdmissionInfo />} />
         <Route path="/admin/faculty" element={<FacultyInfo />} />
         <Route path="/admin/event" element={<EventManagement />} />
         <Route path="/admin/timetable" element={<timetable/>} />
         <Route path="/admin/event" element={<achievement />} />
+         <Route path="/admin/loginAdmin" element={<LoginAdmin />} />
         
       
       </Routes>
