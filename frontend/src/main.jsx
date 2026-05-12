@@ -23,6 +23,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min'
 import './main.css'
 import LoginAdmin from './views/admin/LoginAdmin'
+import ProtectedRoute from './components/protectedroutes'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -34,7 +35,11 @@ createRoot(document.getElementById('root')).render(
         <Route path="/faculty" element={<Faculty />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/programs" element={<Programs />} />
-        <Route path="/admission" element={<Admission />} />
+        <Route path="/admission" element={
+          <ProtectedRoute>
+            <Admission />
+          </ProtectedRoute>
+        } />
         <Route path="/achievements" element={<Achievements />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -46,11 +51,11 @@ createRoot(document.getElementById('root')).render(
         <Route path="/admin/admissionInfo" element={<AdmissionInfo />} />
         <Route path="/admin/faculty" element={<FacultyInfo />} />
         <Route path="/admin/event" element={<EventManagement />} />
-        <Route path="/admin/timetable" element={<timetable/>} />
+        <Route path="/admin/timetable" element={<timetable />} />
         <Route path="/admin/event" element={<achievement />} />
-         <Route path="/admin/loginAdmin" element={<LoginAdmin />} />
-        
-      
+        <Route path="/admin/loginAdmin" element={<LoginAdmin />} />
+
+
       </Routes>
     </BrowserRouter>
   </StrictMode>

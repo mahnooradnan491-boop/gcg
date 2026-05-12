@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
+import api from '../api'
 
 function Register() {
     const navigate = useNavigate()
@@ -23,9 +24,10 @@ function Register() {
         }
 
         try {
-            const res = await axios.post('http://localhost:3000/api/register', { fullname, email, password })
+            const res = await api.post('http://localhost:3000/api/register', { fullname, email, password })
             if (res.data.message == 'User Registered Successfully') {
-                navigate('/login')
+                localStorage.setItem('token', res.data.token)
+                navigate('/admission')
             } else {
                 setMessage(res.data.message)
             }

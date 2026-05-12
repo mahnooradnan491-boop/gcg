@@ -3,61 +3,39 @@ import './admission.css'
 import axios from 'axios'
 
 function Admission() {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(1)
 
-  const [formData, setFormData] = useState({
-    cnic: '',
-    dob: '',
-    gender: '',
-    phone: '',
-    fatherName: '',
-    fatherCnic: '',
-    guardianPhone: '',
-    address: '',
-    city: '',
-    matricRoll: '',
-    matricTotal: '',
-    matricObtained: '',
-    interRoll: '',
-    interTotal: '',
-    interObtained: ''
-  });
 
-  const [matricFile, setMatricFile] = useState(null);
-  const [interFile, setInterFile] = useState(null);
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+  const [matricFile, setMatricFile] = useState(null)
+  const [interFile, setInterFile] = useState(null)
 
   const handleNext = (e) => {
-    e.preventDefault();
-    setStep(step + 1);
-  };
+    e.preventDefault()
+    setStep(step + 1)
+  }
 
-  
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const data = new FormData();
-    Object.keys(formData).forEach(key => data.append(key, formData[key]));
-    data.append('matricSheet', matricFile);
-    data.append('interSheet', interFile);
+    e.preventDefault()
+    const data = new FormData()
+
+    data.append('matricSheet', matricFile)
+    data.append('interSheet', interFile)
 
     try {
-       const res = await axios.post('/api/admission', data);
-      setStep(3);
+      const res = await axios.post('/api/admission', data)
+      setStep(3)
     } catch (err) {
-      alert("Submission failed!");
+      alert("Submission failed!")
     }
-  };
+  }
   return (
     <div className="admission-page container-fluid d-flex align-items-center justify-content-center" style={{ backgroundColor: '#c8e2d4', minHeight: '100vh' }}>
       <div className="admission-card bg-white p-4 p-md-5" style={{ borderRadius: '50px', maxWidth: '1000px', width: '95%' }}>
-        
+
         <div className="d-flex justify-content-between align-items-center mb-5 flex-wrap">
           <div className="d-flex align-items-center">
             <img src="/logo.png" alt="GCG Logo" width="150" className="me-3" />
-          
+
           </div>
           {step < 3 && (
             <h4 className="fw-bold mt-3 mt-md-0">
@@ -67,7 +45,7 @@ function Admission() {
         </div>
 
         <form className="admission-form">
-          
+
           {step === 1 && (
             <div className="personal-info">
               <div className="row mb-4">
@@ -115,13 +93,13 @@ function Admission() {
             <div className="thank-you-section text-center py-4">
               <h1 className="fw-bold mb-2" style={{ fontSize: '60px' }}>Thank You !</h1>
               <p className="text-muted mb-5">Your Request has been received, we will contact back you soon</p>
-              
-              
+
+
               <div className="my-5">
-                <img 
-                  src="/icons/thankyou-icon.png" 
-                  alt="Success Icon" 
-                  style={{ width: '180px' }} 
+                <img
+                  src="/icons/thankyou-icon.png"
+                  alt="Success Icon"
+                  style={{ width: '180px' }}
                 />
               </div>
             </div>

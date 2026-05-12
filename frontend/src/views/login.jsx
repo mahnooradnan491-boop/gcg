@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import './login.css'
 import { useState } from 'react';
 import axios from 'axios'
+import api from '../api';
 
 function Login() {
     const navigate = useNavigate()
@@ -12,7 +13,7 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const res = await axios.post('http://localhost:3000/api/login', { email, password })
+            const res = await api.post('http://localhost:3000/api/login', { email, password })
             if (res.data.message == 'Login Successful') {
                 localStorage.setItem('token', res.data.token)
                 navigate('/admission')

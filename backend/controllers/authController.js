@@ -7,9 +7,10 @@ export const register = async (req, res) => {
     try {
         const user = new User({ fullname, email, password })
         await user.save()
-        res.status(201).json({ message: 'User Registered Successfully' })
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' })
+        return res.status(201).cookie('access_token', token, { maxAge: 3600000, httpOnly: true }).json({ message: 'User Registered Successfully', token })
     } catch (error) {
-        res.status(400).json({ message: error.message })
+        return res.status(400).json({ message: error.message })
     }
 }
 
@@ -20,10 +21,9 @@ export const login = async (req, res) => {
     const compare = await bcrypt.compare(password, user.password)
     if (!compare) return res.status(400).json({ message: 'Invalid Credentials' })
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' })
-    res.cookie('access_token', token, { maxAge: 3600000, httpOnly: true })
-    res.json({ message: 'Login Successful', token })
+    return res.status(200).cookie('access_token', token, { maxAge: 3600000, httpOnly: true }).json({ message: 'Login Successful', token })
 }
 
 export const logout = (req, res) => {
-    res.clearCookie('access_token')
+    return res.clearCookie('access_token')
 }
