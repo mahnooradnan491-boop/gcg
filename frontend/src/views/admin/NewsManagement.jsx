@@ -3,17 +3,7 @@ import './Admin.css'
 function NewsManagement() {
     const [activeTab, setActiveTab] = useState('news');
 
-    const [newsData, setNewsData] = useState({
-        postedBy: '',
-        date: '',
-        category: '',
-        title: '',
-        description: ''
-    })
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setNewsData({ ...newsData, [name]: value });
-    };
+    // use single state
 
     const handlePublish = (e) => {
         e.preventDefault();

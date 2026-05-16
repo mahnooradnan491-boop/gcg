@@ -1,17 +1,32 @@
 import React, { useState } from 'react'
 import './admission.css'
 import axios from 'axios'
+import { Link, useNavigate } from 'react-router'
+import api from '../api.js'
 
 function Admission() {
+  const navigate = useNavigate()
   const [step, setStep] = useState(1)
-
-
   const [matricFile, setMatricFile] = useState(null)
   const [interFile, setInterFile] = useState(null)
+
+  // use states here
 
   const handleNext = (e) => {
     e.preventDefault()
     setStep(step + 1)
+  }
+
+  const logout = async () => {
+    try {
+      const res = await api.get('/logout')
+      if (res.data.message == 'logout') {
+        localStorage.removeItem('user')
+        navigate('/login')
+      }
+    } catch (error) {
+      alert(error.message)
+    }
   }
 
   const handleSubmit = async (e) => {
@@ -106,7 +121,7 @@ function Admission() {
           )}
         </form>
         <div className="text-center mt-5 text-muted" style={{ fontSize: '14px' }}>
-          Copyright © 2026 - All Rights Reserved. GCG | <a href="/" className="text-success text-decoration-none">Back to site</a>
+          Copyright © 2026 - All Rights Reserved. GCG | <Link to="/" className="text-success text-decoration-none">Back to site</Link> | <button className='border-0 bg-white text-danger' onClick={logout}>Logout</button>
         </div>
       </div>
     </div>

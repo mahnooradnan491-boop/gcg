@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 import api from '../api'
 
@@ -10,8 +10,17 @@ function Register() {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [message, setMessage] = useState('')
+    const [disable, setDisable] = useState(false)
+
+    useEffect(() => {
+        if (localStorage.getItem('user')) {
+            navigate('/admission')
+        }
+    }, [])
+
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setDisable(true);
 
         if (password !== confirmPassword) {
             setMessage("Passwords do not match!");
@@ -26,7 +35,7 @@ function Register() {
         try {
             const res = await api.post('http://localhost:3000/api/register', { fullname, email, password })
             if (res.data.message == 'User Registered Successfully') {
-                localStorage.setItem('token', res.data.token)
+                localStorage.setItem("user", JSON.stringify(res.data.info))
                 navigate('/admission')
             } else {
                 setMessage(res.data.message)
@@ -68,12 +77,13 @@ function Register() {
                                         <input type="password" className="form-control input-style" placeholder="••••••••" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required minLength="8" />
                                     </div>
                                 </div>
-                                <button type="submit" className="btn btn-success w-100 fw-bold">Sign Up</button>
+                                <button type="submit" className="btn btn-success w-100 fw-bold" disabled={disable}>Sign Up</button>
                             </form>
-                            <div className="mt-4 text-center">
-                                <p className="small text-muted">
+                            <div className="mt-4 text-center small text-muted">
+                                <p>
                                     Already have an account? <Link to="/login" className="forgot-link fw-bold">Sign In</Link>
                                 </p>
+                                Copyright © 2026 - All Rights Reserved. GCG <br /> <Link to="/" className="text-success text-decoration-none">Back to site</Link>
                             </div>
                         </div>
                     </div>

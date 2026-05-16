@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import './login.css'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios'
 import api from '../api';
 
@@ -9,13 +9,21 @@ function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [message, setMessage] = useState('')
+    const [disable, setDisable] = useState(false)
+
+    useEffect(() => {
+        if (localStorage.getItem('user')) {
+            navigate('/admission')
+        }
+    }, [])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setDisable(true)
         try {
             const res = await api.post('http://localhost:3000/api/login', { email, password })
             if (res.data.message == 'Login Successful') {
-                localStorage.setItem('token', res.data.token)
+                localStorage.setItem("user", JSON.stringify(res.data.info))
                 navigate('/admission')
             } else {
                 setMessage(res.data.message)
@@ -66,12 +74,13 @@ function Login() {
                                         <input className="form-check-input" type="checkbox" id="check" />
                                         <label className="form-check-label small text-muted" htmlFor="check">Keep me logged in</label>
                                     </div>
-                                    <button type="submit" className="btn btn-success w-100 fw-bold">Sign In</button>
+                                    <button type="submit" className="btn btn-success w-100 fw-bold" disabled={disable}>Sign In</button>
                                 </form>
-                                <div className="mt-4 text-center">
-                                    <p className="small text-muted">
+                                <div className="mt-4 text-center small text-muted">
+                                    <p>
                                         Don't have an account? <Link to="/register" className="forgot-link fw-bold">Sign Up</Link>
                                     </p>
+                                    Copyright © 2026 - All Rights Reserved. GCG <br /> <Link to="/" className="text-success text-decoration-none">Back to site</Link>
                                 </div>
                             </div>
                         </div>

@@ -45,7 +45,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/register" element={<Register />} />
 
         {/* Admin Routes */}
-        <Route path="/admin" element={<Admin />} />
+        <Route path="/admin" element={<LoginAdmin />} />
         <Route path="/admin/contact" element={<ContactQuery />} />
         <Route path="/admin/news" element={<NewsManagement />} />
         <Route path="/admin/admissionInfo" element={<AdmissionInfo />} />
@@ -53,7 +53,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/admin/event" element={<EventManagement />} />
         <Route path="/admin/timetable" element={<timetable />} />
         <Route path="/admin/event" element={<achievement />} />
-        <Route path="/admin/loginAdmin" element={<LoginAdmin />} />
+        <Route path="/admin/dashboard" element={<Admin />} />
 
 
       </Routes>
