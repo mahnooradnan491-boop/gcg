@@ -2,7 +2,6 @@
     min-height: 100vh;
 }
 
-
 .sidebar {
     width: 280px;
     display: flex;
@@ -26,6 +25,7 @@
     padding: 10px;
     margin-top: 50px;
 }
+
 .main-content {
     background-color: #f8f9fa;
 }
@@ -48,6 +48,9 @@
 .btn-success {
     background-color: #419a51 !important;
     border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: 500;
 }
 
 .btn-danger {

@@ -45,7 +45,7 @@ function Admin() {
                             <div className="fs-5">Welcome, <span className="fw-bold">Admin</span></div>
                         </header>
                         <div className="row mb-5 g-4">
-                            <div className="col-md-6">
+                            <div className="col-md-6" style={{ cursor: 'pointer' }} onClick={() => setActiveTab('admission')}>
                                 <div className="card border-0 shadow-sm p-4 text-white" style={{ backgroundColor: '#212529', borderRadius: '30px' }}>
                                     <div className="card-body">
                                         <h5 className="opacity-75 mb-3">Total Admissions Received</h5>
@@ -53,7 +53,7 @@ function Admin() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-6">
+                            <div className="col-md-6" style={{ cursor: 'pointer' }} onClick={() => setActiveTab('contact')}>
                                 <div className="card border-0 shadow-sm p-4 text-white" style={{ backgroundColor: '#212529', borderRadius: '30px' }}>
                                     <div className="card-body">
                                         <h5 className="opacity-75 mb-3">Total Contact Queries</h5>
@@ -62,17 +62,34 @@ function Admin() {
                                 </div>
                             </div>
                         </div>
+                        
                         <div className="card border-0 shadow-sm p-4 mt-2" style={{ borderRadius: '40px', minHeight: '400px' }}>
                             <div className="card-body">
                                 <div className="d-flex justify-content-between align-items-center mb-4 px-2">
                                     <h3 className="fw-bold">{activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} Management</h3>
-                                    {activeTab === 'admission' && (
-                                        <div className="d-flex gap-2">
-                                            <button className="btn btn-outline-dark px-4 rounded-3">Approved</button>
-                                            <button className="btn btn-outline-dark px-4 rounded-3">Decline</button>
-                                        </div>
-                                    )}
+                                    
+                                    <div className="d-flex gap-2">
+                                        {activeTab === 'admission' && (
+                                            <>
+                                                <button className="btn btn-outline-dark px-4 rounded-3">Approved</button>
+                                                <button className="btn btn-outline-dark px-4 rounded-3">Decline</button>
+                                            </>
+                                        )}
+                                        {activeTab === 'contact' && (
+                                            <button className="btn btn-success px-4 rounded-3">Open Query Form</button>
+                                        )}
+                                        {activeTab === 'news' && (
+                                            <button className="btn btn-success px-4 rounded-3">+ Add News</button>
+                                        )}
+                                        {activeTab === 'events' && (
+                                            <button className="btn btn-success px-4 rounded-3">+ Add Event</button>
+                                        )}
+                                        {activeTab === 'faculty' && (
+                                            <button className="btn btn-success px-4 rounded-3">+ Add Faculty</button>
+                                        )}
+                                    </div>
                                 </div>
+                                
                                 {activeTab === 'timetable' ? (
                                     <form className="px-2">
                                         <div className="mb-3">
@@ -137,6 +154,12 @@ function Admin() {
                                                             <th>Program</th>
                                                             <th>Timing</th>
                                                         </>
+                                                    ) : activeTab === 'faculty' ? (
+                                                        <>
+                                                            <th>Name</th>
+                                                            <th>Department</th>
+                                                            <th>Designation</th>
+                                                        </>
                                                     ) : (
                                                         <>
                                                             <th>Date</th>
@@ -156,6 +179,12 @@ function Admin() {
                                                             <td>Doe Damn</td>
                                                             <td>BSCS</td>
                                                             <td>Morning</td>
+                                                        </>
+                                                    ) : activeTab === 'faculty' ? (
+                                                        <>
+                                                            <td>Dr. Muhammad Ismail</td>
+                                                            <td>Computer Science</td>
+                                                            <td>HOD / Professor</td>
                                                         </>
                                                     ) : (
                                                         <>
