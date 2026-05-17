@@ -1,9 +1,24 @@
 import React, { useState } from 'react'
 import './Admin.css'
-function NewsManagement() {
-    const [activeTab, setActiveTab] = useState('news');
 
-    // use single state
+function NewsManagement() {
+    const [activeTab, setActiveTab] = useState('news')
+    
+    const [newsData, setNewsData] = useState({
+        postedBy: '',
+        date: '',
+        category: '',
+        title: '',
+        description: ''
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setNewsData((prevData) => ({
+            ...prevData,
+            [name]: value
+        }))
+    }
 
     const handlePublish = (e) => {
         e.preventDefault();
@@ -13,6 +28,7 @@ function NewsManagement() {
     const handleDelete = () => {
         alert("News Deleted!");
     };
+
     return (
         <div className="container-fluid p-0">
             <div className="row g-0">
@@ -51,6 +67,7 @@ function NewsManagement() {
                         </div>
                     </div>
                 </div>
+
                 <div className="col p-0">
                     <main className="main-content p-5 bg-light min-vh-100">
                         <div className="d-flex justify-content-between align-items-center mb-4">
@@ -99,6 +116,7 @@ function NewsManagement() {
                         </div>
                     </main>
                 </div>
+
             </div>
         </div>
     );

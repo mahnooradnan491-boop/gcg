@@ -7,10 +7,27 @@ import api from '../api.js'
 function Admission() {
   const navigate = useNavigate()
   const [step, setStep] = useState(1)
+  const [cnic, setCnic] = useState('')
+  const [dob, setDob] = useState('')
+  const [gender, setGender] = useState('Select')
+  const [phone, setPhone] = useState('')
+  const [fatherName, setFatherName] = useState('')
+  const [fatherCnic, setFatherCnic] = useState('')
+  const [guardianPhone, setGuardianPhone] = useState('')
+  const [address, setAddress] = useState('')
+  const [city, setCity] = useState('')
+
+  const [matricRoll, setMatricRoll] = useState('')
+  const [matricTotal, setMatricTotal] = useState('')
+  const [matricObtained, setMatricObtained] = useState('')
   const [matricFile, setMatricFile] = useState(null)
+
+  const [interRoll, setInterRoll] = useState('')
+  const [interTotal, setInterTotal] = useState('')
+  const [interObtained, setInterObtained] = useState('')
   const [interFile, setInterFile] = useState(null)
 
-  // use states here
+ 
 
   const handleNext = (e) => {
     e.preventDefault()
@@ -32,8 +49,22 @@ function Admission() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const data = new FormData()
-
+data.append('cnic', cnic)
+    data.append('dob', dob)
+    data.append('gender', gender)
+    data.append('phone', phone)
+    data.append('fatherName', fatherName)
+    data.append('fatherCnic', fatherCnic)
+    data.append('guardianPhone', guardianPhone)
+    data.append('address', address)
+    data.append('city', city)
+    data.append('matricRoll', matricRoll)
+    data.append('matricTotal', matricTotal)
+    data.append('matricObtained', matricObtained)
     data.append('matricSheet', matricFile)
+    data.append('interRoll', interRoll)
+    data.append('interTotal', interTotal)
+    data.append('interObtained', interObtained)
     data.append('interSheet', interFile)
 
     try {

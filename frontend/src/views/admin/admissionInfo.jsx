@@ -90,4 +90,4 @@ const AdmissionInfo = () => {
     );
 };
 
-export default AdmissionInfo;
+export default AdmissionInfo

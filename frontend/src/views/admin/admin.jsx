@@ -73,8 +73,6 @@ function Admin() {
                                         </div>
                                     )}
                                 </div>
-
-                                {/* Conditional Rendering for Forms */}
                                 {activeTab === 'timetable' ? (
                                     <form className="px-2">
                                         <div className="mb-3">
@@ -127,7 +125,6 @@ function Admin() {
                                         </div>
                                     </form>
                                 ) : (
-                                    /* Default Table View for other tabs */
                                     <div className="table-responsive">
                                         <table className="table table-borderless align-middle">
                                             <thead style={{ backgroundColor: '#eeeeee', borderRadius: '10px' }}>
