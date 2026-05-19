@@ -5,13 +5,16 @@ import helmet from 'helmet'
 import cookieParser from 'cookie-parser'
 import dotenv from 'dotenv'
 import authRoutes from './routers/authRoutes.js'
+import checkAdmin from './middlewares/checkadmin.js'
 
 dotenv.config()
 
 const server = express()
 const port = process.env.PORT || 3000
 
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI).then(async () => {
+    await checkAdmin()
+})
 
 const corsOptions = {
     origin: 'http://localhost:5173',

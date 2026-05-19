@@ -1,43 +1,51 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import api from '../../api'
 
 function LoginAdmin() {
-    const navigate = useNavigate();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [message, setMessage] = useState('');
-    const [disable, setDisable] = useState(false);
-    const [isSuccess, setIsSuccess] = useState(false);
+    const navigate = useNavigate()
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [message, setMessage] = useState('')
+    const [disable, setDisable] = useState(false)
+    const [isSuccess, setIsSuccess] = useState(false)
+
+    useEffect(() => {
+        const admin = localStorage.getItem('adminUser')
+        if (admin) {
+            navigate('/admin/dashboard')
+        }
+    }, [])
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        setDisable(true);
-        setMessage('');
+        e.preventDefault()
+        setDisable(true)
+        setMessage('')
 
         if (password.length < 8) {
-            setMessage("Password must be 8 characters long!");
-            setDisable(false);
-            return;
+            setMessage("Password must be 8 characters long!")
+            setDisable(false)
+            return
         }
 
         try {
-            const res = await axios.post('http://localhost:3000/api/admin/login', { email, password });
-            if (res.data) {
-                setIsSuccess(true);
-                setMessage("Admin Login Successful!");
-                localStorage.setItem("adminUser", JSON.stringify(res.data.info || res.data));
-                
+            const res = await api.post('/admin/login', { email, password })
+            if (res.data.message == 'login') {
+                setIsSuccess(true)
+                setMessage("Admin Login Successful!")
+                localStorage.setItem("adminUser", JSON.stringify(res.data.info))
+
                 setTimeout(() => {
-                    navigate('/admin/dashboard');
-                }, 2000);
+                    navigate('/admin/dashboard')
+                }, 2000)
             }
         } catch (err) {
-            setIsSuccess(false);
-            setDisable(false);
-            setMessage(err.response?.data?.message || "Invalid Admin Credentials!");
+            setIsSuccess(false)
+            setDisable(false)
+            setMessage(err.response?.data?.message || "Invalid Admin Credentials!")
         }
-    };
+    }
 
     return (
         <div className="login-master-wrapper d-flex align-items-center justify-content-center py-5">
@@ -48,7 +56,7 @@ function LoginAdmin() {
                             <div className="logo-box text-center mb-3">
                                 <img src="/logo.png" alt="Logo" className="img-fluid" style={{ maxWidth: '120px' }} />
                             </div>
-                         
+
                             <div className="text-center mb-4">
                                 <h3 className="fw-bold mb-1" style={{ color: '#2b3a33' }}>Admin Portal</h3>
                                 <p className="text-muted small">Enter your credentials to access the dashboard</p>
@@ -61,20 +69,20 @@ function LoginAdmin() {
                             <form className="login-form text-start" onSubmit={handleSubmit}>
                                 <div className="mb-3">
                                     <label className="form-label small fw-bold text-muted mb-1">Admin Email</label>
-                                    <input 
-                                        type="email" 
-                                        className="form-control input-style" 
-                                        onChange={(e) => setEmail(e.target.value)} 
-                                        required 
+                                    <input
+                                        type="email"
+                                        className="form-control input-style"
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        required
                                     />
                                 </div>
                                 <div className="mb-2">
                                     <label className="form-label small fw-bold text-muted mb-1">Password</label>
-                                    <input 
-                                        type="password" 
-                                        className="form-control input-style" 
-                                        onChange={(e) => setPassword(e.target.value)} 
-                                        required 
+                                    <input
+                                        type="password"
+                                        className="form-control input-style"
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        required
                                     />
                                 </div>
 
@@ -101,7 +109,7 @@ function LoginAdmin() {
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
-export default LoginAdmin;
+export default LoginAdmin

@@ -1,13 +1,16 @@
 import { useState } from 'react'
-import NewsManagement from './NewsManagement' 
+import NewsManagement from './NewsManagement'
 import AdmissionInfo from './AdmissionInfo'
 import ContactQuery from './ContactQuery'
+import api from '../../api';
+import { useNavigate } from 'react-router';
 
 function Admin() {
     const [activeTab, setActiveTab] = useState('admission');
     const [isAddingNews, setIsAddingNews] = useState(false);
     const [selectedAdmission, setSelectedAdmission] = useState(null);
     const [isOpenQuery, setIsOpenQuery] = useState(false);
+    const navigate = useNavigate()
 
     const menuItems = [
         { id: 'admission', label: 'Admission' },
@@ -25,17 +28,30 @@ function Admin() {
         setSelectedAdmission(null)
         setIsOpenQuery(false)
     }
+
+    const logout = async () => {
+        try {
+            const res = await api.get('/admin/logout')
+            if (res.data.message == 'logout') {
+                localStorage.removeItem('adminUser')
+                navigate('/admin')
+            }
+        } catch (error) {
+            alert(error.message)
+        }
+    }
+
     return (
         <div className="container-fluid p-0" style={{ backgroundColor: '#f8f9fa' }}>
             <div className="row g-0">
                 <div className="col-auto col-md-3 col-xl-2 px-0 bg-dark min-vh-100" style={{ backgroundColor: '#1e2125 !important' }}>
                     <div className="d-flex flex-column align-items-center align-items-sm-start px-4 pt-4 text-white min-vh-100">
-                        <h2 className="fs-3 fw-bold mb-5 mt-2">GCG Admin</h2>                   
+                        <h2 className="fs-3 fw-bold mb-5 mt-2">GCG Admin</h2>
                         <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-sm-start w-100" id="menu">
                             {menuItems.map((item) => (
                                 <li className="nav-item w-100 mb-2" key={item.id}>
-                                    <button 
-                                        onClick={() => handleTabChange(item.id)} 
+                                    <button
+                                        onClick={() => handleTabChange(item.id)}
                                         className={`nav-link text-white w-100 text-start py-2 px-3 border-0 rounded-3 ${activeTab === item.id ? 'bg-success' : ''}`}
                                         style={{ transition: '0.3s' }}
                                     >
@@ -44,9 +60,9 @@ function Admin() {
                                 </li>
                             ))}
                         </ul>
-                        
+
                         <div className="pb-5 w-100 px-2">
-                            <button className="btn btn-outline-light w-100 rounded-pill py-2">Logout</button>
+                            <button className="btn btn-outline-light w-100 rounded-pill py-2" onClick={logout}>Logout</button>
                         </div>
                     </div>
                 </div>
@@ -218,15 +234,15 @@ function Admin() {
                                                         )}
                                                         <td className="text-end px-4">
                                                             {activeTab === 'admission' ? (
-                                                                <button 
-                                                                    onClick={() => setSelectedAdmission({ name: 'John Doe' })} 
+                                                                <button
+                                                                    onClick={() => setSelectedAdmission({ name: 'John Doe' })}
                                                                     className="btn btn-link text-dark text-decoration-underline me-3 p-0 border-0 vertical-align-baseline"
                                                                 >
                                                                     View
                                                                 </button>
                                                             ) : activeTab === 'contact' ? (
-                                                                <button 
-                                                                    onClick={() => setIsOpenQuery(true)} 
+                                                                <button
+                                                                    onClick={() => setIsOpenQuery(true)}
                                                                     className="btn btn-link text-dark text-decoration-underline me-3 p-0 border-0 vertical-align-baseline"
                                                                 >
                                                                     View
