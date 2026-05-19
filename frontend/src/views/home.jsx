@@ -59,10 +59,10 @@ function Home() {
                         Stay Update With News & Events
                     </h3>
                     <div className="news-tabs">
-                        <button className="active"> <img src="/icons/info.png" alt="icon" General width="25px"></img> Genral notice</button>
-                        <button> <img src="/icons/info.png" alt="icon" General width="25px"></img>News & Events</button>
-                        <button><img src="/icons/calender.png" alt="icon" General width="25px"></img>Exams Date Sheet</button>
-                        <button><img src="/icons/clock.png" alt="icon" General width="25px"></img>Time Table</button>
+                        <button className="active"> <img src="/icons/info.png" alt="icon" width="25px"></img> Genral notice</button>
+                        <button> <img src="/icons/info.png" alt="icon" width="25px"></img>News & Events</button>
+                        <button><img src="/icons/calender.png" alt="icon" width="25px"></img>Exams Date Sheet</button>
+                        <button><img src="/icons/clock.png" alt="icon" width="25px"></img>Time Table</button>
                     </div>
                     <div className="row mt-4">
                         <div className="col-md-6">
@@ -122,19 +122,30 @@ function Home() {
                         <button className="btn btn-success rounded-0 px-5 text-nowrap">View All</button>
                     </div>
                     <div className="row mt-5">
+                        {/* Card 1 */}
                         <div className="col-md-4 mb-4">
                             <div className="card">
                                 <img src="/computerscience.png" className="card-img-top" alt="Computer Science" />
                                 <div className="card-body">
-
                                     <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#fd7e14' }}>
                                         <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#fd7e14' }}></span>
                                         Bachelors
                                     </div>
-                                    <h6>Computer Science and Engineering</h6>
+                                    <h6>
+                                        <a 
+                                            href="https://pu.edu.pk/program/show/900098/Department-of-Information-Technology" 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            className="text-decoration-none text-dark d-block"
+                                            style={{ pointerEvents: 'auto', cursor: 'pointer' }}
+                                        >
+                                            Computer Science and Engineering
+                                        </a>
+                                    </h6>
                                 </div>
                             </div>
                         </div>
+                        {/* Card 2 */}
                         <div className="col-md-4 mb-4">
                             <div className="card">
                                 <img src="/civileng.png" className="card-img-top" alt="Civil Engineering" />
@@ -143,24 +154,44 @@ function Home() {
                                         <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#6f42c1' }}></span>
                                         Masters
                                     </div>
-                                    <h6>Civil Engineering</h6>
+                                    <h6>
+                                        <a 
+                                            href="https://pu.edu.pk/admissions/programes/graduated" 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            className="text-decoration-none text-dark d-block"
+                                            style={{ pointerEvents: 'auto', cursor: 'pointer' }}
+                                        >
+                                            Civil Engineering
+                                        </a>
+                                    </h6>
                                 </div>
                             </div>
                         </div>
+                        {/* Card 3 */}
                         <div className="col-md-4 mb-4">
                             <div className="card">
                                 <img src="/computerscience.png" className="card-img-top" alt="Computer Science" />
                                 <div className="card-body">
-
                                     <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#fd7e14' }}>
                                         <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#fd7e14' }}></span>
                                         Bachelors
                                     </div>
-
-                                    <h6>Computer Science and Engineering</h6>
+                                    <h6>
+                                        <a 
+                                            href="https://pu.edu.pk/program/show/900098/Department-of-Information-Technology" 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            className="text-decoration-none text-dark d-block"
+                                            style={{ pointerEvents: 'auto', cursor: 'pointer' }}
+                                        >
+                                            Computer Science and Engineering
+                                        </a>
+                                    </h6>
                                 </div>
                             </div>
                         </div>
+                        {/* Card 4 */}
                         <div className="col-md-4 mb-4">
                             <div className="card">
                                 <img src="/law.png" className="card-img-top" alt="Law" />
@@ -169,10 +200,21 @@ function Home() {
                                         <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#fd7e14' }}></span>
                                         Bachelors
                                     </div>
-                                    <h6>Department of law</h6>
+                                    <h6>
+                                        <a 
+                                            href="https://pu.edu.pk/admissions/programes/undergraduated" 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            className="text-decoration-none text-dark d-block"
+                                            style={{ pointerEvents: 'auto', cursor: 'pointer' }}
+                                        >
+                                            Department of law
+                                        </a>
+                                    </h6>
                                 </div>
                             </div>
                         </div>
+                        {/* Card 5 */}
                         <div className="col-md-4 mb-4">
                             <div className="card">
                                 <img src="/civileng.png" className="card-img-top" alt="Civil Engineering" />
@@ -181,10 +223,21 @@ function Home() {
                                         <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#6f42c1' }}></span>
                                         Masters
                                     </div>
-                                    <h6>Civil Engineering</h6>
+                                    <h6>
+                                        <a 
+                                            href="https://pu.edu.pk/admissions/programes/graduated" 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            className="text-decoration-none text-dark d-block"
+                                            style={{ pointerEvents: 'auto', cursor: 'pointer' }}
+                                        >
+                                            Civil Engineering
+                                        </a>
+                                    </h6>
                                 </div>
                             </div>
                         </div>
+                        {/* Card 6 */}
                         <div className="col-md-4 mb-4">
                             <div className="card">
                                 <img src="/web.png" className="card-img-top" alt="Web Design" />
@@ -193,7 +246,17 @@ function Home() {
                                         <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#198754' }}></span>
                                         Diploma
                                     </div>
-                                    <h6>Web design and development</h6>
+                                    <h6>
+                                        <a 
+                                            href="https://pu.edu.pk" 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            className="text-decoration-none text-dark d-block"
+                                            style={{ pointerEvents: 'auto', cursor: 'pointer' }}
+                                        >
+                                            Web design and development
+                                        </a>
+                                    </h6>
                                 </div>
                             </div>
                         </div>

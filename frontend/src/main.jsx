@@ -25,6 +25,7 @@ import './main.css'
 import LoginAdmin from './views/admin/LoginAdmin'
 import ProtectedRoute from './components/protectedroutes'
 
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
