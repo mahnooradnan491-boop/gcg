@@ -1,5 +1,4 @@
-import React from 'react'
-const AdmissionInfo = ({ studentData, onBack }) => {
+const AdmissionShow = () => {
     const fields = [
         { label: "Full Name", span: 3 }, { label: "Email", span: 3 },
         { label: "Program", span: 3 }, { label: "Timing", span: 3 },
@@ -17,9 +16,9 @@ const AdmissionInfo = ({ studentData, onBack }) => {
     ]
     return (
         <div>
-            <button onClick={onBack} className="btn btn-sm btn-outline-secondary mb-3 px-3 rounded-pill fw-medium">
+            <Link to="/admission" className="btn btn-sm btn-outline-secondary mb-3 px-3 rounded-pill fw-medium">
                 ← Back to List
-            </button>
+            </Link>
             <div className="card border-0 shadow-sm p-4 p-md-5" style={{ borderRadius: '35px' }}>
                 <div className="card-body p-0">
                     <div className="d-flex justify-content-between align-items-center mb-5">
@@ -52,7 +51,7 @@ const AdmissionInfo = ({ studentData, onBack }) => {
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default AdmissionInfo;
+export default AdmissionShow
