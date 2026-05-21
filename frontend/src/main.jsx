@@ -80,7 +80,7 @@ createRoot(document.getElementById('root')).render(
                         <Route path="/news/add" element={<NewsManagement />} />
                         <Route path="/faculty" element={<FacultyManagement />} />
                         <Route path="/faculty/add" element={<FacultyAdd />} />
-                        <Route path="/event" element={<EventManagement />} />
+                        <Route path="/events" element={<EventManagement />} />
                         <Route path="/event/add" element={<EventAdd />} />
                         <Route path="/timetable" element={<TimetableManagement />} />
                         <Route path="/timetable/add" element={<TimetableAdd />} />
