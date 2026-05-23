@@ -1,17 +1,26 @@
+import React, { useState, useEffect } from 'react'
 import './admin.css'
+import { Link } from 'react-router'
 
 function TimetableManagement() {
-    const timetables = [
-        { id: 1, class: "BSCS 4th", semester: "4th", department: "Computer Science" },
-        { id: 2, class: "BSIT 2nd", semester: "2nd", department: "Information Technology" },
-        { id: 3, class: "BSSE 6th", semester: "6th", department: "Software Engineering" },
-    ]
+     const [data, setData] = useState([])
+    
+        useEffect(() => {
+            const getData = async () => {
+                const timetable = await api.get('/api/timetable')
+                setData(timetable)
+            }
+            getData()
+        }, [])
+    
 
     return (
         <div className="container-fluid bg-light gx-0">
             <div className="bg-white p-4 rounded-4 shadow-sm border-0 mt-3">
-                <h3 className="fw-bold mb-4 text-dark" style={{ fontSize: '1.6rem' }}>Timetable Management</h3>
-
+                           <div className='d-flex justify-content-between mb-4'>
+                               <h3 className="fw-bold text-dark" style={{ fontSize: '1.6rem' }}>TimetableManagement</h3>
+                               <Link to="/admin/timetable/add" className='btn btn-success'>+ ADD timetable</Link>
+                           </div>
                 <div className="table-responsive">
                     <table className="table table-hover align-middle m-0" style={{ borderTop: '1px solid #f0f0f0' }}>
                         <thead className="table-light text-muted">
@@ -24,9 +33,9 @@ function TimetableManagement() {
                             </tr>
                         </thead>
                         <tbody>
-                            {timetables.map((item) => (
-                                <tr key={item.id} style={{ borderBottom: '1px solid #f8f9fa' }}>
-                                    <td className="py-3 px-3 fw-bold text-muted">{item.id}</td>
+                            {data.map((item) => (
+                                <tr key={item._id} style={{ borderBottom: '1px solid #f8f9fa' }}>
+                                    <td className="py-3 px-3 fw-bold text-muted">{item._id}</td>
                                     <td className="py-3 fw-semibold text-dark">{item.class}</td>
                                     <td className="py-3 text-secondary">{item.semester}</td>
                                     <td className="py-3 text-secondary">{item.department}</td>

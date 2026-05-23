@@ -1,16 +1,25 @@
-import './admin.css';
+import React, { useState, useEffect } from 'react'
+import './admin.css'
+import { Link } from 'react-router'
 
 function FacultyManagement() {
-    const faculty = [
-        { id: 1, name: "Dr. Ali Khan", designation: "Professor", department: "Computer Science" },
-        { id: 2, name: "Ayesha Ahmed", designation: "Lecturer", department: "Mathematics" },
-        { id: 3, name: "Kamran Shah", designation: "Assistant Professor", department: "Physics" },
-    ];
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        const getData = async () => {
+            const faculty = await api.get('/api/faculty')
+            setData(faculty)
+        }
+        getData()
+    }, [])
 
     return (
         <div className="container-fluid bg-light gx-0">
-            <div className="bg-white p-4 rounded-4 shadow-sm border-0 mt-3">
-                <h3 className="fw-bold mb-4 text-dark" style={{ fontSize: '1.6rem' }}>Faculty Management</h3>
+           <div className="bg-white p-4 rounded-4 shadow-sm border-0 mt-3">
+                <div className='d-flex justify-content-between mb-4'>
+                    <h3 className="fw-bold text-dark" style={{ fontSize: '1.6rem' }}>FacultyManagement</h3>
+                    <Link to="/admin/faculty/add" className='btn btn-success'>+ ADD faculty</Link>
+                </div>
 
                 <div className="table-responsive">
                     <table className="table table-hover align-middle m-0" style={{ borderTop: '1px solid #f0f0f0' }}>
@@ -24,7 +33,7 @@ function FacultyManagement() {
                             </tr>
                         </thead>
                         <tbody>
-                            {faculty.map((member) => (
+                            {data.map((member) => (
                                 <tr key={member.id} style={{ borderBottom: '1px solid #f8f9fa' }}>
                                     <td className="py-3 px-3 fw-bold text-muted">{member.id}</td>
                                     <td className="py-3 fw-semibold text-dark">{member.name}</td>
