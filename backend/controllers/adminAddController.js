@@ -7,7 +7,8 @@ import Achievement from "../models/achievement.js"
 export const addNews = async (req, res) => {
     const { postedBy, date, category, title, description } = req.body
     try {
-        const news = await new News({ title, description, date, category, postedBy })
+        const news = new News({ title, description, date, category, postedBy })
+        await news.save()
         return res.status(200).json({ message: 'News Created' })
     } catch (error) {
         return res.status(500).json({ message: error.message })
@@ -17,7 +18,8 @@ export const addNews = async (req, res) => {
 export const addEvent = async (req, res) => {
     const { } = req.body
     try {
-        const event = await new Event({})
+        const event = new Event({})
+        await event.save()
         return res.status(200).json({ message: 'Event Created' })
     } catch (error) {
         return res.status(500).json({ message: error.message })
@@ -27,7 +29,8 @@ export const addEvent = async (req, res) => {
 export const addTimetable = async (req, res) => {
     const { } = req.body
     try {
-        const timetable = await new Timetable({})
+        const timetable = new Timetable({})
+        await timetable.save()
         return res.status(200).json({ message: 'Timetable Created' })
     } catch (error) {
         return res.status(500).json({ message: error.message })
@@ -37,7 +40,8 @@ export const addTimetable = async (req, res) => {
 export const addFaculty = async (req, res) => {
     const { } = req.body
     try {
-        const faculty = await new Faculty({})
+        const faculty = new Faculty({})
+        await faculty.save()
         return res.status(200).json({ message: 'Faculty Created' })
     } catch (error) {
         return res.status(500).json({ message: error.message })
