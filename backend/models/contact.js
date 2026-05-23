@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from "mongoose"
 
 const contactSchema = mongoose.Schema({
     firstname: {
@@ -27,8 +27,8 @@ const contactSchema = mongoose.Schema({
 },
     {
         timestamps: true
-    });
+    })
 
-const Contact = mongoose.model("Contact", contactSchema);
+const Contact = mongoose.model("Contact", contactSchema)
 
-export default Contact;
+export default Contact
