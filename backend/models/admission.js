@@ -1,6 +1,11 @@
 import mongoose from 'mongoose'
 
 const admissionSchema = mongoose.Schema({
+    userid: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
     cnic: {
         type: String,
         required: true,
@@ -71,6 +76,16 @@ const admissionSchema = mongoose.Schema({
     },
     interResultsheet: {
         type: String,
+        required: true
+    },
+    program: {
+        type: String,
+        required: true
+    },
+    timming: {
+        type: String,
+        enum: ['Morning', 'Evening'],
+        default: 'Morning',
         required: true
     }
 })

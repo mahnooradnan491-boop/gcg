@@ -1,15 +1,14 @@
-import React from 'react';
-import './admin.css';
+import './admin.css'
 
 function AchievementManagement() {
     const achievements = [
         { id: 1, title: "1st Position in Coding Comp", studentName: "Zainab Fatima", year: "2025" },
         { id: 2, title: "Best College Award", studentName: "Management Team", year: "2026" },
         { id: 3, title: "Cricket Tournament Winner", studentName: "College Team", year: "2026" },
-    ];
+    ]
 
     return (
-        <div className="container-fluid bg-light min-vh-100 p-4">
+        <div className="container-fluid bg-light gx-0">
             <div className="bg-white p-4 rounded-4 shadow-sm border-0 mt-3">
                 <h3 className="fw-bold mb-4 text-dark" style={{ fontSize: '1.6rem' }}>Achievement Management</h3>
 
@@ -43,7 +42,7 @@ function AchievementManagement() {
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
-export default AchievementManagement;
+export default AchievementManagement

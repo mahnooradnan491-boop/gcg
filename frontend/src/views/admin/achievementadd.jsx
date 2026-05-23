@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import './Admin.css'; // Apni purani CSS file use karein
+import { useState } from 'react'
+import './Admin.css' // Apni purani CSS file use karein
 
 function AchievementManagement() {
-    const [activeTab, setActiveTab] = useState('achievements');
+    const [activeTab, setActiveTab] = useState('achievements')
 
     // Achievement form data handle karne ke liye state
     const [achievementData, setAchievementData] = useState({
@@ -11,18 +11,18 @@ function AchievementManagement() {
         image: null,
         date: '',
         category: 'Academic'
-    });
+    })
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setAchievementData({ ...achievementData, [name]: value });
-    };
+        const { name, value } = e.target
+        setAchievementData({ ...achievementData, [name]: value })
+    }
 
     const handleCreateAchievement = (e) => {
-        e.preventDefault();
-        alert("Achievement Created Successfully!");
-        console.log(achievementData);
-    };
+        e.preventDefault()
+        alert("Achievement Created Successfully!")
+        console.log(achievementData)
+    }
 
     return (
         <div className="container-fluid p-0">
@@ -41,8 +41,8 @@ function AchievementManagement() {
                             <li className="nav-item w-100"><button className="nav-link text-white w-100 text-start border-0">Time Table</button></li>
                             <li className="nav-item w-100"><button className="nav-link text-white w-100 text-start border-0">Faculty</button></li>
                             <li className="nav-item w-100">
-                                <button 
-                                    onClick={() => setActiveTab('achievements')} 
+                                <button
+                                    onClick={() => setActiveTab('achievements')}
                                     className={`nav-link text-white w-100 text-start border-0 ${activeTab === 'achievements' ? 'bg-success' : ''}`}
                                 >
                                     Achievements
@@ -122,7 +122,7 @@ function AchievementManagement() {
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
-export default AchievementManagement;
+export default AchievementManagement

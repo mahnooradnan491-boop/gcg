@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import './Admin.css';
+import { useState } from 'react'
+import './Admin.css'
 function ContactQuery({ onBack }) {
     const [queryData, setQueryData] = useState({
         fullName: 'John Doe',
@@ -10,11 +10,11 @@ function ContactQuery({ onBack }) {
         reply: ''
     })
     const handleDelete = () => {
-        alert("Query Deleted!");
+        alert("Query Deleted!")
     }
     const handleSendReply = (e) => {
-        e.preventDefault();
-        alert("Reply Sent: " + queryData.reply);
+        e.preventDefault()
+        alert("Reply Sent: " + queryData.reply)
     }
     return (
         <div className="content-card bg-white p-5 rounded-4 shadow-sm border-0 mt-2" style={{ borderRadius: '40px' }}>

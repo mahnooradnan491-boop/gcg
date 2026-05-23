@@ -1,4 +1,3 @@
-import React from 'react';
 import './admin.css';
 
 function FacultyManagement() {
@@ -9,7 +8,7 @@ function FacultyManagement() {
     ];
 
     return (
-        <div className="container-fluid bg-light min-vh-100 p-4">
+        <div className="container-fluid bg-light gx-0">
             <div className="bg-white p-4 rounded-4 shadow-sm border-0 mt-3">
                 <h3 className="fw-bold mb-4 text-dark" style={{ fontSize: '1.6rem' }}>Faculty Management</h3>
 

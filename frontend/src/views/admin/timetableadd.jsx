@@ -1,26 +1,26 @@
-import React, { useState } from 'react';
-import './Admin.css'; // Apni purani CSS file hi use karein
+import { useState } from 'react'
+import './Admin.css' // Apni purani CSS file hi use karein
 
 function TimetableManagement() {
-    const [activeTab, setActiveTab] = useState('timetable');
+    const [activeTab, setActiveTab] = useState('timetable')
 
     // Timetable form data handle karne ke liye state
     const [timetableData, setTimetableData] = useState({
         className: '',
         date: '',
         timetableImage: null
-    });
+    })
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setTimetableData({ ...timetableData, [name]: value });
-    };
+        const { name, value } = e.target
+        setTimetableData({ ...timetableData, [name]: value })
+    }
 
     const handleAddTimetable = (e) => {
-        e.preventDefault();
-        alert("Time Table Added Successfully!");
-        console.log(timetableData);
-    };
+        e.preventDefault()
+        alert("Time Table Added Successfully!")
+        console.log(timetableData)
+    }
 
     return (
         <div className="container-fluid p-0">
@@ -45,8 +45,8 @@ function TimetableManagement() {
                                 <button className="nav-link text-white w-100 text-start border-0">Events</button>
                             </li>
                             <li className="nav-item w-100">
-                                <button 
-                                    onClick={() => setActiveTab('timetable')} 
+                                <button
+                                    onClick={() => setActiveTab('timetable')}
                                     className={`nav-link text-white w-100 text-start border-0 ${activeTab === 'timetable' ? 'bg-success' : ''}`}
                                 >
                                     Time Table
@@ -82,33 +82,33 @@ function TimetableManagement() {
                                     {/* Class Name Field */}
                                     <div className="col-12">
                                         <label className="small fw-bold text-muted mb-1">Class Name</label>
-                                        <input 
-                                            type="text" 
+                                        <input
+                                            type="text"
                                             name="className"
-                                            className="form-control bg-light py-2 border-secondary-subtle" 
+                                            className="form-control bg-light py-2 border-secondary-subtle"
                                             onChange={handleChange}
-                                            required 
+                                            required
                                         />
                                     </div>
 
                                     {/* Date Field */}
                                     <div className="col-12">
                                         <label className="small fw-bold text-muted mb-1">Date</label>
-                                        <input 
-                                            type="date" 
+                                        <input
+                                            type="date"
                                             name="date"
-                                            className="form-control bg-light py-2 border-secondary-subtle" 
+                                            className="form-control bg-light py-2 border-secondary-subtle"
                                             onChange={handleChange}
-                                            required 
+                                            required
                                         />
                                     </div>
 
                                     {/* Image Upload Field */}
                                     <div className="col-12">
                                         <label className="small fw-bold text-muted mb-1">Image</label>
-                                        <input 
-                                            type="file" 
-                                            className="form-control bg-light py-2 border-secondary-subtle" 
+                                        <input
+                                            type="file"
+                                            className="form-control bg-light py-2 border-secondary-subtle"
                                             onChange={(e) => setTimetableData({ ...timetableData, timetableImage: e.target.files[0] })}
                                             required
                                         />
@@ -127,7 +127,7 @@ function TimetableManagement() {
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
-export default TimetableManagement;
+export default TimetableManagement

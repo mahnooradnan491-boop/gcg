@@ -1,11 +1,9 @@
-import React from 'react';
-
 function EventManagement() {
     const events = [
         { id: 1, title: "Annual Sports Day", date: "12/05/2026", venue: "Main Ground" },
         { id: 2, title: "Tech Exhibition", date: "20/05/2026", venue: "IT Lab" },
         { id: 3, title: "Convocation 2026", date: "05/06/2026", venue: "Auditorium" },
-    ];
+    ]
 
     return (
         <div className="bg-white p-4 rounded-4 shadow-sm border-0 mt-3">
@@ -42,7 +40,7 @@ function EventManagement() {
                 </table>
             </div>
         </div>
-    );
+    )
 }
 
-export default EventManagement;
+export default EventManagement

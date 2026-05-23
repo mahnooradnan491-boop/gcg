@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import './Admin.css'; 
+import { useState } from 'react'
+import './Admin.css'
 
 function EventManagement() {
-    const [activeTab, setActiveTab] = useState('events');
+    const [activeTab, setActiveTab] = useState('events')
 
     const [eventData, setEventData] = useState({
         eventTitle: '',
@@ -11,23 +11,23 @@ function EventManagement() {
         eventVenue: '',
         organizer: '',
         eventImage: null
-    });
+    })
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setEventData({ ...eventData, [name]: value });
-    };
+        const { name, value } = e.target
+        setEventData({ ...eventData, [name]: value })
+    }
 
     const handleAddEvent = (e) => {
-        e.preventDefault();
-        alert("Event Added Successfully!");
-        console.log(eventData);
-    };
+        e.preventDefault()
+        alert("Event Added Successfully!")
+        console.log(eventData)
+    }
 
     return (
         <div className="container-fluid p-0">
             <div className="row g-0">
-                
+
                 <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark min-vh-100">
                     <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                         <div className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
@@ -73,63 +73,63 @@ function EventManagement() {
                                 <div className="row g-4">
                                     <div className="col-12">
                                         <label className="small fw-bold text-muted mb-1">Event Title</label>
-                                        <input 
-                                            type="text" 
+                                        <input
+                                            type="text"
                                             name="eventTitle"
-                                            className="form-control bg-light py-2" 
+                                            className="form-control bg-light py-2"
                                             placeholder="Enter Event Title"
                                             onChange={handleChange}
-                                            required 
+                                            required
                                         />
                                     </div>
                                     <div className="col-12">
                                         <label className="small fw-bold text-muted mb-1">Event Description</label>
-                                        <textarea 
+                                        <textarea
                                             name="eventDescription"
-                                            className="form-control bg-light py-2" 
+                                            className="form-control bg-light py-2"
                                             rows="3"
                                             placeholder="Enter Event Description"
                                             onChange={handleChange}
-                                            required 
+                                            required
                                         ></textarea>
                                     </div>
                                     <div className="col-12">
                                         <label className="small fw-bold text-muted mb-1">Event Date</label>
-                                        <input 
-                                            type="date" 
+                                        <input
+                                            type="date"
                                             name="eventDate"
-                                            className="form-control bg-light py-2" 
+                                            className="form-control bg-light py-2"
                                             onChange={handleChange}
-                                            required 
+                                            required
                                         />
                                     </div>
                                     <div className="col-12">
                                         <label className="small fw-bold text-muted mb-1">Event Venue</label>
-                                        <input 
-                                            type="text" 
+                                        <input
+                                            type="text"
                                             name="eventVenue"
-                                            className="form-control bg-light py-2" 
+                                            className="form-control bg-light py-2"
                                             placeholder="Enter Event Venue"
                                             onChange={handleChange}
-                                            required 
+                                            required
                                         />
                                     </div>
                                     <div className="col-12">
                                         <label className="small fw-bold text-muted mb-1">Organizer</label>
-                                        <input 
-                                            type="text" 
+                                        <input
+                                            type="text"
                                             name="organizer"
-                                            className="form-control bg-light py-2" 
+                                            className="form-control bg-light py-2"
                                             placeholder="Enter Organizer Name"
                                             onChange={handleChange}
-                                            required 
+                                            required
                                         />
                                     </div>
                                     <div className="col-12">
                                         <label className="small fw-bold text-muted mb-1">Event Image</label>
-                                        <input 
-                                            type="file" 
-                                            className="form-control bg-light py-2" 
+                                        <input
+                                            type="file"
+                                            className="form-control bg-light py-2"
                                             onChange={(e) => setEventData({ ...eventData, eventImage: e.target.files[0] })}
                                         />
                                     </div>
@@ -145,7 +145,7 @@ function EventManagement() {
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
-export default EventManagement;
+export default EventManagement

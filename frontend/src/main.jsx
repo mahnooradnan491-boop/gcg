@@ -13,6 +13,7 @@ import Admission from './views/admission'
 import ContactManagement from './views/admin/contactmanagement'
 import ContactShow from './views/admin/contactshow'
 import NewsManagement from './views/admin/newsmanagement'
+import NewsAdd from './views/admin/newsadd'
 import AdmissionShow from './views/admin/admissionshow'
 import AdmissionManagement from './views/admin/admissionmanagement'
 import FacultyManagement from './views/admin/facultymanagement'
@@ -77,7 +78,7 @@ createRoot(document.getElementById('root')).render(
                         <Route path="/contact" element={<ContactManagement />} />
                         <Route path="/contact/show" element={<ContactShow />} />
                         <Route path="/news" element={<NewsManagement />} />
-                        <Route path="/news/add" element={<NewsManagement />} />
+                        <Route path="/news/add" element={<NewsAdd />} />
                         <Route path="/faculty" element={<FacultyManagement />} />
                         <Route path="/faculty/add" element={<FacultyAdd />} />
                         <Route path="/events" element={<EventManagement />} />

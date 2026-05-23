@@ -14,7 +14,7 @@ function LoginAdmin() {
     useEffect(() => {
         const admin = localStorage.getItem('adminUser')
         if (admin) {
-            navigate('/admin/dashboard')
+            navigate('/admin/admission')
         }
     }, [])
 
@@ -37,7 +37,7 @@ function LoginAdmin() {
                 localStorage.setItem("adminUser", JSON.stringify(res.data.info))
 
                 setTimeout(() => {
-                    navigate('/admin/dashboard')
+                    navigate('/admin/admission')
                 }, 2000)
             }
         } catch (err) {

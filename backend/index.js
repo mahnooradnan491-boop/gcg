@@ -5,6 +5,7 @@ import helmet from 'helmet'
 import cookieParser from 'cookie-parser'
 import dotenv from 'dotenv'
 import authRoutes from './routers/authRoutes.js'
+import adminRoutes from './routers/adminRoutes.js'
 import checkAdmin from './middlewares/checkadmin.js'
 
 dotenv.config()
@@ -27,6 +28,7 @@ server.use(express.json())
 server.use(cookieParser())
 
 server.use('/api', authRoutes)
+server.use('/api', adminRoutes)
 
 server.listen(port, () => {
     console.log(`Server is running at ${port}`)

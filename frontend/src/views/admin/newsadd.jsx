@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-function NewsManagement({ onBack }) {
+import { useState } from 'react'
+import { Link } from 'react-router'
+function NewsAdd() {
     const [newsData, setNewsData] = useState({
         postedBy: '',
         date: '',
@@ -19,21 +20,19 @@ function NewsManagement({ onBack }) {
     const handlePublish = (e) => {
         e.preventDefault();
         alert("News Published Successfully!")
-        if (onBack) onBack()
     }
 
     const handleDelete = () => {
         alert("News Deleted!")
-        if (onBack) onBack()
     }
 
     return (
-        <div className="content-card bg-white rounded-4">
+        <div className="content-card bg-white rounded-4 p-5">
             <div className="d-flex justify-content-between align-items-center mb-4">
                 <div className="d-flex align-items-center gap-3">
-                    <button type="button" onClick={onBack} className="btn btn-outline-secondary btn-sm rounded-3">
-                         ← Back
-                    </button>
+                    <Link to="/admin/news" className="btn btn-outline-secondary btn-sm rounded-3">
+                        ← Back
+                    </Link>
                     <h4 className="fw-bold m-0">News Details</h4>
                 </div>
                 <button type="button" onClick={handleDelete} className="btn btn-danger px-4 rounded-3 fw-bold">Delete</button>
@@ -75,4 +74,4 @@ function NewsManagement({ onBack }) {
     );
 }
 
-export default NewsManagement
+export default NewsAdd

@@ -1,15 +1,14 @@
-import React from 'react';
-import './admin.css';
+import './admin.css'
 
 function TimetableManagement() {
     const timetables = [
         { id: 1, class: "BSCS 4th", semester: "4th", department: "Computer Science" },
         { id: 2, class: "BSIT 2nd", semester: "2nd", department: "Information Technology" },
         { id: 3, class: "BSSE 6th", semester: "6th", department: "Software Engineering" },
-    ];
+    ]
 
     return (
-        <div className="container-fluid bg-light min-vh-100 p-4">
+        <div className="container-fluid bg-light gx-0">
             <div className="bg-white p-4 rounded-4 shadow-sm border-0 mt-3">
                 <h3 className="fw-bold mb-4 text-dark" style={{ fontSize: '1.6rem' }}>Timetable Management</h3>
 
@@ -33,7 +32,7 @@ function TimetableManagement() {
                                     <td className="py-3 text-secondary">{item.department}</td>
                                     <td className="py-3 text-end px-3">
                                         <button className="btn btn-link text-decoration-underline text-dark fw-semibold p-0 border-0" style={{ fontSize: '0.95rem' }}>
-                                           Add
+                                            Add
                                         </button>
                                     </td>
                                 </tr>
@@ -43,7 +42,7 @@ function TimetableManagement() {
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
-export default TimetableManagement;
+export default TimetableManagement

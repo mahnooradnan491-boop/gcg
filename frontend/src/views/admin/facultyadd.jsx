@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import './Admin.css';
+import { useState } from 'react'
+import './Admin.css'
 function FacultyInfo() {
-    const [activeTab, setActiveTab] = useState('faculty');
+    const [activeTab, setActiveTab] = useState('faculty')
     const [facultyData, setFacultyData] = useState({
         fullName: '',
         department: '',
         designation: '',
         image: null
-    });
+    })
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFacultyData({ ...facultyData, [name]: value });
-    };
+        const { name, value } = e.target
+        setFacultyData({ ...facultyData, [name]: value })
+    }
     const handleAdd = (e) => {
-        e.preventDefault();
-        alert("Faculty Added Successfully!");
-        console.log(facultyData);
-    };
+        e.preventDefault()
+        alert("Faculty Added Successfully!")
+        console.log(facultyData)
+    }
     return (
         <div className="container-fluid p-0">
             <div className="row g-0">
@@ -65,42 +65,42 @@ function FacultyInfo() {
                                 <div className="row g-4">
                                     <div className="col-12">
                                         <label className="small fw-bold text-muted mb-1">Full Name</label>
-                                        <input 
-                                            type="text" 
+                                        <input
+                                            type="text"
                                             name="fullName"
-                                            className="form-control bg-light py-2" 
+                                            className="form-control bg-light py-2"
                                             placeholder="Enter Full Name"
                                             onChange={handleChange}
-                                            required 
+                                            required
                                         />
                                     </div>
                                     <div className="col-12">
                                         <label className="small fw-bold text-muted mb-1">Department</label>
-                                        <input 
-                                            type="text" 
+                                        <input
+                                            type="text"
                                             name="department"
-                                            className="form-control bg-light py-2" 
+                                            className="form-control bg-light py-2"
                                             placeholder="Enter Department"
                                             onChange={handleChange}
-                                            required 
+                                            required
                                         />
                                     </div>
                                     <div className="col-12">
                                         <label className="small fw-bold text-muted mb-1">Designation</label>
-                                        <input 
-                                            type="text" 
+                                        <input
+                                            type="text"
                                             name="designation"
-                                            className="form-control bg-light py-2" 
+                                            className="form-control bg-light py-2"
                                             placeholder="Enter Designation"
                                             onChange={handleChange}
-                                            required 
+                                            required
                                         />
                                     </div>
                                     <div className="col-12">
                                         <label className="small fw-bold text-muted mb-1">Image</label>
-                                        <input 
-                                            type="file" 
-                                            className="form-control bg-light py-2" 
+                                        <input
+                                            type="file"
+                                            className="form-control bg-light py-2"
                                             onChange={(e) => setFacultyData({ ...facultyData, image: e.target.files[0] })}
                                         />
                                     </div>
@@ -116,7 +116,7 @@ function FacultyInfo() {
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
-export default FacultyInfo;
+export default FacultyInfo

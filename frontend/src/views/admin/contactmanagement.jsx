@@ -1,16 +1,20 @@
-import React from 'react';
-import './admin.css';
+import { useEffect, useState } from 'react'
+import './admin.css'
+import api from '../../api'
 
 function ContactManagement() {
-    const queries = [
-        { id: 1, name: "John Doe", subject: "Some subject goes here" },
-        { id: 2, name: "Rubby Jail", subject: "Some subject goes here" },
-        { id: 3, name: "Foe Damn", subject: "Some subject goes here" },
-        { id: 4, name: "Hol Adam", subject: "Some subject goes here" },
-    ];
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        const getData = async () => {
+            const queries = await api.get('/api/queries')
+            setData(queries)
+        }
+        getData()
+    }, [])
 
     return (
-        <div className="container-fluid bg-light min-vh-100 p-4">
+        <div className="container-fluid bg-light gx-0">
             <div className="bg-white p-4 rounded-4 shadow-sm border-0 mt-3">
                 <h3 className="fw-bold mb-4 text-dark" style={{ fontSize: '1.6rem' }}>Query Management</h3>
 
@@ -25,10 +29,10 @@ function ContactManagement() {
                             </tr>
                         </thead>
                         <tbody>
-                            {queries.map((query) => (
-                                <tr key={query.id} style={{ borderBottom: '1px solid #f8f9fa' }}>
-                                    <td className="py-3 px-3 fw-bold text-muted">{query.id}</td>
-                                    <td className="py-3 fw-semibold text-dark">{query.name}</td>
+                            {data.map((query) => (
+                                <tr key={query._id} style={{ borderBottom: '1px solid #f8f9fa' }}>
+                                    <td className="py-3 px-3 fw-bold text-muted">{query._id}</td>
+                                    <td className="py-3 fw-semibold text-dark">{query.firstname} {query.lastname}</td>
                                     <td className="py-3 text-secondary">{query.subject}</td>
                                     <td className="py-3 text-end px-3">
                                         <button className="btn btn-link text-decoration-underline text-dark fw-semibold p-0 border-0" style={{ fontSize: '0.95rem' }}>
@@ -42,7 +46,7 @@ function ContactManagement() {
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
-export default ContactManagement;
+export default ContactManagement
