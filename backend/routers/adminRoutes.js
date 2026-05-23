@@ -3,7 +3,7 @@ import { getAdmissionData, getContactData, getNewsData, getEventData, getTimetab
 import { addNews, addEvent, addTimetable, addFaculty, addAchievement } from '../controllers/adminAddController.js'
 import { removeNews, removeEvent, removeTimetable, removeFaculty, removeAchievement } from '../controllers/adminDeleteController.js'
 import { updateNews, updateEvent, updateTimetable, updateFaculty, updateAchievement } from '../controllers/adminUpdateController.js'
-import { verifyToken } from '../middlewares/authMiddleware.js'
+import { verifyToken } from '../middlewares/adminAuthMiddleware.js'
 
 const router = express.Router()
 

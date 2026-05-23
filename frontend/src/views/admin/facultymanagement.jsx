@@ -7,8 +7,8 @@ function FacultyManagement() {
 
     useEffect(() => {
         const getData = async () => {
-            const faculty = await api.get('/faculty')
-            setData(faculty)
+            const faculties = await api.get('/faculties')
+            setData(faculties)
         }
         getData()
     }, [])

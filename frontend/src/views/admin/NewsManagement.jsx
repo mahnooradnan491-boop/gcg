@@ -33,18 +33,30 @@ function NewsManagement() {
                             </tr>
                         </thead>
                         <tbody>
-                            {data.map((news) => (
-                                <tr key={news._id} style={{ borderBottom: '1px solid #f8f9fa' }}>
-                                    <td className="py-3 px-3 fw-bold text-muted">{news._id}</td>
-                                    <td className="py-3 text-secondary">{news.date}</td>
-                                    <td className="py-3 fw-semibold text-dark">{news.title}</td>
-                                    <td className="py-3 text-secondary">{news.postedBy}</td>
-                                    <td className="py-3 text-end px-3">
-                                        <button className="btn btn-link text-decoration-underline text-dark fw-semibold p-0 border-0 me-3" style={{ fontSize: '0.95rem' }}>View</button>
-                                        <button className="btn btn-link text-decoration-underline text-danger fw-semibold p-0 border-0" style={{ fontSize: '0.95rem' }}>Remove</button>
-                                    </td>
-                                </tr>
-                            ))}
+                            {data ?
+                                (
+                                    <tr>
+                                        <td>No Data Found</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                )
+                                :
+                                (data.map((news) => (
+                                    <tr key={news._id} style={{ borderBottom: '1px solid #f8f9fa' }}>
+                                        <td className="py-3 px-3 fw-bold text-muted">{news._id}</td>
+                                        <td className="py-3 text-secondary">{news.date}</td>
+                                        <td className="py-3 fw-semibold text-dark">{news.title}</td>
+                                        <td className="py-3 text-secondary">{news.postedBy}</td>
+                                        <td className="py-3 text-end px-3">
+                                            <button className="btn btn-link text-decoration-underline text-dark fw-semibold p-0 border-0 me-3" style={{ fontSize: '0.95rem' }}>View</button>
+                                            <button className="btn btn-link text-decoration-underline text-danger fw-semibold p-0 border-0" style={{ fontSize: '0.95rem' }}>Remove</button>
+                                        </td>
+                                    </tr>
+                                )))
+                            }
                         </tbody>
                     </table>
                 </div>

@@ -5,9 +5,9 @@ import Timetable from "../models/timetable.js"
 import Achievement from "../models/achievement.js"
 
 export const addNews = async (req, res) => {
-    const { } = req.body
+    const { postedBy, date, category, title, description } = req.body
     try {
-        const news = await new News({})
+        const news = await new News({ title, description, date, category, postedBy })
         return res.status(200).json({ message: 'News Created' })
     } catch (error) {
         return res.status(500).json({ message: error.message })

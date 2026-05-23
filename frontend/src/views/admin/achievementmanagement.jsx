@@ -3,23 +3,23 @@ import './admin.css'
 import { Link } from 'react-router'
 
 function AchievementManagement() {
-     const [data, setData] = useState([])
-           
-               useEffect(() => {
-                   const getData = async () => {
-                       const achievement = await api.get('/api/achievement')
-                       setData(achievement)
-                   }
-                   getData()
-               }, [])
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        const getData = async () => {
+            const achievements = await api.get('/achievements')
+            setData(achievements)
+        }
+        getData()
+    }, [])
 
     return (
         <div className="container-fluid bg-light gx-0">
             <div className="bg-white p-4 rounded-4 shadow-sm border-0 mt-3">
-                                                  <div className='d-flex justify-content-between mb-4'>
-                                                      <h3 className="fw-bold text-dark" style={{ fontSize: '1.6rem' }}>AchievementManagement</h3>
-                                                      <Link to="/admin/event/add" className='btn btn-success'>+ ADD achievement</Link>
-                                                  </div>
+                <div className='d-flex justify-content-between mb-4'>
+                    <h3 className="fw-bold text-dark" style={{ fontSize: '1.6rem' }}>AchievementManagement</h3>
+                    <Link to="/admin/event/add" className='btn btn-success'>+ ADD achievement</Link>
+                </div>
                 <div className="table-responsive">
                     <table className="table table-hover align-middle m-0" style={{ borderTop: '1px solid #f0f0f0' }}>
                         <thead className="table-light text-muted">

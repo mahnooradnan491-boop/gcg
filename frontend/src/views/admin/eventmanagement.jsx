@@ -8,8 +8,8 @@ function EventManagement() {
 
     useEffect(() => {
         const getData = async () => {
-            const event = await api.get('/event')
-            setData(event)
+            const events = await api.get('/events')
+            setData(events)
         }
         getData()
     }, [])

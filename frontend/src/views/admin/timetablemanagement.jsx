@@ -7,8 +7,8 @@ function TimetableManagement() {
 
     useEffect(() => {
         const getData = async () => {
-            const timetable = await api.get('/timetable')
-            setData(timetable)
+            const timetables = await api.get('/timetables')
+            setData(timetables)
         }
         getData()
     }, [])
@@ -33,19 +33,24 @@ function TimetableManagement() {
                             </tr>
                         </thead>
                         <tbody>
-                            {data.map((item) => (
-                                <tr key={item._id} style={{ borderBottom: '1px solid #f8f9fa' }}>
-                                    <td className="py-3 px-3 fw-bold text-muted">{item._id}</td>
-                                    <td className="py-3 fw-semibold text-dark">{item.class}</td>
-                                    <td className="py-3 text-secondary">{item.semester}</td>
-                                    <td className="py-3 text-secondary">{item.department}</td>
-                                    <td className="py-3 text-end px-3">
-                                        <button className="btn btn-link text-decoration-underline text-dark fw-semibold p-0 border-0" style={{ fontSize: '0.95rem' }}>
-                                            Add
-                                        </button>
-                                    </td>
-                                </tr>
-                            ))}
+                            {
+                                data ?
+                                    (
+                                        data.map((item) => (
+                                            <tr key={item._id} style={{ borderBottom: '1px solid #f8f9fa' }}>
+                                                <td className="py-3 px-3 fw-bold text-muted">{item._id}</td>
+                                                <td className="py-3 fw-semibold text-dark">{item.class}</td>
+                                                <td className="py-3 text-secondary">{item.semester}</td>
+                                                <td className="py-3 text-secondary">{item.department}</td>
+                                                <td className="py-3 text-end px-3">
+                                                    <button className="btn btn-link text-decoration-underline text-dark fw-semibold p-0 border-0" style={{ fontSize: '0.95rem' }}>
+                                                        Add
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        ))
+                                    ) : 'No data Found'
+                            }
                         </tbody>
                     </table>
                 </div>

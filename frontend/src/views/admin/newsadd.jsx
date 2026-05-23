@@ -23,8 +23,9 @@ function NewsAdd() {
 
     const handlePublish = async (e) => {
         e.preventDefault()
+        const { postedBy, date, category, title, description } = newsData
         try {
-            const res = await api.post('/news/add', { newsData })
+            const res = await api.post('/news/add', { postedBy, date, category, title, description })
             if (res.data.message == 'News Created') {
                 navigate('/admin/news')
             }
@@ -62,9 +63,9 @@ function NewsAdd() {
                         <label className="small fw-bold text-muted mb-1">Category</label>
                         <select name="category" className="form-select bg-light" value={newsData.category} onChange={handleChange}>
                             <option value="">Select Category</option>
-                            <option value="Academic">Academic</option>
-                            <option value="Sports">Sports</option>
-                            <option value="Admission">Admission</option>
+                            <option value="General Notice">General Notice</option>
+                            <option value="News">News</option>
+                            <option value="Exam Date Sheet">Exam Date Sheet</option>
                         </select>
                     </div>
                     <div className="col-12 mt-3">

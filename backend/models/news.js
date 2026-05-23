@@ -16,7 +16,8 @@ const newsSchema = mongoose.Schema({
     category: {
         type: String,
         required: true,
-        enum: ['General Notice', 'News', 'Exam Date Sheet']
+        enum: ['General Notice', 'News', 'Exam Date Sheet'],
+        default: 'News'
     },
     postedBy: {
         type: String,
