@@ -7,7 +7,7 @@ function FacultyManagement() {
 
     useEffect(() => {
         const getData = async () => {
-            const faculty = await api.get('/api/faculty')
+            const faculty = await api.get('/faculty')
             setData(faculty)
         }
         getData()
@@ -15,7 +15,7 @@ function FacultyManagement() {
 
     return (
         <div className="container-fluid bg-light gx-0">
-           <div className="bg-white p-4 rounded-4 shadow-sm border-0 mt-3">
+            <div className="bg-white p-4 rounded-4 shadow-sm border-0 mt-3">
                 <div className='d-flex justify-content-between mb-4'>
                     <h3 className="fw-bold text-dark" style={{ fontSize: '1.6rem' }}>FacultyManagement</h3>
                     <Link to="/admin/faculty/add" className='btn btn-success'>+ ADD faculty</Link>

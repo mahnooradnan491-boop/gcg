@@ -3,24 +3,24 @@ import './admin.css'
 import { Link } from 'react-router'
 
 function TimetableManagement() {
-     const [data, setData] = useState([])
-    
-        useEffect(() => {
-            const getData = async () => {
-                const timetable = await api.get('/api/timetable')
-                setData(timetable)
-            }
-            getData()
-        }, [])
-    
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        const getData = async () => {
+            const timetable = await api.get('/timetable')
+            setData(timetable)
+        }
+        getData()
+    }, [])
+
 
     return (
         <div className="container-fluid bg-light gx-0">
             <div className="bg-white p-4 rounded-4 shadow-sm border-0 mt-3">
-                           <div className='d-flex justify-content-between mb-4'>
-                               <h3 className="fw-bold text-dark" style={{ fontSize: '1.6rem' }}>TimetableManagement</h3>
-                               <Link to="/admin/timetable/add" className='btn btn-success'>+ ADD timetable</Link>
-                           </div>
+                <div className='d-flex justify-content-between mb-4'>
+                    <h3 className="fw-bold text-dark" style={{ fontSize: '1.6rem' }}>TimetableManagement</h3>
+                    <Link to="/admin/timetable/add" className='btn btn-success'>+ ADD timetable</Link>
+                </div>
                 <div className="table-responsive">
                     <table className="table table-hover align-middle m-0" style={{ borderTop: '1px solid #f0f0f0' }}>
                         <thead className="table-light text-muted">

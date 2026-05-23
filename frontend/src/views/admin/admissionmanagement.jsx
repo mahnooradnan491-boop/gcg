@@ -7,7 +7,7 @@ function AdmissionManagement() {
 
     useEffect(() => {
         const getData = async () => {
-            const admissions = await api.get('/api/admissions')
+            const admissions = await api.get('/admissions')
             setData(admissions)
         }
         getData()

@@ -1,12 +1,14 @@
+import { useEffect, useState } from 'react'
 import './admin.css'
 import { Link } from 'react-router'
+import api from '../../api'
 
 function NewsManagement() {
     const [data, setData] = useState([])
 
     useEffect(() => {
         const getData = async () => {
-            const news = await api.get('/api/news')
+            const news = await api.get('/news')
             setData(news)
         }
         getData()

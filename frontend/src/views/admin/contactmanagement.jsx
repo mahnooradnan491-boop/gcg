@@ -7,7 +7,7 @@ function ContactManagement() {
 
     useEffect(() => {
         const getData = async () => {
-            const queries = await api.get('/api/queries')
+            const queries = await api.get('/queries')
             setData(queries)
         }
         getData()

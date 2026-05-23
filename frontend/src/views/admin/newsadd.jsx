@@ -1,5 +1,7 @@
 import { useState } from 'react'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
+import api from '../../api.js'
+
 function NewsAdd() {
     const [newsData, setNewsData] = useState({
         postedBy: '',
@@ -17,9 +19,18 @@ function NewsAdd() {
         }))
     }
 
-    const handlePublish = (e) => {
-        e.preventDefault();
-        alert("News Published Successfully!")
+    const navigate = useNavigate()
+
+    const handlePublish = async (e) => {
+        e.preventDefault()
+        try {
+            const res = await api.post('/news/add', { newsData })
+            if (res.data.message == 'News Created') {
+                navigate('/admin/news')
+            }
+        } catch (error) {
+            alert(error.message || error);
+        }
     }
 
     const handleDelete = () => {
@@ -35,7 +46,6 @@ function NewsAdd() {
                     </Link>
                     <h4 className="fw-bold m-0">News Details</h4>
                 </div>
-                <button type="button" onClick={handleDelete} className="btn btn-danger px-4 rounded-3 fw-bold">Delete</button>
             </div>
 
             <form onSubmit={handlePublish}>
