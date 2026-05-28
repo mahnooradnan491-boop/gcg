@@ -1,6 +1,7 @@
 import express from 'express'
 import { addAdmission, getAdmission, updateAdmission, addContact } from '../controllers/userController.js'
 import { verifyToken } from '../middlewares/authMiddleware.js'
+import { sendEmail } from '../controllers/sendEmail.js'
 import upload from '../middlewares/fileupload.js'
 
 const router = express.Router()
@@ -18,5 +19,6 @@ router.put('/admission', verifyToken, upload.fields([
 ]), updateAdmission)
 
 router.post('/contact', addContact)
+router.post('/sendemail', verifyToken, sendEmail)
 
 export default router

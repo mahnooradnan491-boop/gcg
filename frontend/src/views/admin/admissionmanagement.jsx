@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react'
 import './admin.css'
 import api from '../../api'
+import { Link } from 'react-router'
 
 function AdmissionManagement() {
     const [data, setData] = useState([])
 
     useEffect(() => {
         const getData = async () => {
-            const admissions = await api.get('/admissions')
-            setData(admissions)
+            const res = await api.get('/admissions')
+            setData(res.data)
         }
         getData()
     }, [])
@@ -36,20 +37,33 @@ function AdmissionManagement() {
                             </tr>
                         </thead>
                         <tbody>
-                            {data.map((student) => (
-                                <tr key={student.userid._id} style={{ borderBottom: '1px solid #f8f9fa' }}>
-                                    <td className="py-3 px-3 fw-bold text-muted">{student.userid._id}</td>
-                                    <td className="py-3 fw-semibold text-dark">{student.userid.fullname}</td>
-                                    <td className="py-3 text-secondary">{student.fatherName}</td>
-                                    <td className="py-3 text-secondary">{student.program}</td>
-                                    <td className="py-3 text-secondary">{student.timing}</td>
-                                    <td className="py-3 text-end px-3">
-                                        <button className="btn btn-link text-decoration-underline text-dark fw-semibold p-0 border-0" style={{ fontSize: '0.95rem' }}>
-                                            Show
-                                        </button>
-                                    </td>
-                                </tr>
-                            ))}
+                            {!data || data.length === 0 ?
+                                (
+                                    <tr>
+                                        <td>No Data Found</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                )
+                                :
+                                (data?.map((student, index) => (
+                                    <tr key={student.userid._id} style={{ borderBottom: '1px solid #f8f9fa' }}>
+                                        <td className="py-3 px-3 fw-bold text-muted">{index + 1}</td>
+                                        <td className="py-3 fw-semibold text-dark">{student.userid.fullname}</td>
+                                        <td className="py-3 text-secondary">{student.fatherName}</td>
+                                        <td className="py-3 text-secondary">{student.program}</td>
+                                        <td className="py-3 text-secondary">{student.timing}</td>
+                                        <td className="py-3 text-end px-3">
+                                            <Link to={`/admin/admission/${student._id}`} className="btn btn-link text-decoration-underline text-dark fw-semibold p-0 border-0" style={{ fontSize: '0.95rem' }}>
+                                                Show
+                                            </Link>
+                                        </td>
+                                    </tr>
+                                ))
+                                )
+                            }
                         </tbody>
                     </table>
                 </div>

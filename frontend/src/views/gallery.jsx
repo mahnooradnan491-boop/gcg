@@ -18,7 +18,7 @@ function Gallery() {
         <div className="recent-banner">
           <h2>Pictures of Recent Events</h2>
         </div>
-        <div className="main-content">
+        <div className="main-content bg-white">
           <p className="label">GALLERY</p>
           <h2 className="main-title">Our Visual Stories</h2>
           <div className="stories-container">

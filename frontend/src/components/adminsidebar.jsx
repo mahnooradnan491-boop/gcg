@@ -11,7 +11,7 @@ function AdminSidebar() {
         { id: 'events', label: 'Events' },
         { id: 'timetable', label: 'Time Table' },
         { id: 'faculty', label: 'Faculty' },
-        { id: 'achievement', label: 'Achievements' },
+        { id: 'achievements', label: 'Achievements' },
     ]
 
     const activeTab = window.location.pathname

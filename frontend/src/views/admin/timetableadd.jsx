@@ -1,11 +1,9 @@
 import { useState } from 'react'
-import './Admin.css' // Apni purani CSS file hi use karein
-import { Link } from 'react-router'
+import './Admin.css'
+import { Link, useNavigate } from 'react-router'
+import api from '../../api.js'
 
 function TimetableManagement() {
-    const [activeTab, setActiveTab] = useState('timetable')
-
-    // Timetable form data handle karne ke liye state
     const [timetableData, setTimetableData] = useState({
         className: '',
         date: '',
@@ -17,10 +15,23 @@ function TimetableManagement() {
         setTimetableData({ ...timetableData, [name]: value })
     }
 
-    const handleAddTimetable = (e) => {
+    const navigate = useNavigate()
+
+    const handleAddTimetable = async (e) => {
         e.preventDefault()
-        alert("Time Table Added Successfully!")
-        console.log(timetableData)
+        const data = new FormData()
+        data.append('className', timetableData.className)
+        data.append('date', timetableData.date)
+        data.append('timetableImage', timetableData.timetableImage)
+
+        try {
+            const res = await api.post('/timetables/add', data)
+            if (res.data.message == 'Time Table Added') {
+                navigate('/admin/timetable')
+            }
+        } catch (error) {
+            alert(error.message || error)
+        }
     }
 
     return (
@@ -34,7 +45,7 @@ function TimetableManagement() {
             <form onSubmit={handleAddTimetable}>
                 <div className="row g-4">
                     {/* Class Name Field */}
-                    <div className="col-12">
+                    <div className="col-6">
                         <label className="small fw-bold text-muted mb-1">Class Name</label>
                         <input
                             type="text"
@@ -46,7 +57,7 @@ function TimetableManagement() {
                     </div>
 
                     {/* Date Field */}
-                    <div className="col-12">
+                    <div className="col-6">
                         <label className="small fw-bold text-muted mb-1">Date</label>
                         <input
                             type="date"
@@ -69,7 +80,7 @@ function TimetableManagement() {
                     </div>
 
                     {/* Add Button */}
-                    <div className="col-12 mt-5 text-end">
+                    <div className="col-12 mt-4 text-end">
                         <button type="submit" className="btn btn-success px-5 py-2 fw-normal rounded-2 border-0 shadow-sm" style={{ backgroundColor: '#419a51' }}>
                             Add
                         </button>

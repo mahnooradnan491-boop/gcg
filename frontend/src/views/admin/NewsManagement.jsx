@@ -6,13 +6,21 @@ import api from '../../api'
 function NewsManagement() {
     const [data, setData] = useState([])
 
+    const getData = async () => {
+        const res = await api.get('/news')
+        setData(res.data)
+    }
+
     useEffect(() => {
-        const getData = async () => {
-            const news = await api.get('/news')
-            setData(news)
-        }
         getData()
     }, [])
+
+    const handleRemove = async (id) => {
+        if (window.confirm('Are you sure you want to remove this news?')) {
+            await api.delete(`/news/${id}`)
+            getData()
+        }
+    }
 
     return (
         <div className="container-fluid bg-light gx-0">
@@ -33,7 +41,7 @@ function NewsManagement() {
                             </tr>
                         </thead>
                         <tbody>
-                            {data ?
+                            {!data || data.length === 0 ?
                                 (
                                     <tr>
                                         <td>No Data Found</td>
@@ -44,15 +52,19 @@ function NewsManagement() {
                                     </tr>
                                 )
                                 :
-                                (data.map((news) => (
+                                (data?.map((news, index) => (
                                     <tr key={news._id} style={{ borderBottom: '1px solid #f8f9fa' }}>
-                                        <td className="py-3 px-3 fw-bold text-muted">{news._id}</td>
-                                        <td className="py-3 text-secondary">{news.date}</td>
+                                        <td className="py-3 px-3 fw-bold text-muted">{index + 1}</td>
+                                        <td className="py-3 text-secondary">{news.date.split('T')[0]}</td>
                                         <td className="py-3 fw-semibold text-dark">{news.title}</td>
                                         <td className="py-3 text-secondary">{news.postedBy}</td>
                                         <td className="py-3 text-end px-3">
-                                            <button className="btn btn-link text-decoration-underline text-dark fw-semibold p-0 border-0 me-3" style={{ fontSize: '0.95rem' }}>View</button>
-                                            <button className="btn btn-link text-decoration-underline text-danger fw-semibold p-0 border-0" style={{ fontSize: '0.95rem' }}>Remove</button>
+                                            <Link className="btn btn-link text-decoration-underline text-dark fw-semibold p-0 border-0 me-3" style={{ fontSize: '0.95rem' }} to={`/admin/news/${news._id}`}>
+                                                View
+                                            </Link>
+                                            <button className="btn btn-link text-decoration-underline text-danger fw-semibold p-0 border-0" style={{ fontSize: '0.95rem' }} onClick={() => handleRemove(news._id)}>
+                                                Remove
+                                            </button>
                                         </td>
                                     </tr>
                                 )))

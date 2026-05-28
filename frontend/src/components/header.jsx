@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
+import { HashLink } from 'react-router-hash-link'
 
 function Header() {
     return (
@@ -24,10 +25,10 @@ function Header() {
                                 <Link to="/programs" className="nav-link">Programs</Link>
                             </li>
                             <li>
-                                <Link to="/#timetable" className="nav-link">Time Table</Link>
+                                <HashLink smooth to="/#timetable" className="nav-link">Time Table</HashLink>
                             </li>
                             <li>
-                                <Link to="/#newsevents" className="nav-link">News & Events</Link>
+                                <HashLink smooth to="/#newsevents" className="nav-link">News & Events</HashLink>
                             </li>
                             <li>
                                 <Link to="/faculty" className="nav-link">Faculty</Link>

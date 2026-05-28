@@ -30,12 +30,8 @@ function NewsAdd() {
                 navigate('/admin/news')
             }
         } catch (error) {
-            alert(error.message || error);
+            alert(error.message || error)
         }
-    }
-
-    const handleDelete = () => {
-        alert("News Deleted!")
     }
 
     return (
@@ -82,7 +78,7 @@ function NewsAdd() {
                 </div>
             </form>
         </div>
-    );
+    )
 }
 
 export default NewsAdd

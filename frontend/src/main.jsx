@@ -14,16 +14,19 @@ import ContactManagement from './views/admin/contactmanagement'
 import ContactShow from './views/admin/contactshow'
 import NewsManagement from './views/admin/newsmanagement'
 import NewsAdd from './views/admin/newsadd'
+import NewsShow from './views/admin/newsshow'
 import AdmissionShow from './views/admin/admissionshow'
 import AdmissionManagement from './views/admin/admissionmanagement'
 import FacultyManagement from './views/admin/facultymanagement'
 import FacultyAdd from './views/admin/facultyadd'
 import EventManagement from './views/admin/eventmanagement'
 import EventAdd from './views/admin/eventadd'
+import EventShow from './views/admin/eventshow'
 import TimetableManagement from './views/admin/timetablemanagement'
 import TimetableAdd from './views/admin/timetableadd'
 import AchievementManagement from './views/admin/achievementmanagement'
 import AchievementAdd from './views/admin/achievementadd'
+import AchievementShow from './views/admin/achievementshow'
 import LoginAdmin from './views/admin/loginAdmin'
 import ProtectedRoute from './components/protectedroutes'
 import AdminProtectedRoute from './components/adminprotectedroutes'
@@ -74,19 +77,24 @@ createRoot(document.getElementById('root')).render(
 
                       <Routes>
                         <Route path="/admission" element={<AdmissionManagement />} />
-                        <Route path="/admission/show" element={<AdmissionShow />} />
+                        <Route path="/admission/:id" element={<AdmissionShow />} />
                         <Route path="/contact" element={<ContactManagement />} />
-                        <Route path="/contact/show" element={<ContactShow />} />
+                        <Route path="/contact/:id" element={<ContactShow />} />
                         <Route path="/news" element={<NewsManagement />} />
                         <Route path="/news/add" element={<NewsAdd />} />
+                        <Route path="/news/:id" element={<NewsShow />} />
                         <Route path="/faculty" element={<FacultyManagement />} />
                         <Route path="/faculty/add" element={<FacultyAdd />} />
+                        {/* <Route path="/faculty/:id" element={<FacultyShow />} /> */}
                         <Route path="/events" element={<EventManagement />} />
                         <Route path="/event/add" element={<EventAdd />} />
+                        <Route path="/event/:id" element={<EventShow />} />
                         <Route path="/timetable" element={<TimetableManagement />} />
                         <Route path="/timetable/add" element={<TimetableAdd />} />
-                        <Route path="/achievement" element={<AchievementManagement />} />
+                        {/* <Route path="/timetable/:id" element={<TimetableShow />} /> */}
+                        <Route path="/achievements" element={<AchievementManagement />} />
                         <Route path="/achievement/add" element={<AchievementAdd />} />
+                        <Route path="/achievement/:id" element={<AchievementShow />} />
                       </Routes>
 
                     </div>

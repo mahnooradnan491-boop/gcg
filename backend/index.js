@@ -8,6 +8,10 @@ import authRoutes from './routers/authRoutes.js'
 import adminRoutes from './routers/adminRoutes.js'
 import userRoutes from './routers/userRoutes.js'
 import checkAdmin from './middlewares/checkadmin.js'
+import path from 'path'
+import { fileURLToPath } from 'url'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 dotenv.config()
 
@@ -28,10 +32,12 @@ server.use(cors(corsOptions))
 server.use(express.json())
 server.use(cookieParser())
 
+server.use('/uploads', express.static(path.join(__dirname, 'uploads')))
+
 server.use('/api', authRoutes)
 server.use('/api', adminRoutes)
 server.use('/api', userRoutes)
 
 server.listen(port, () => {
     console.log(`Server is running at ${port}`)
-});
+})

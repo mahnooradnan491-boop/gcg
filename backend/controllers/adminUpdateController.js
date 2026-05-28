@@ -6,9 +6,9 @@ import Achievement from "../models/achievement.js"
 
 export const updateNews = async (req, res) => {
     const { id } = req.params
-    const { } = req.body
+    const { postedBy, date, category, title, description } = req.body
     try {
-        const news = await News.findByIdAndUpdate(id, {})
+        const news = await News.findByIdAndUpdate(id, { postedBy, date, category, title, description })
         return res.status(200).json({ message: 'News Updated' })
     } catch (error) {
         return res.status(500).json({ message: error.message })

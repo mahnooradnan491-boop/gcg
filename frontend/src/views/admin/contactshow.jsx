@@ -1,36 +1,66 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './Admin.css'
-function ContactQuery({ onBack }) {
+import { Link, resolvePath, useParams } from 'react-router-dom'
+import api from '../../api.js'
+
+function ContactQuery() {
+    const [reply, setReply] = useState('')
     const [queryData, setQueryData] = useState({
-        fullName: 'John Doe',
-        email: 'john@example.com',
-        phone: '0300-1234567',
-        subject: 'Admission Inquiry',
-        message: 'I want to know about the admission process...',
-        reply: ''
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: ''
     })
-    const handleDelete = () => {
-        alert("Query Deleted!")
+
+    const { id } = useParams()
+
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                const res = await api.get(`/contact/${id}`)
+                setQueryData(res.data)
+            } catch (error) {
+                alert(error.message)
+            }
+        }
+        getData()
+    }, [id])
+
+    const sendData = {
+        to: queryData.email,
+        subject: `Re: ${queryData.subject}`,
+        message: reply
     }
-    const handleSendReply = (e) => {
+
+    const handleSendReply = async (e) => {
         e.preventDefault()
-        alert("Reply Sent: " + queryData.reply)
+        try {
+            const res = await api.post('/sendemail', sendData)
+
+            if (res.data.message == 'Email Send') {
+                alert('Email successfully delivered to recipient!')
+            }
+        } catch (err) {
+            alert(err.message)
+        }
     }
+
     return (
         <div className="content-card bg-white p-5 rounded-4 shadow-sm border-0 mt-2" style={{ borderRadius: '40px' }}>
             <div className="d-flex justify-content-between align-items-center mb-4">
                 <div className="d-flex align-items-center gap-3">
-                    <button onClick={onBack} className="btn btn-sm btn-outline-secondary rounded-3 px-3">← Back</button>
+                    <Link to="/admin/contact" className="btn btn-sm btn-outline-secondary rounded-3 px-3">← Back</Link>
                     <h4 className="fw-bold m-0">Contact Details</h4>
                 </div>
-                <button onClick={handleDelete} className="btn btn-danger px-4 rounded-3 fw-bold border-0" style={{ backgroundColor: '#ff0015' }}>Delete</button>
             </div>
 
             <form onSubmit={handleSendReply}>
                 <div className="row g-3">
                     <div className="col-md-4">
                         <label className="small fw-bold text-muted mb-1">Full Name</label>
-                        <input type="text" className="form-control bg-light" value={queryData.fullName} readOnly />
+                        <input type="text" className="form-control bg-light" value={`${queryData.firstName} ${queryData.lastName}`} readOnly />
                     </div>
                     <div className="col-md-4">
                         <label className="small fw-bold text-muted mb-1">Email</label>
@@ -56,8 +86,8 @@ function ContactQuery({ onBack }) {
                                 type="text"
                                 className="form-control bg-light"
                                 placeholder="Type your reply here..."
-                                value={queryData.reply}
-                                onChange={(e) => setQueryData({ ...queryData, reply: e.target.value })}
+                                value={reply}
+                                onChange={(e) => setReply(e.target.value)}
                             />
                             <button type="submit" className="btn btn-success px-5 fw-bold rounded-3 border-0" style={{ backgroundColor: '#419a51' }}>Send</button>
                         </div>

@@ -1,18 +1,27 @@
 import React, { useState, useEffect } from 'react'
 import './admin.css'
 import { Link } from 'react-router'
+import api from '../../api.js'
 
 
 function EventManagement() {
     const [data, setData] = useState([])
 
+    const getData = async () => {
+        const res = await api.get('/events')
+        setData(res.data)
+    }
+
     useEffect(() => {
-        const getData = async () => {
-            const events = await api.get('/events')
-            setData(events)
-        }
         getData()
     }, [])
+
+    const handleRemove = async (id) => {
+        if (window.confirm('Are you sure you want to remove this event?')) {
+            await api.delete(`/events/${id}`)
+            getData()
+        }
+    }
 
     return (
         <div className="bg-white p-4 rounded-4 shadow-sm border-0 mt-3">
@@ -32,19 +41,34 @@ function EventManagement() {
                         </tr>
                     </thead>
                     <tbody>
-                        {data.map((item) => (
-                            <tr key={item._id} style={{ borderBottom: '1px solid #f8f9fa' }}>
-                                <td className="py-3 px-3 fw-bold text-muted">{item._id}</td>
-                                <td className="py-3 fw-semibold text-dark">{item.title}</td>
-                                <td className="py-3 text-secondary">{item.date}</td>
-                                <td className="py-3 text-secondary">{item.venue}</td>
-                                <td className="py-3 text-end px-3">
-                                    <button className="btn btn-link text-decoration-underline text-dark fw-semibold p-0 border-0" style={{ fontSize: '0.95rem' }}>
-                                        Add
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
+                        {!data || data.length === 0 ?
+                            (
+                                <tr>
+                                    <td>No Data Found</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            )
+                            :
+                            (data?.map((item, index) => (
+                                <tr key={item._id} style={{ borderBottom: '1px solid #f8f9fa' }}>
+                                    <td className="py-3 px-3 fw-bold text-muted">{index + 1}</td>
+                                    <td className="py-3 fw-semibold text-dark">{item.title}</td>
+                                    <td className="py-3 text-secondary">{item.date}</td>
+                                    <td className="py-3 text-secondary">{item.venue}</td>
+                                    <td className="py-3 text-end px-3">
+                                        <Link className="btn btn-link text-decoration-underline text-dark fw-semibold p-0 border-0 me-3" style={{ fontSize: '0.95rem' }} to={`/admin/event/${item._id}`}>
+                                            View
+                                        </Link>
+                                        <button className="btn btn-link text-decoration-underline text-danger fw-semibold p-0 border-0" style={{ fontSize: '0.95rem' }} onClick={() => handleRemove(item._id)}>
+                                            Remove
+                                        </button>
+                                    </td>
+                                </tr>
+                            )))
+                        }
                     </tbody>
                 </table>
             </div>
