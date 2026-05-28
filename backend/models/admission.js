@@ -20,19 +20,19 @@ const admissionSchema = mongoose.Schema({
         required: true,
         enum: ['Male', 'Female']
     },
-    phoneno: {
+    phone: {
         type: String,
         required: true
     },
-    fathername: {
+    fatherName: {
         type: String,
         required: true
     },
-    fathercnic: {
+    fatherCnic: {
         type: String,
         required: true
     },
-    gaurdianphoneno: {
+    guardianPhone: {
         type: String,
         required: true
     },
@@ -44,37 +44,37 @@ const admissionSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    matricRollno: {
+    matricRoll: {
         type: String,
         required: true,
         unique: true
     },
-    matricTotalmarks: {
+    matricTotal: {
         type: Number,
         required: true
     },
-    matricObtainedmarks: {
+    matricObtained: {
         type: Number,
         required: true
     },
-    matricResultsheet: {
+    matricSheet: {
         type: String,
         required: true
     },
-    interRollno: {
+    interRoll: {
         type: String,
         required: true,
         unique: true
     },
-    interTotalmarks: {
+    interTotal: {
         type: Number,
         required: true
     },
-    interObtainedmarks: {
+    interObtained: {
         type: Number,
         required: true
     },
-    interResultsheet: {
+    interSheet: {
         type: String,
         required: true
     },
@@ -82,7 +82,7 @@ const admissionSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    timming: {
+    timing: {
         type: String,
         enum: ['Morning', 'Evening'],
         default: 'Morning',

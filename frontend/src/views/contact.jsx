@@ -2,8 +2,42 @@ import Chatbox from '../components/chatbox'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import './contact.css'
+import { useState } from 'react'
+import axios from 'axios'
 
 function Contact() {
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
+  const [subject, setSubject] = useState('')
+  const [message, setMessage] = useState('')
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      const res = await axios.post('http://localhost:3000/api/contact', {
+        firstName,
+        lastName,
+        email,
+        phone,
+        subject,
+        message
+      })
+      if (res.data.message == 'Message Sent') {
+        alert(res.data.message)
+        setFirstName('')
+        setLastName('')
+        setEmail('')
+        setPhone('')
+        setSubject('')
+        setMessage('')
+      }
+    } catch (error) {
+      alert(error.message)
+    }
+  }
+
   return (
     <>
       <Chatbox />
@@ -13,26 +47,27 @@ function Contact() {
           <p className='hero-top'>Having a questions ?</p>
           <b> <h1>Contact us or <br /> Make a Visit</h1></b>
         </div>
-        <form className="contact-form-box">
+        <form className="contact-form-box" onSubmit={handleSubmit}>
           <h2>We Love to hear you</h2>
           <div className="row gx-0">
             <div className='col-lg-6 pe-lg-3'>
-              <input type="text" placeholder="First Name" />
+              <input type="text" placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
             </div>
             <div className='col-lg-6'>
-              <input type="text" placeholder="Last Name" />
+              <input type="text" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
             </div>
           </div>
           <div className="row gx-0">
             <div className='col-lg-6 pe-lg-3'>
-              <input type="email" placeholder="Email" />
+              <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
             </div>
             <div className='col-lg-6'>
-              <input type="text" placeholder="Phone (Optional)" />
+              <input type="text" placeholder="Phone (Optional)" value={phone} onChange={(e) => setPhone(e.target.value)} />
             </div>
           </div>
-          <input type="text" placeholder="Subject" className="full" />
-          <textarea placeholder="Message"></textarea>
+          <input type="text" placeholder="Subject" className="full" value={subject} onChange={(e) => setSubject(e.target.value)} />
+          <textarea placeholder="Message" value={message} onChange={(e) => setMessage(e.target.value)}></textarea>
+          <button type="submit" className="btn btn-light mt-3 w-100 py-2 rounded-0">Send Message</button>
         </form>
         <div className='contact-info mx-auto px-4 mt-5'>
           <div className="row justify-content-center">

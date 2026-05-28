@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser'
 import dotenv from 'dotenv'
 import authRoutes from './routers/authRoutes.js'
 import adminRoutes from './routers/adminRoutes.js'
+import userRoutes from './routers/userRoutes.js'
 import checkAdmin from './middlewares/checkadmin.js'
 
 dotenv.config()
@@ -29,6 +30,7 @@ server.use(cookieParser())
 
 server.use('/api', authRoutes)
 server.use('/api', adminRoutes)
+server.use('/api', userRoutes)
 
 server.listen(port, () => {
     console.log(`Server is running at ${port}`)
