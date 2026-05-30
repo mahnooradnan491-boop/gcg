@@ -10,6 +10,7 @@ import Programs from './views/programs'
 import Login from './views/login'
 import Register from './views/register'
 import Admission from './views/admission'
+import Achievements from './views/achievements'
 import ContactManagement from './views/admin/contactmanagement'
 import ContactShow from './views/admin/contactshow'
 import NewsManagement from './views/admin/newsmanagement'
@@ -56,7 +57,7 @@ createRoot(document.getElementById('root')).render(
           }
         />
 
-        <Route path="/achievements" element={<AchievementAdd />} />
+        <Route path="/achievements" element={<Achievements />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/admin" element={<LoginAdmin />} />
