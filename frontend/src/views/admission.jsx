@@ -106,11 +106,15 @@ function Admission() {
     try {
       if (btn == "Update") {
         const res = await api.put('/admission', data)
-        setStep(3)
+        if (res.data.message == 'Updated') {
+          setStep(3)
+        }
         return
       }
       const res = await api.post('/admission', data)
-      setStep(3)
+      if (res.data.message == 'Created') {
+        setStep(3)
+      }
     } catch (err) {
       alert("Submission failed!")
     }
@@ -124,11 +128,16 @@ function Admission() {
             <img src="/logo.png" alt="GCG Logo" width="150" className="me-3" />
 
           </div>
-          {step < 3 && (
-            <h4 className="fw-bold mt-3 mt-md-0">
-              {step === 1 ? "Personal Information" : "Educational Information"}
-            </h4>
-          )}
+          <div className="d-flex gap-3 align-items-center">
+            {step > 1 && (
+              <button className="btn btn-outline-success" onClick={() => setStep(step - 1)}>Back</button>
+            )}
+            {step < 3 && (
+              <h4 className="fw-bold mt-3 mt-md-0 mb-0">
+                {step === 1 ? "Personal Information" : "Educational Information"}
+              </h4>
+            )}
+          </div>
         </div>
 
         <form className="admission-form" onSubmit={handleSubmit}>

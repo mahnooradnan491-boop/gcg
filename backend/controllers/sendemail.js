@@ -12,7 +12,7 @@ export const sendEmail = async (req, res) => {
     const { to, subject, message } = req.body.sendData
 
     const mailOptions = {
-        from: `"My Custom App" <${process.env.GMAIL_USER}>`,
+        from: `"GCG" <${process.env.GMAIL_USER}>`,
         to: to,
         subject: subject,
         text: message,

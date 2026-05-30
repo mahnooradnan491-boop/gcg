@@ -28,7 +28,7 @@ export const addAdmission = async (req, res) => {
             program, timing
         })
         await admission.save()
-        return res.status(200).json({ message: 'Admission Created' })
+        return res.status(200).json({ message: 'Created' })
     } catch (error) {
         return res.status(500).json({ message: error.message })
     }
@@ -45,7 +45,7 @@ export const updateAdmission = async (req, res) => {
         const admission = await Admission.findOneAndUpdate({ userid }, {
             cnic, dob, gender, phone, fatherName, fatherCnic, guardianPhone, address, city, matricRoll, matricTotal, matricObtained, matricSheet, interRoll, interTotal, interObtained, interSheet, program, timing
         })
-        return res.status(200).json({ message: 'Admission Updated' })
+        return res.status(200).json({ message: 'Updated' })
     } catch (error) {
         return res.status(500).json({ message: error.message })
     }
