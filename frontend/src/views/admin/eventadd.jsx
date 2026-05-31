@@ -32,7 +32,7 @@ function EventAdd() {
         data.append('eventImage', eventData.eventImage)
 
         try {
-            const res = await api.post('/events/add', data)
+            const res = await api.post('/event/add', data)
             if (res.data.message == 'Event Created') {
                 navigate('/admin/events')
             }

@@ -29,8 +29,8 @@ function AchievementAdd() {
         data.append('category', achievementData.category)
 
         try {
-            const res = await api.post('/achievements/add', data)
-            if (res.data.message == 'Achievement Added') {
+            const res = await api.post('/achievement/add', data)
+            if (res.data.message == 'Achievement Created') {
                 navigate('/admin/achievements')
             }
         } catch (error) {
@@ -51,7 +51,7 @@ function AchievementAdd() {
                     {/* Title Field */}
                     <div className="col-4 mb-2">
                         <label className="small fw-bold text-muted mb-1">Title</label>
-                        <input type="text" name="title" className="form-control bg-light py-2 border-secondary-subtle" onChange={handleChange} required />
+                        <input type="text" name="title" className="form-control bg-light py-2 border-secondary-subtle" placeholder="Enter achievement title" onChange={handleChange} required />
                     </div>
                     <div className="col-4 mb-2">
                         <label className="small fw-bold text-muted mb-1">Date</label>
@@ -72,7 +72,7 @@ function AchievementAdd() {
                     {/* Description Field */}
                     <div className="col-12 mb-2">
                         <label className="small fw-bold text-muted mb-1">Description</label>
-                        <textarea name="description" rows="2" className="form-control bg-light py-2 border-secondary-subtle" onChange={handleChange} required></textarea>
+                        <textarea name="description" rows="2" className="form-control bg-light py-2 border-secondary-subtle" placeholder="Enter achievement description" onChange={handleChange} required></textarea>
                     </div>
 
                     {/* Image Field with Preview Box */}
@@ -80,9 +80,6 @@ function AchievementAdd() {
                         <label className="small fw-bold text-muted mb-1">Image</label>
                         <div className="d-flex gap-2">
                             <input type="file" className="form-control bg-light py-2 border-secondary-subtle" onChange={(e) => setAchievementData({ ...achievementData, image: e.target.files[0] })} required />
-                            <div className="bg-light border border-secondary-subtle rounded d-flex align-items-center justify-content-center" style={{ width: '50px', height: '45px' }}>
-                                <i className="bi bi-image text-muted"></i>
-                            </div>
                         </div>
                     </div>
 

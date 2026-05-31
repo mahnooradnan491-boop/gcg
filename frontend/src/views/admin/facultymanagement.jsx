@@ -56,7 +56,7 @@ function FacultyManagement() {
                                 (data?.map((member, index) => (
                                     <tr key={member._id} style={{ borderBottom: '1px solid #f8f9fa' }}>
                                         <td className="py-3 px-3 fw-bold text-muted">{index + 1}</td>
-                                        <td className="py-3 fw-semibold text-dark">{member.name}</td>
+                                        <td className="py-3 fw-semibold text-dark">{member.fullName}</td>
                                         <td className="py-3 text-secondary">{member.designation}</td>
                                         <td className="py-3 text-secondary">{member.department}</td>
                                         <td className="py-3 text-end px-3">

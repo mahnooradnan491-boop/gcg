@@ -16,9 +16,10 @@ export const addNews = async (req, res) => {
 }
 
 export const addEvent = async (req, res) => {
-    const { } = req.body
+    const { eventTitle, eventDescription, eventDate, eventVenue, organizer } = req.body
+    const eventImage = req.file?.eventImage?.path
     try {
-        const event = new Event({})
+        const event = new Event({ eventTitle, eventDescription, eventDate, eventVenue, eventImage, organizer })
         await event.save()
         return res.status(200).json({ message: 'Event Created' })
     } catch (error) {
@@ -27,9 +28,10 @@ export const addEvent = async (req, res) => {
 }
 
 export const addTimetable = async (req, res) => {
-    const { } = req.body
+    const { className, date } = req.body
+    const timetableImage = req.file?.timetableImage?.path
     try {
-        const timetable = new Timetable({})
+        const timetable = new Timetable({ className, date, timetableImage })
         await timetable.save()
         return res.status(200).json({ message: 'Timetable Created' })
     } catch (error) {
@@ -38,9 +40,10 @@ export const addTimetable = async (req, res) => {
 }
 
 export const addFaculty = async (req, res) => {
-    const { } = req.body
+    const { fullName, department, designation } = req.body
+    const image = req.file?.image?.path
     try {
-        const faculty = new Faculty({})
+        const faculty = new Faculty({ fullName, department, designation, image })
         await faculty.save()
         return res.status(200).json({ message: 'Faculty Created' })
     } catch (error) {
@@ -49,9 +52,11 @@ export const addFaculty = async (req, res) => {
 }
 
 export const addAchievement = async (req, res) => {
-    const { } = req.body
+    const { title, description, date, category } = req.body
+    const image = req.file?.image?.path
     try {
-        const achievement = await new Achievement({})
+        const achievement = await new Achievement({ title, description, image, date, category })
+        await achievement.save()
         return res.status(200).json({ message: 'Achievement Created' })
     } catch (error) {
         return res.status(500).json({ message: error.message })

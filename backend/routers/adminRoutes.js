@@ -5,6 +5,7 @@ import { removeNews, removeEvent, removeTimetable, removeFaculty, removeAchievem
 import { updateNews, updateEvent, updateTimetable, updateFaculty, updateAchievement } from '../controllers/adminUpdateController.js'
 import { sendEmail } from '../controllers/sendEmail.js'
 import { verifyToken } from '../middlewares/adminAuthMiddleware.js'
+import upload from '../middlewares/fileupload.js'
 
 const router = express.Router()
 
@@ -24,10 +25,10 @@ router.get('/achievements', getAchievementData)
 router.get('/achievement/:id', getAchievementDataById)
 
 router.post('/news/add', verifyToken, addNews)
-router.post('/event/add', verifyToken, addEvent)
-router.post('/timetable/add', verifyToken, addTimetable)
-router.post('/faculty/add', verifyToken, addFaculty)
-router.post('/achievement/add', verifyToken, addAchievement)
+router.post('/event/add', verifyToken, upload.single('eventImage'), addEvent)
+router.post('/timetable/add', verifyToken, upload.single('timetableImage'), addTimetable)
+router.post('/faculty/add', verifyToken, upload.single('image'), addFaculty)
+router.post('/achievement/add', verifyToken, upload.single('image'), addAchievement)
 router.post('/sendemail', verifyToken, sendEmail)
 
 router.delete('/news/:id', verifyToken, removeNews)
@@ -37,9 +38,9 @@ router.delete('/faculty/:id', verifyToken, removeFaculty)
 router.delete('/achievement/:id', verifyToken, removeAchievement)
 
 router.put('/news/:id', verifyToken, updateNews)
-router.put('/event/:id', verifyToken, updateEvent)
-router.put('/timetable/:id', verifyToken, updateTimetable)
-router.put('/faculty/:id', verifyToken, updateFaculty)
-router.put('/achievement/:id', verifyToken, updateAchievement)
+router.put('/event/:id', verifyToken, upload.single('eventImage'), updateEvent)
+router.put('/timetable/:id', verifyToken, upload.single('timetableImage'), updateTimetable)
+router.put('/faculty/:id', verifyToken, upload.single('image'), updateFaculty)
+router.put('/achievement/:id', verifyToken, upload.single('image'), updateAchievement)
 
 export default router

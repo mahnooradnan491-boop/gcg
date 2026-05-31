@@ -20,11 +20,13 @@ import AdmissionShow from './views/admin/admissionshow'
 import AdmissionManagement from './views/admin/admissionmanagement'
 import FacultyManagement from './views/admin/facultymanagement'
 import FacultyAdd from './views/admin/facultyadd'
+import FacultyShow from './views/admin/facultyshow'
 import EventManagement from './views/admin/eventmanagement'
 import EventAdd from './views/admin/eventadd'
 import EventShow from './views/admin/eventshow'
 import TimetableManagement from './views/admin/timetablemanagement'
 import TimetableAdd from './views/admin/timetableadd'
+import TimetableShow from './views/admin/timetableshow'
 import AchievementManagement from './views/admin/achievementmanagement'
 import AchievementAdd from './views/admin/achievementadd'
 import AchievementShow from './views/admin/achievementshow'
@@ -86,13 +88,13 @@ createRoot(document.getElementById('root')).render(
                         <Route path="/news/:id" element={<NewsShow />} />
                         <Route path="/faculty" element={<FacultyManagement />} />
                         <Route path="/faculty/add" element={<FacultyAdd />} />
-                        {/* <Route path="/faculty/:id" element={<FacultyShow />} /> */}
+                        <Route path="/faculty/:id" element={<FacultyShow />} />
                         <Route path="/events" element={<EventManagement />} />
                         <Route path="/event/add" element={<EventAdd />} />
                         <Route path="/event/:id" element={<EventShow />} />
                         <Route path="/timetable" element={<TimetableManagement />} />
                         <Route path="/timetable/add" element={<TimetableAdd />} />
-                        {/* <Route path="/timetable/:id" element={<TimetableShow />} /> */}
+                        <Route path="/timetable/:id" element={<TimetableShow />} />
                         <Route path="/achievements" element={<AchievementManagement />} />
                         <Route path="/achievement/add" element={<AchievementAdd />} />
                         <Route path="/achievement/:id" element={<AchievementShow />} />

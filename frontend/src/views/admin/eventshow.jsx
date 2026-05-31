@@ -1,6 +1,7 @@
-import { useState } from 'react'
-import { Link } from 'react-router'
+import { useState, useEffect } from 'react'
+import { Link, useNavigate, useParams } from 'react-router'
 import './Admin.css'
+import api from '../../api'
 
 function EventShow() {
     const [eventData, setEventData] = useState({
@@ -57,20 +58,32 @@ function EventShow() {
     return (
         <div className="content-card bg-white p-5 rounded-4 shadow-sm border-0">
             <div className="d-flex align-items-center gap-3 mb-3">
-                <Link to="/admin/event" className="btn btn-outline-secondary btn-sm rounded-3">
+                <Link to="/admin/events" className="btn btn-outline-secondary btn-sm rounded-3">
                     ← Back
                 </Link>
                 <h4 className="fw-bold m-0">Events Details</h4>
             </div>
             <form onSubmit={handleAddEvent}>
                 <div className="row g-4">
-                    <div className="col-12">
+                    <div className="col-6">
                         <label className="small fw-bold text-muted mb-1">Event Title</label>
                         <input
                             type="text"
                             name="eventTitle"
                             className="form-control bg-light py-2"
                             placeholder="Enter Event Title"
+                            value={eventData.eventTitle}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div className="col-6">
+                        <label className="small fw-bold text-muted mb-1">Event Date</label>
+                        <input
+                            type="date"
+                            name="eventDate"
+                            className="form-control bg-light py-2"
+                            value={eventData.eventDate.split('T')[0]}
                             onChange={handleChange}
                             required
                         />
@@ -82,38 +95,31 @@ function EventShow() {
                             className="form-control bg-light py-2"
                             rows="3"
                             placeholder="Enter Event Description"
+                            value={eventData.eventDescription}
                             onChange={handleChange}
                             required
                         ></textarea>
                     </div>
-                    <div className="col-12">
-                        <label className="small fw-bold text-muted mb-1">Event Date</label>
-                        <input
-                            type="date"
-                            name="eventDate"
-                            className="form-control bg-light py-2"
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div className="col-12">
+                    <div className="col-6">
                         <label className="small fw-bold text-muted mb-1">Event Venue</label>
                         <input
                             type="text"
                             name="eventVenue"
                             className="form-control bg-light py-2"
                             placeholder="Enter Event Venue"
+                            value={eventData.eventVenue}
                             onChange={handleChange}
                             required
                         />
                     </div>
-                    <div className="col-12">
+                    <div className="col-6">
                         <label className="small fw-bold text-muted mb-1">Organizer</label>
                         <input
                             type="text"
                             name="organizer"
                             className="form-control bg-light py-2"
                             placeholder="Enter Organizer Name"
+                            value={eventData.organizer}
                             onChange={handleChange}
                             required
                         />

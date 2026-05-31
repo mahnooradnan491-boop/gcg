@@ -35,8 +35,8 @@ function AchievementManagement() {
                             <tr>
                                 <th className="py-3 px-3">#</th>
                                 <th className="py-3">Achievement Title</th>
-                                <th className="py-3">Winner/Student</th>
-                                <th className="py-3">Year</th>
+                                <th className="py-3">Description</th>
+                                <th className="py-3">Date</th>
                                 <th className="py-3 text-end px-3">Actions</th>
                             </tr>
                         </thead>
@@ -52,12 +52,12 @@ function AchievementManagement() {
                                     </tr>
                                 )
                                 :
-                                (data?.map((item) => (
+                                (data?.map((item, index) => (
                                     <tr key={item._id} style={{ borderBottom: '1px solid #f8f9fa' }}>
-                                        <td className="py-3 px-3 fw-bold text-muted">{item._id}</td>
+                                        <td className="py-3 px-3 fw-bold text-muted">{index + 1}</td>
                                         <td className="py-3 fw-semibold text-dark">{item.title}</td>
-                                        <td className="py-3 text-secondary">{item.studentName}</td>
-                                        <td className="py-3 text-secondary">{item.year}</td>
+                                        <td className="py-3 text-secondary">{item.description}</td>
+                                        <td className="py-3 text-secondary">{item.date.split('T')[0]}</td>
                                         <td className="py-3 text-end px-3">
                                             <Link className="btn btn-link text-decoration-underline text-dark fw-semibold p-0 border-0 me-3" style={{ fontSize: '0.95rem' }} to={`/admin/achievement/${item._id}`}>
                                                 View
