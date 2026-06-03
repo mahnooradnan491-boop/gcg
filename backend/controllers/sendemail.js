@@ -1,4 +1,7 @@
 import nodemailer from 'nodemailer'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -9,7 +12,7 @@ const transporter = nodemailer.createTransport({
 })
 
 export const sendEmail = async (req, res) => {
-    const { to, subject, message } = req.body.sendData
+    const { to, subject, message } = req.body
 
     const mailOptions = {
         from: `"GCG" <${process.env.GMAIL_USER}>`,
