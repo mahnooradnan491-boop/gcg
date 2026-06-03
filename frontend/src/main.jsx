@@ -31,6 +31,7 @@ import AchievementManagement from './views/admin/achievementmanagement'
 import AchievementAdd from './views/admin/achievementadd'
 import AchievementShow from './views/admin/achievementshow'
 import LoginAdmin from './views/admin/loginAdmin'
+import ManageSuccessStories from './views/admin/ManageSuccessStories'
 import ProtectedRoute from './components/protectedroutes'
 import AdminProtectedRoute from './components/adminprotectedroutes'
 import AdminHeader from './components/adminheader'
@@ -98,6 +99,7 @@ createRoot(document.getElementById('root')).render(
                         <Route path="/achievements" element={<AchievementManagement />} />
                         <Route path="/achievement/add" element={<AchievementAdd />} />
                         <Route path="/achievement/:id" element={<AchievementShow />} />
+                        <Route path="/Success Stories" element={<ManageSuccessStories />} />
                       </Routes>
 
                     </div>

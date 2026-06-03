@@ -1,10 +1,39 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Chatbox from '../components/chatbox'
 import Header from '../components/header'
 import Footer from '../components/footer'
+import api from '../api.js' 
 import './home.css'
 
 function Home() {
+    
+    const [stories, setStories] = useState([]);
+
+    
+    useEffect(() => {
+        const fetchStories = async () => {
+            try {
+                const res = await api.get('/success-stories');
+                setStories(res.data);
+            } catch (err) {
+                console.log("Error fetching stories", err);
+            }
+        };
+        fetchStories();
+    }, []);
+
+    
+    const getStoryData = (type) => {
+       
+        const defaults = {
+            regular: { count: '5K+', label: 'Regular Student' },
+            graduate: { count: '10K+', label: 'Graduate Student' },
+            research: { count: '140+', label: 'Research Publications' }
+        };
+        return stories.find(s => s.type === type) || defaults[type];
+    }
+
     return (
         <>
             <Chatbox />
@@ -30,29 +59,39 @@ function Home() {
             <div className="mt-5 px-5 mb-5">
                 <h2 className="text-center mb-5">Our Success Stories</h2>
                 <div className="d-flex gap-3">
+                    
                     <div className="bg-light-grey p-4 flex-fill">
                         <div className="d-flex justify-content-between align-items-start">
-                            <h2 className="fw-bold">5K+</h2>
+                            <h2 className="fw-bold">{getStoryData('regular').count}</h2>
                             <img src="/icons/student.png" alt="icon" width="25px" />
                         </div>
-                        <p className="mt-4 mb-0">Regular Student</p>
+                        <p className="mt-4 mb-0">{getStoryData('regular').label}</p>
                     </div>
+
+                   
                     <div className="p-4 flex-fill box-orange">
                         <div className="d-flex justify-content-between align-items-start">
-                            <h2 className="fw-bold">10K+</h2>
+                            <h2 className="fw-bold">{getStoryData('graduate').count}</h2>
                             <img src="/icons/graduate.png" alt="icon" width="25px" />
                         </div>
-                        <Link to="/achievements" className="mt-4 nav-link">Graduate Student <img src="/icons/arrowup.png" alt="arrow-icon" width="10px" /></Link>
+                        <Link to="/achievements" className="mt-4 nav-link">
+                            {getStoryData('graduate').label} <img src="/icons/arrowup.png" alt="arrow-icon" width="10px" />
+                        </Link>
                     </div>
+
+                   
                     <div className="p-4 flex-fill box-green">
                         <div className="d-flex justify-content-between align-items-start">
-                            <h2 className="fw-bold">140+</h2>
+                            <h2 className="fw-bold">{getStoryData('research').count}</h2>
                             <img src="/icons/research.png" alt="icon" width="25px" />
                         </div>
-                        <Link to="/achievements" className="mt-4 nav-link">Research Publications <img src="/icons/arrowup.png" alt="arrow-icon" width="10px" /></Link>
+                        <Link to="/achievements" className="mt-4 nav-link">
+                            {getStoryData('research').label} <img src="/icons/arrowup.png" alt="arrow-icon" width="10px" />
+                        </Link>
                     </div>
                 </div>
             </div>
+
             <section className="news-section" id="newsevents">
                 <div className="container">
                     <h3 className="text-center mb-4">
@@ -107,6 +146,7 @@ function Home() {
                     </div>
                 </div>
             </section>
+
             <section className="py-5 bg-light">
                 <div className="container">
                     <h3 className="mb-4">Search for a program</h3>
@@ -122,7 +162,7 @@ function Home() {
                         <button className="btn btn-success rounded-0 px-5 text-nowrap">View All</button>
                     </div>
                     <div className="row mt-5">
-                        {/* Card 1 */}
+                       
                         <div className="col-md-4 mb-4">
                             <div className="card">
                                 <img src="/computerscience.png" className="card-img-top" alt="Computer Science" />
@@ -139,7 +179,7 @@ function Home() {
                                             className="text-decoration-none text-dark d-block"
                                             style={{ pointerEvents: 'auto', cursor: 'pointer' }}
                                         >
-                                            Computer Science and Engineering
+                                            BS (Hons.) Information Technolog 
                                         </a>
                                     </h6>
                                 </div>
@@ -156,19 +196,20 @@ function Home() {
                                     </div>
                                     <h6>
                                         <a 
-                                            href="https://pu.edu.pk/admissions/programes/graduated" 
+                                            href="https://pu.edu.pk/program/show/5101/BS-Mathematics-Morning-and-Self-Supporting.html" 
                                             target="_blank" 
                                             rel="noopener noreferrer"
                                             className="text-decoration-none text-dark d-block"
                                             style={{ pointerEvents: 'auto', cursor: 'pointer' }}
                                         >
-                                            Civil Engineering
+                                            
+                                       BS (Hons.) Mathematics 
                                         </a>
                                     </h6>
                                 </div>
                             </div>
                         </div>
-                        {/* Card 3 */}
+                       
                         <div className="col-md-4 mb-4">
                             <div className="card">
                                 <img src="/computerscience.png" className="card-img-top" alt="Computer Science" />
@@ -179,13 +220,13 @@ function Home() {
                                     </div>
                                     <h6>
                                         <a 
-                                            href="https://pu.edu.pk/program/show/900098/Department-of-Information-Technology" 
+                                            href="https://pu.edu.pk/program/show/900113/College-of-Statistical-Sciences" 
                                             target="_blank" 
                                             rel="noopener noreferrer"
                                             className="text-decoration-none text-dark d-block"
                                             style={{ pointerEvents: 'auto', cursor: 'pointer' }}
                                         >
-                                            Computer Science and Engineering
+                                            BS (Hons.) Statistics 
                                         </a>
                                     </h6>
                                 </div>
@@ -263,6 +304,7 @@ function Home() {
                     </div>
                 </div>
             </section>
+
             <section className="research-section">
                 <h2 className="research-title">Research & Publications</h2>
                 <div className="research-container">
@@ -297,4 +339,4 @@ function Home() {
     );
 }
 
-export default Home
+export default Home;
