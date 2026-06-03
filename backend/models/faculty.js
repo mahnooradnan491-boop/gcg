@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const facultySchema = mongoose.Schema({
-    name: {
+    fullName: {
         type: String,
         required: true
     },

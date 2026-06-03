@@ -8,6 +8,8 @@ import authRoutes from './routers/authRoutes.js'
 import adminRoutes from './routers/adminRoutes.js'
 import userRoutes from './routers/userRoutes.js'
 import checkAdmin from './middlewares/checkadmin.js'
+import checkStats from './middlewares/checkstats.js'
+import successStoryRoutes from './routers/successStoryRoutes.js'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
@@ -20,6 +22,7 @@ const port = process.env.PORT || 3000
 
 mongoose.connect(process.env.MONGO_URI).then(async () => {
     await checkAdmin()
+    await checkStats()
 })
 
 const corsOptions = {
@@ -37,6 +40,7 @@ server.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 server.use('/api', authRoutes)
 server.use('/api', adminRoutes)
 server.use('/api', userRoutes)
+server.use('/api', successStoryRoutes)
 
 server.listen(port, () => {
     console.log(`Server is running at ${port}`)

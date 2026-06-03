@@ -18,7 +18,7 @@ function EventManagement() {
 
     const handleRemove = async (id) => {
         if (window.confirm('Are you sure you want to remove this event?')) {
-            await api.delete(`/events/${id}`)
+            await api.delete(`/event/${id}`)
             getData()
         }
     }
@@ -55,9 +55,9 @@ function EventManagement() {
                             (data?.map((item, index) => (
                                 <tr key={item._id} style={{ borderBottom: '1px solid #f8f9fa' }}>
                                     <td className="py-3 px-3 fw-bold text-muted">{index + 1}</td>
-                                    <td className="py-3 fw-semibold text-dark">{item.title}</td>
-                                    <td className="py-3 text-secondary">{item.date}</td>
-                                    <td className="py-3 text-secondary">{item.venue}</td>
+                                    <td className="py-3 fw-semibold text-dark">{item.eventTitle}</td>
+                                    <td className="py-3 text-secondary">{item.eventDate.split('T')[0]}</td>
+                                    <td className="py-3 text-secondary">{item.eventVenue}</td>
                                     <td className="py-3 text-end px-3">
                                         <Link className="btn btn-link text-decoration-underline text-dark fw-semibold p-0 border-0 me-3" style={{ fontSize: '0.95rem' }} to={`/admin/event/${item._id}`}>
                                             View

@@ -27,8 +27,8 @@ function FacultyInfo() {
         data.append('image', facultyData.image)
 
         try {
-            const res = await api.post('/faculties/add', data)
-            if (res.data.message == 'Faculty Added') {
+            const res = await api.post('/faculty/add', data)
+            if (res.data.message == 'Faculty Created') {
                 navigate('/admin/faculty')
             }
         } catch (error) {

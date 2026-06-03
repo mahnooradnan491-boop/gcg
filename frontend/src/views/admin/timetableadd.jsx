@@ -25,8 +25,8 @@ function TimetableManagement() {
         data.append('timetableImage', timetableData.timetableImage)
 
         try {
-            const res = await api.post('/timetables/add', data)
-            if (res.data.message == 'Time Table Added') {
+            const res = await api.post('/timetable/add', data)
+            if (res.data.message == 'Timetable Created') {
                 navigate('/admin/timetable')
             }
         } catch (error) {

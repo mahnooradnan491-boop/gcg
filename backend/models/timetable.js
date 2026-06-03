@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const timetableSchema = mongoose.Schema({
-    classname: {
+    className: {
         type: String,
         required: true
     },
@@ -14,16 +14,15 @@ const timetableSchema = mongoose.Schema({
         type: Date,
         required: true
     },
-    image: {
-        type: String,
-        required: true
+    timetableImage: {
+        type: String
     }
 })
 
 timetableSchema.pre('findOneAndDelete', async function () {
     const docToQuery = await this.model.findOne(this.getQuery())
-    if (docToQuery && docToQuery.image) {
-        const filePath = path.join(__dirname, '../uploads', docToQuery.image)
+    if (docToQuery && docToQuery.timetableImage) {
+        const filePath = path.join(__dirname, '../uploads', docToQuery.timetableImage)
         try {
             await fs.unlink(filePath)
         } catch (error) {
@@ -37,9 +36,9 @@ timetableSchema.pre('findOneAndDelete', async function () {
 
 timetableSchema.pre('findOneAndUpdate', async function () {
     const docToQuery = await this.model.findOne(this.getQuery())
-    const newImage = this.getUpdate().image
-    if (newImage && docToQuery && docToQuery.image) {
-        const filePath = path.join(__dirname, '../uploads', docToQuery.image)
+    const newImage = this.getUpdate().timetableImage
+    if (newImage && docToQuery && docToQuery.timetableImage) {
+        const filePath = path.join(__dirname, '../uploads', docToQuery.timetableImage)
         try {
             await fs.unlink(filePath)
         } catch (error) {
