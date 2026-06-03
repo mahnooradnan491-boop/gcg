@@ -1,21 +1,14 @@
 import SuccessStory from '../models/SuccessStory.js';
 
 export const updateSuccessStory = async (req, res) => {
-    const { type } = req.params; 
-    const { count, label } = req.body; 
-
-    // VS CODE TERMINAL LOG
-    console.log("2. Backend ko data mila ->", { type, count, label });
+    const { type } = req.params;
+    const { count, label } = req.body;
 
     try {
         const updatedStory = await SuccessStory.findOneAndUpdate(
-            { type: type },          
-            { count, label },        
-            { new: true }            
+            { type: type },
+            { count, label }
         );
-
-        // DATABASE SE JO DATA UPDATE HUA WOH LOG
-        console.log("3. Database mein update hone ke baad ka data ->", updatedStory);
 
         if (!updatedStory) {
             return res.status(404).json({ message: "Type not found in database" });
@@ -27,3 +20,12 @@ export const updateSuccessStory = async (req, res) => {
         return res.status(500).json({ message: error.message });
     }
 };
+
+export const getSuccessStories = async (req, res) => {
+    try {
+        const stories = await SuccessStory.find();
+        res.status(200).json(stories);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+}
