@@ -235,7 +235,7 @@ function Home() {
                         {/* Card 4 */}
                         <div className="col-md-4 mb-4">
                             <div className="card">
-                                <img src="/law.png" className="card-img-top" alt="Law" />
+                                <img src="/botny.png" className="card-img-top" alt="Botny" />
                                 <div className="card-body">
                                     <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#fd7e14' }}>
                                         <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#fd7e14' }}></span>
@@ -243,13 +243,13 @@ function Home() {
                                     </div>
                                     <h6>
                                         <a 
-                                            href="https://pu.edu.pk/admissions/programes/undergraduated" 
+                                            href="https://pu.edu.pk/program/show/4001/Institute-of-Botany" 
                                             target="_blank" 
                                             rel="noopener noreferrer"
                                             className="text-decoration-none text-dark d-block"
                                             style={{ pointerEvents: 'auto', cursor: 'pointer' }}
                                         >
-                                            Department of law
+                                            BS (Hons.) Botany
                                         </a>
                                     </h6>
                                 </div>
@@ -258,7 +258,7 @@ function Home() {
                         {/* Card 5 */}
                         <div className="col-md-4 mb-4">
                             <div className="card">
-                                <img src="/civileng.png" className="card-img-top" alt="Civil Engineering" />
+                                <img src="/chemistry.png" className="card-img-top" alt="Chemistry" />
                                 <div className="card-body">
                                     <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#6f42c1' }}>
                                         <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#6f42c1' }}></span>
@@ -266,13 +266,13 @@ function Home() {
                                     </div>
                                     <h6>
                                         <a 
-                                            href="https://pu.edu.pk/admissions/programes/graduated" 
+                                            href="https://pu.edu.pk/program/show/4401/School-of-Chemistry" 
                                             target="_blank" 
                                             rel="noopener noreferrer"
                                             className="text-decoration-none text-dark d-block"
                                             style={{ pointerEvents: 'auto', cursor: 'pointer' }}
                                         >
-                                            Civil Engineering
+                                            BS (Hons.) Chemistry 
                                         </a>
                                     </h6>
                                 </div>
@@ -281,7 +281,7 @@ function Home() {
                         {/* Card 6 */}
                         <div className="col-md-4 mb-4">
                             <div className="card">
-                                <img src="/web.png" className="card-img-top" alt="Web Design" />
+                                <img src="/english.png" className="card-img-top" alt="English" />
                                 <div className="card-body">
                                     <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#198754' }}>
                                         <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#198754' }}></span>
@@ -289,13 +289,13 @@ function Home() {
                                     </div>
                                     <h6>
                                         <a 
-                                            href="https://pu.edu.pk" 
+                                            href="https://pu.edu.pk/program/show/900419/Institute-of-English-Studies" 
                                             target="_blank" 
                                             rel="noopener noreferrer"
                                             className="text-decoration-none text-dark d-block"
                                             style={{ pointerEvents: 'auto', cursor: 'pointer' }}
                                         >
-                                            Web design and development
+                                            BS (Hons.) English 
                                         </a>
                                     </h6>
                                 </div>

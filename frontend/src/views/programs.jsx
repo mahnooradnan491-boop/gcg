@@ -46,7 +46,7 @@ function Program() {
                       className="text-decoration-none text-dark d-block"
                       style={{ pointerEvents: 'auto', cursor: 'pointer' }}
                     >
-                      Computer Science and Engineering
+                      BS (Hons.) Information Technolog 
                     </a>
                   </h6>
                 </div>
@@ -68,7 +68,7 @@ function Program() {
                       className="text-decoration-none text-dark d-block"
                       style={{ pointerEvents: 'auto', cursor: 'pointer' }}
                     >
-                      Civil Engineering
+                      BS (Hons.) Mathematics 
                     </a>
                   </h6>
                 </div>
@@ -91,7 +91,7 @@ function Program() {
                       className="text-decoration-none text-dark d-block"
                       style={{ pointerEvents: 'auto', cursor: 'pointer' }}
                     >
-                      Computer Science and Engineering
+                     BS (Hons.) Statistics 
                     </a>
                   </h6>
                 </div>
@@ -101,7 +101,7 @@ function Program() {
           
             <div className="col-md-4 mb-4">
               <div className="card">
-                <img src="/law.png" className="card-img-top" alt="Law" />
+                <img src="/botny.png" className="card-img-top" alt="Botny" />
                 <div className="card-body">
                   <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#fd7e14' }}>
                     <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#fd7e14' }}></span>
@@ -109,13 +109,13 @@ function Program() {
                   </div>
                   <h6>
                     <a 
-                      href="https://pu.edu.pk/admissions/programes/undergraduated" 
+                      href="https://pu.edu.pk/program/show/4001/Institute-of-Botany" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-decoration-none text-dark d-block"
                       style={{ pointerEvents: 'auto', cursor: 'pointer' }}
                     >
-                      Department of law
+                      BS (Hons.) Botany
                     </a>
                   </h6>
                 </div>
@@ -125,7 +125,7 @@ function Program() {
             
             <div className="col-md-4 mb-4">
               <div className="card">
-                <img src="/civileng.png" className="card-img-top" alt="Civil Engineering" />
+                <img src="/chemistry.png" className="card-img-top" alt="Chemistry" />
                 <div className="card-body">
                   <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#6f42c1' }}>
                     <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#6f42c1' }}></span>
@@ -133,13 +133,13 @@ function Program() {
                   </div>
                   <h6>
                     <a 
-                      href="https://pu.edu.pk/admissions/programes/graduated" 
+                      href="https://pu.edu.pk/program/show/4401/School-of-Chemistry" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-decoration-none text-dark d-block"
                       style={{ pointerEvents: 'auto', cursor: 'pointer' }}
                     >
-                      Civil Engineering
+                      BS (Hons.) Chemistry 
                     </a>
                   </h6>
                 </div>
@@ -148,7 +148,7 @@ function Program() {
 
             <div className="col-md-4 mb-4">
               <div className="card">
-                <img src="/web.png" className="card-img-top" alt="Web Design" />
+                <img src="/english.png" className="card-img-top" alt="English" />
                 <div className="card-body">
                   <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#198754' }}>
                     <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#198754' }}></span>
@@ -156,18 +156,92 @@ function Program() {
                   </div>
                   <h6>
                     <a 
-                      href="https://pu.edu.pk" 
+                      href="https://pu.edu.pk/program/show/900419/Institute-of-English-Studies" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-decoration-none text-dark d-block"
                       style={{ pointerEvents: 'auto', cursor: 'pointer' }}
                     >
-                      Web design and development
+                     BS (Hons.) English 
                     </a>
                   </h6>
                 </div>
               </div>
             </div>
+
+           <div className="col-md-4 mb-4">
+              <div className="card">
+                <img src="/zology.png" className="card-img-top" alt="Zology" />
+                <div className="card-body">
+                  <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#6f42c1' }}>
+                    <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#6f42c1' }}></span>
+                    Masters
+                  </div>
+                  <h6>
+                    <a 
+                      href="https://pu.edu.pk/program/show/6301/Institute-of-Zoology" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-decoration-none text-dark d-block"
+                      style={{ pointerEvents: 'auto', cursor: 'pointer' }}
+                    >
+                     BS (Hons.) Zoology 
+                    </a>
+                  </h6>
+                </div>
+              </div>
+            </div>
+
+
+          <div className="col-md-4 mb-4">
+              <div className="card">
+                <img src="/economics.png" className="card-img-top" alt="Economics" />
+                <div className="card-body">
+                  <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#6f42c1' }}>
+                    <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#6f42c1' }}></span>
+                    Masters
+                  </div>
+                  <h6>
+                    <a 
+                      href="https://pu.edu.pk/program/show/900371/School-of-Economics" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-decoration-none text-dark d-block"
+                      style={{ pointerEvents: 'auto', cursor: 'pointer' }}
+                    >
+                     BS (Hons.) Economics 
+                    </a>
+                  </h6>
+                </div>
+              </div>
+            </div>
+
+
+          <div className="col-md-4 mb-4">
+              <div className="card">
+                <img src="/physics.png" className="card-img-top" alt="Physics" />
+                <div className="card-body">
+                  <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#6f42c1' }}>
+                    <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#6f42c1' }}></span>
+                    Masters
+                  </div>
+                  <h6>
+                    <a 
+                      href="https://pu.edu.pk/program/show/5501/Department-of-Physics" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-decoration-none text-dark d-block"
+                      style={{ pointerEvents: 'auto', cursor: 'pointer' }}
+                    >
+                     BS (Hons.) Physics 
+                    </a>
+                  </h6>
+                </div>
+              </div>
+            </div>
+
+
+
 
           </div>
         </div>
