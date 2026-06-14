@@ -54,7 +54,31 @@ function Gallery() {
               <span className="event-date">
                 <img src="/icons/calender.png" alt="icon" className="small-icon" /> 10 August, 2026
               </span>
+
+
+
+              
             </div>
+
+
+            <div className="container my-5">
+    <div className="row justify-content-center">
+        <div className="col-md-8 col-lg-6">
+            <div className="card shadow-sm border-0 rounded-4 overflow-hidden">
+                <img 
+                    src="/src/assets/culture.png" 
+                    className="img-fluid w-100" 
+                    alt="Punjab Cultural Festival - Government Graduate College Gujranwala"
+                    style={{ objectFit: 'cover', maxHeight: '600px' }}
+                />
+                <div className="card-body text-center bg-white p-4">
+                    <h5 className="fw-bold text-success mb-2">Punjab Cultural Festival</h5>
+                    <p className="text-muted small mb-0">Government Graduate College (B), Satellite Town, Gujranwala</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
           </div>
         </div>
       </div>

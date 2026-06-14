@@ -328,8 +328,8 @@ function Home() {
                             </div>
                         </div>
                         <div className="text-end">
-                            <Link to="/online-databases" className="mt-4 d-block">Online Databases</Link>
-                            <Link to="/pu-library" className="mt-2 d-block">PU Library</Link>
+                            <Link to="http://pu.edu.pk/page/show/hecdatabase.htm" className="mt-4 d-block">Online Databases</Link>
+                            <Link to="https://www.pulibrary.edu.pk/" className="mt-2 d-block">PU Library</Link>
                         </div>
                     </div>
                 </div>
