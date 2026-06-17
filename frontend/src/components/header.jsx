@@ -25,10 +25,10 @@ function Header() {
                                 <Link to="/programs" className="nav-link">Programs</Link>
                             </li>
                             <li>
-                                <HashLink smooth to="/#timetable" className="nav-link">Time Table</HashLink>
+                                <HashLink smooth to="/#updates" className="nav-link">Time Table</HashLink>
                             </li>
                             <li>
-                                <HashLink smooth to="/#newsevents" className="nav-link">News & Events</HashLink>
+                                <HashLink smooth to="/#updates" className="nav-link">News & Events</HashLink>
                             </li>
                             <li>
                                 <Link to="/faculty" className="nav-link">Faculty</Link>

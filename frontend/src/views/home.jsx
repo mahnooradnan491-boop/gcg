@@ -3,35 +3,35 @@ import { Link } from 'react-router-dom'
 import Chatbox from '../components/chatbox'
 import Header from '../components/header'
 import Footer from '../components/footer'
-import api from '../api.js' 
+import api from '../api.js'
 import './home.css'
 
 function Home() {
-    
-    const [stories, setStories] = useState([]);
 
-    
+    const [stories, setStories] = useState([])
+    const [activeTab, setActiveTab] = useState('general')
+
     useEffect(() => {
         const fetchStories = async () => {
             try {
-                const res = await api.get('/success-stories');
-                setStories(res.data);
+                const res = await api.get('/success-stories')
+                setStories(res.data)
             } catch (err) {
-                console.log("Error fetching stories", err);
+                console.log("Error fetching stories", err)
             }
-        };
-        fetchStories();
-    }, []);
+        }
+        fetchStories()
+    }, [])
 
-    
+
     const getStoryData = (type) => {
-       
+
         const defaults = {
             regular: { count: '5K+', label: 'Regular Student' },
             graduate: { count: '10K+', label: 'Graduate Student' },
             research: { count: '140+', label: 'Research Publications' }
-        };
-        return stories.find(s => s.type === type) || defaults[type];
+        }
+        return stories.find(s => s.type === type) || defaults[type]
     }
 
     return (
@@ -59,7 +59,7 @@ function Home() {
             <div className="mt-5 px-5 mb-5">
                 <h2 className="text-center mb-5">Our Success Stories</h2>
                 <div className="d-flex gap-3">
-                    
+
                     <div className="bg-light-grey p-4 flex-fill">
                         <div className="d-flex justify-content-between align-items-start">
                             <h2 className="fw-bold">{getStoryData('regular').count}</h2>
@@ -68,7 +68,6 @@ function Home() {
                         <p className="mt-4 mb-0">{getStoryData('regular').label}</p>
                     </div>
 
-                   
                     <div className="p-4 flex-fill box-orange">
                         <div className="d-flex justify-content-between align-items-start">
                             <h2 className="fw-bold">{getStoryData('graduate').count}</h2>
@@ -79,7 +78,6 @@ function Home() {
                         </Link>
                     </div>
 
-                   
                     <div className="p-4 flex-fill box-green">
                         <div className="d-flex justify-content-between align-items-start">
                             <h2 className="fw-bold">{getStoryData('research').count}</h2>
@@ -92,18 +90,46 @@ function Home() {
                 </div>
             </div>
 
-            <section className="news-section" id="newsevents">
+            <section className="news-section" id='updates'>
                 <div className="container">
                     <h3 className="text-center mb-4">
                         Stay Update With News & Events
                     </h3>
+
                     <div className="news-tabs">
-                        <button className="active"> <img src="/icons/info.png" alt="icon" width="25px"></img> Genral notice</button>
-                        <button> <img src="/icons/info.png" alt="icon" width="25px"></img>News & Events</button>
-                        <button><img src="/icons/calender.png" alt="icon" width="25px"></img>Exams Date Sheet</button>
-                        <button><img src="/icons/clock.png" alt="icon" width="25px"></img>Time Table</button>
+                        <button
+                            className={activeTab === 'general' ? 'active' : ''}
+                            onClick={() => setActiveTab('general')}
+                            type="button"
+                        >
+                            <img src="/icons/info.png" alt="icon" width="25px" /> General Notice
+                        </button>
+
+                        <button
+                            className={activeTab === 'newsevents' ? 'active' : ''}
+                            onClick={() => setActiveTab('newsevents')}
+                            type="button"
+                        >
+                            <img src="/icons/info.png" alt="icon" width="25px" /> News & Events
+                        </button>
+
+                        <button
+                            className={activeTab === 'exams' ? 'active' : ''}
+                            onClick={() => setActiveTab('exams')}
+                            type="button"
+                        >
+                            <img src="/icons/calender.png" alt="icon" width="25px" /> Exams Date Sheet
+                        </button>
+
+                        <button
+                            className={activeTab === 'timetable' ? 'active' : ''}
+                            onClick={() => setActiveTab('timetable')}
+                            type="button"
+                        >
+                            <img src="/icons/clock.png" alt="icon" width="25px" /> Time Table
+                        </button>
                     </div>
-                    <div className="row mt-4">
+                    <div className={`row mt-4 tab-pane fade ${activeTab === 'general' ? 'show active' : ''}`} id="general">
                         <div className="col-md-6">
                             <div className="notice-box">
                                 <div className="date-box">
@@ -144,8 +170,20 @@ function Home() {
                             </div>
                         </div>
                     </div>
+
+                    <div className={`row mt-4 tab-pane fade ${activeTab === 'newsevents' ? 'show active' : ''}`} id="newsevents">
+                        {/* ... your newsevents content ... */}
+                    </div>
+
+                    <div className={`row mt-4 tab-pane fade ${activeTab === 'exams' ? 'show active' : ''}`} id="exams">
+                        {/* ... your exams content ... */}
+                    </div>
+
+                    <div className={`row mt-4 tab-pane fade ${activeTab === 'timetable' ? 'show active' : ''}`} id="timetable">
+                        {/* ... your timetable content ... */}
+                    </div>
                 </div>
-            </section>
+            </section >
 
             <section className="py-5 bg-light">
                 <div className="container">
@@ -162,7 +200,7 @@ function Home() {
                         <button className="btn btn-success rounded-0 px-5 text-nowrap">View All</button>
                     </div>
                     <div className="row mt-5">
-                       
+
                         <div className="col-md-4 mb-4">
                             <div className="card">
                                 <img src="/computerscience.png" className="card-img-top" alt="Computer Science" />
@@ -172,14 +210,14 @@ function Home() {
                                         Bachelors
                                     </div>
                                     <h6>
-                                        <a 
-                                            href="https://pu.edu.pk/program/show/900098/Department-of-Information-Technology" 
-                                            target="_blank" 
+                                        <a
+                                            href="https://pu.edu.pk/program/show/900098/Department-of-Information-Technology"
+                                            target="_blank"
                                             rel="noopener noreferrer"
                                             className="text-decoration-none text-dark d-block"
                                             style={{ pointerEvents: 'auto', cursor: 'pointer' }}
                                         >
-                                            BS (Hons.) Information Technolog 
+                                            BS (Hons.) Information Technolog
                                         </a>
                                     </h6>
                                 </div>
@@ -195,21 +233,21 @@ function Home() {
                                         Masters
                                     </div>
                                     <h6>
-                                        <a 
-                                            href="https://pu.edu.pk/program/show/5101/BS-Mathematics-Morning-and-Self-Supporting.html" 
-                                            target="_blank" 
+                                        <a
+                                            href="https://pu.edu.pk/program/show/5101/BS-Mathematics-Morning-and-Self-Supporting.html"
+                                            target="_blank"
                                             rel="noopener noreferrer"
                                             className="text-decoration-none text-dark d-block"
                                             style={{ pointerEvents: 'auto', cursor: 'pointer' }}
                                         >
-                                            
-                                       BS (Hons.) Mathematics 
+
+                                            BS (Hons.) Mathematics
                                         </a>
                                     </h6>
                                 </div>
                             </div>
                         </div>
-                       
+
                         <div className="col-md-4 mb-4">
                             <div className="card">
                                 <img src="/computerscience.png" className="card-img-top" alt="Computer Science" />
@@ -219,14 +257,14 @@ function Home() {
                                         Bachelors
                                     </div>
                                     <h6>
-                                        <a 
-                                            href="https://pu.edu.pk/program/show/900113/College-of-Statistical-Sciences" 
-                                            target="_blank" 
+                                        <a
+                                            href="https://pu.edu.pk/program/show/900113/College-of-Statistical-Sciences"
+                                            target="_blank"
                                             rel="noopener noreferrer"
                                             className="text-decoration-none text-dark d-block"
                                             style={{ pointerEvents: 'auto', cursor: 'pointer' }}
                                         >
-                                            BS (Hons.) Statistics 
+                                            BS (Hons.) Statistics
                                         </a>
                                     </h6>
                                 </div>
@@ -242,9 +280,9 @@ function Home() {
                                         Bachelors
                                     </div>
                                     <h6>
-                                        <a 
-                                            href="https://pu.edu.pk/program/show/4001/Institute-of-Botany" 
-                                            target="_blank" 
+                                        <a
+                                            href="https://pu.edu.pk/program/show/4001/Institute-of-Botany"
+                                            target="_blank"
                                             rel="noopener noreferrer"
                                             className="text-decoration-none text-dark d-block"
                                             style={{ pointerEvents: 'auto', cursor: 'pointer' }}
@@ -265,14 +303,14 @@ function Home() {
                                         Masters
                                     </div>
                                     <h6>
-                                        <a 
-                                            href="https://pu.edu.pk/program/show/4401/School-of-Chemistry" 
-                                            target="_blank" 
+                                        <a
+                                            href="https://pu.edu.pk/program/show/4401/School-of-Chemistry"
+                                            target="_blank"
                                             rel="noopener noreferrer"
                                             className="text-decoration-none text-dark d-block"
                                             style={{ pointerEvents: 'auto', cursor: 'pointer' }}
                                         >
-                                            BS (Hons.) Chemistry 
+                                            BS (Hons.) Chemistry
                                         </a>
                                     </h6>
                                 </div>
@@ -288,14 +326,14 @@ function Home() {
                                         Diploma
                                     </div>
                                     <h6>
-                                        <a 
-                                            href="https://pu.edu.pk/program/show/900419/Institute-of-English-Studies" 
-                                            target="_blank" 
+                                        <a
+                                            href="https://pu.edu.pk/program/show/900419/Institute-of-English-Studies"
+                                            target="_blank"
                                             rel="noopener noreferrer"
                                             className="text-decoration-none text-dark d-block"
                                             style={{ pointerEvents: 'auto', cursor: 'pointer' }}
                                         >
-                                            BS (Hons.) English 
+                                            BS (Hons.) English
                                         </a>
                                     </h6>
                                 </div>
@@ -336,7 +374,7 @@ function Home() {
             </section>
             <Footer />
         </>
-    );
+    )
 }
 
-export default Home;
+export default Home
