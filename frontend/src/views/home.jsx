@@ -6,26 +6,78 @@ import Footer from '../components/footer'
 import api from '../api.js'
 import './home.css'
 
-function Home() {
+const formatDate = (dateString) => {
+    if (!dateString) return { day: '00', month: '---', fullDate: '' }
+    const date = new Date(dateString)
+    const day = String(date.getDate()).padStart(2, '0')
+    const month = date.toLocaleString('en-US', { month: 'long' })
+    const fullDate = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+    return { day, month, fullDate }
+}
 
+function Home() {
     const [stories, setStories] = useState([])
     const [activeTab, setActiveTab] = useState('general')
 
+    const [news, setNews] = useState([])
+    const [events, setEvents] = useState([])
+    const [timetables, setTimetables] = useState([])
+    const [selectedItem, setSelectedItem] = useState(null)
+
     useEffect(() => {
-        const fetchStories = async () => {
+        const fetchHomeData = async () => {
             try {
-                const res = await api.get('/success-stories')
-                setStories(res.data)
+                const [storiesRes, newsRes, eventsRes, timetablesRes] = await Promise.all([
+                    api.get('/success-stories'),
+                    api.get('/news'),
+                    api.get('/events'),
+                    api.get('/timetables')
+                ])
+
+                setStories(storiesRes.data)
+                setNews(newsRes.data || [])
+                setEvents(eventsRes.data || [])
+                setTimetables(timetablesRes.data || [])
             } catch (err) {
-                console.log("Error fetching stories", err)
+                console.error("Error fetching homepage system datasets:", err)
             }
         }
-        fetchStories()
+        fetchHomeData()
     }, [])
 
+    const generalNotices = news.filter(item => item.category === 'General Notice')
+    const examSheets = news.filter(item => item.category === 'Exam Date Sheet')
+    const pureNews = news.filter(item => item.category === 'News')
+
+    const combinedNewsEvents = [
+        ...pureNews.map(n => ({ ...n, dynamicType: 'news' })),
+        ...events.map(e => ({
+            ...e,
+            dynamicType: 'event',
+            title: e.eventTitle,
+            date: e.eventDate,
+            description: e.eventDescription
+        }))
+    ].sort((a, b) => new Date(b.date) - new Date(a.date))
+
+    const getActiveDataset = () => {
+        if (activeTab === 'general') return generalNotices
+        if (activeTab === 'newsevents') return combinedNewsEvents
+        if (activeTab === 'exams') return examSheets
+        if (activeTab === 'timetable') return timetables.map(t => ({ ...t, title: t.className }))
+        return []
+    }
+
+    useEffect(() => {
+        const currentData = getActiveDataset()
+        if (currentData.length > 0) {
+            setSelectedItem(currentData[0])
+        } else {
+            setSelectedItem(null)
+        }
+    }, [activeTab, news, events, timetables])
 
     const getStoryData = (type) => {
-
         const defaults = {
             regular: { count: '5K+', label: 'Regular Student' },
             graduate: { count: '10K+', label: 'Graduate Student' },
@@ -56,10 +108,10 @@ function Home() {
                     SATELLITE TOWN, GUJRANWALA
                 </address>
             </div>
+
             <div className="mt-5 px-5 mb-5">
                 <h2 className="text-center mb-5">Our Success Stories</h2>
                 <div className="d-flex gap-3">
-
                     <div className="bg-light-grey p-4 flex-fill">
                         <div className="d-flex justify-content-between align-items-start">
                             <h2 className="fw-bold">{getStoryData('regular').count}</h2>
@@ -93,94 +145,85 @@ function Home() {
             <section className="news-section" id='updates'>
                 <div className="container">
                     <h3 className="text-center mb-4">
-                        Stay Update With News & Events
+                        Stay Updated With News & Events
                     </h3>
 
                     <div className="news-tabs">
-                        <button
-                            className={activeTab === 'general' ? 'active' : ''}
-                            onClick={() => setActiveTab('general')}
-                            type="button"
-                        >
+                        <button className={activeTab === 'general' ? 'active' : ''} onClick={() => setActiveTab('general')} type="button">
                             <img src="/icons/info.png" alt="icon" width="25px" /> General Notice
                         </button>
-
-                        <button
-                            className={activeTab === 'newsevents' ? 'active' : ''}
-                            onClick={() => setActiveTab('newsevents')}
-                            type="button"
-                        >
+                        <button className={activeTab === 'newsevents' ? 'active' : ''} onClick={() => setActiveTab('newsevents')} type="button">
                             <img src="/icons/info.png" alt="icon" width="25px" /> News & Events
                         </button>
-
-                        <button
-                            className={activeTab === 'exams' ? 'active' : ''}
-                            onClick={() => setActiveTab('exams')}
-                            type="button"
-                        >
+                        <button className={activeTab === 'exams' ? 'active' : ''} onClick={() => setActiveTab('exams')} type="button">
                             <img src="/icons/calender.png" alt="icon" width="25px" /> Exams Date Sheet
                         </button>
-
-                        <button
-                            className={activeTab === 'timetable' ? 'active' : ''}
-                            onClick={() => setActiveTab('timetable')}
-                            type="button"
-                        >
+                        <button className={activeTab === 'timetable' ? 'active' : ''} onClick={() => setActiveTab('timetable')} type="button">
                             <img src="/icons/clock.png" alt="icon" width="25px" /> Time Table
                         </button>
                     </div>
-                    <div className={`row mt-4 tab-pane fade ${activeTab === 'general' ? 'show active' : ''}`} id="general">
-                        <div className="col-md-6">
-                            <div className="notice-box">
-                                <div className="date-box">
-                                    <div className='highlight'></div>
-                                    <span>20</span>
-                                    <small>March</small>
-                                </div>
-                                <p>Registration Deadline for Summer is 31 March</p>
-                            </div>
-                            <div className="notice-box">
-                                <div className="date-box">
-                                    <div className='highlight'></div>
-                                    <span>10</span>
-                                    <small>August</small>
-                                </div>
-                                <p>Registration Deadline for Summer is 10 August</p>
-                            </div>
-                            <div className="notice-box">
-                                <div className="date-box">
-                                    <div className='highlight'></div>
-                                    <span>03</span>
-                                    <small>December</small>
-                                </div>
-                                <p>Registration Deadline for Summer is 03 December</p>
-                            </div>
-                        </div>
-                        <div className="col-md-6">
-                            <div className="news-detail">
-                                <h6>10 August, 2026</h6>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                                </p>
-                                <p>
-                                    Regards <br />
-                                    Head of Department
-                                </p>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div className={`row mt-4 tab-pane fade ${activeTab === 'newsevents' ? 'show active' : ''}`} id="newsevents">
-                        {/* ... your newsevents content ... */}
-                    </div>
+                    <div className="row mt-4 tab-pane show active">
+                        {getActiveDataset().length === 0 ? (
+                            <div className="col-12 text-center py-5">
+                                <p className="text-white">No notices or data assets currently published under this category.</p>
+                            </div>
+                        ) : (
+                            <>
+                                <div className="col-md-6">
+                                    {getActiveDataset().map((item) => {
+                                        const { day, month } = formatDate(item.date || item.eventDate)
+                                        const isSelected = selectedItem?._id === item._id
+                                        return (
+                                            <div
+                                                key={item._id}
+                                                className={`notice-box ${isSelected ? 'active-border-style shadow-sm' : ''}`}
+                                                onClick={() => setSelectedItem(item)}
+                                                style={{ cursor: 'pointer', transition: 'all 0.2s ease' }}
+                                            >
+                                                <div className="date-box">
+                                                    <div className='highlight'></div>
+                                                    <span>{day}</span>
+                                                    <small>{month}</small>
+                                                </div>
+                                                <p>{item.title || item.eventTitle}</p>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
 
-                    <div className={`row mt-4 tab-pane fade ${activeTab === 'exams' ? 'show active' : ''}`} id="exams">
-                        {/* ... your exams content ... */}
-                    </div>
+                                <div className="col-md-6">
+                                    {selectedItem && (
+                                        <div className="news-detail">
+                                            <h6>{formatDate(selectedItem.date || selectedItem.eventDate).fullDate}</h6>
+                                            <h4 className="mt-2 mb-3">{selectedItem.title || selectedItem.eventTitle}</h4>
 
-                    <div className={`row mt-4 tab-pane fade ${activeTab === 'timetable' ? 'show active' : ''}`} id="timetable">
-                        {/* ... your timetable content ... */}
+                                            {(selectedItem.eventImage || selectedItem.timetableImage) && (
+                                                <img
+                                                    src={`/uploads/${selectedItem.eventImage || selectedItem.timetableImage}`}
+                                                    alt="Attached Image"
+                                                    className="img-fluid rounded mb-3 shadow-sm"
+                                                    style={{ maxHeight: '280px', width: '100%', objectFit: 'cover' }}
+                                                />
+                                            )}
+
+                                            {selectedItem.eventVenue && (
+                                                <p className="text-secondary mb-2"><strong>Venue location:</strong> {selectedItem.eventVenue}</p>
+                                            )}
+
+                                            <p className="lh-lg text-secondary">
+                                                {selectedItem.description || selectedItem.eventDescription}
+                                            </p>
+
+                                            <p className="mt-4 pt-2 border-top">
+                                                Regards <br />
+                                                <strong>{selectedItem.postedBy || selectedItem.organizer || "College Administration"}</strong>
+                                            </p>
+                                        </div>
+                                    )}
+                                </div>
+                            </>
+                        )}
                     </div>
                 </div>
             </section >
@@ -189,18 +232,13 @@ function Home() {
                 <div className="container">
                     <h3 className="mb-4">Search for a program</h3>
                     <div className="d-flex mb-4">
-                        <input
-                            type="text"
-                            placeholder="Search for a course"
-                            className="form-control rounded-0"
-                        />
+                        <input type="text" placeholder="Search for a course" className="form-control rounded-0" />
                         <button className="btn btn-outline-secondary rounded-0">Bachelor</button>
                         <button className="btn btn-outline-secondary rounded-0">Masters</button>
                         <button className="btn btn-outline-secondary rounded-0">Diploma</button>
                         <button className="btn btn-success rounded-0 px-5 text-nowrap">View All</button>
                     </div>
                     <div className="row mt-5">
-
                         <div className="col-md-4 mb-4">
                             <div className="card">
                                 <img src="/computerscience.png" className="card-img-top" alt="Computer Science" />
@@ -210,20 +248,13 @@ function Home() {
                                         Bachelors
                                     </div>
                                     <h6>
-                                        <a
-                                            href="https://pu.edu.pk/program/show/900098/Department-of-Information-Technology"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-decoration-none text-dark d-block"
-                                            style={{ pointerEvents: 'auto', cursor: 'pointer' }}
-                                        >
-                                            BS (Hons.) Information Technolog
+                                        <a href="https://pu.edu.pk/program/show/900098/Department-of-Information-Technology" target="_blank" rel="noopener noreferrer" className="text-decoration-none text-dark d-block">
+                                            BS (Hons.) Information Technology
                                         </a>
                                     </h6>
                                 </div>
                             </div>
                         </div>
-                        {/* Card 2 */}
                         <div className="col-md-4 mb-4">
                             <div className="card">
                                 <img src="/civileng.png" className="card-img-top" alt="Civil Engineering" />
@@ -233,21 +264,13 @@ function Home() {
                                         Masters
                                     </div>
                                     <h6>
-                                        <a
-                                            href="https://pu.edu.pk/program/show/5101/BS-Mathematics-Morning-and-Self-Supporting.html"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-decoration-none text-dark d-block"
-                                            style={{ pointerEvents: 'auto', cursor: 'pointer' }}
-                                        >
-
+                                        <a href="https://pu.edu.pk/program/show/5101/BS-Mathematics-Morning-and-Self-Supporting.html" target="_blank" rel="noopener noreferrer" className="text-decoration-none text-dark d-block">
                                             BS (Hons.) Mathematics
                                         </a>
                                     </h6>
                                 </div>
                             </div>
                         </div>
-
                         <div className="col-md-4 mb-4">
                             <div className="card">
                                 <img src="/computerscience.png" className="card-img-top" alt="Computer Science" />
@@ -257,83 +280,8 @@ function Home() {
                                         Bachelors
                                     </div>
                                     <h6>
-                                        <a
-                                            href="https://pu.edu.pk/program/show/900113/College-of-Statistical-Sciences"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-decoration-none text-dark d-block"
-                                            style={{ pointerEvents: 'auto', cursor: 'pointer' }}
-                                        >
+                                        <a href="https://pu.edu.pk/program/show/900113/College-of-Statistical-Sciences" target="_blank" rel="noopener noreferrer" className="text-decoration-none text-dark d-block">
                                             BS (Hons.) Statistics
-                                        </a>
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                        {/* Card 4 */}
-                        <div className="col-md-4 mb-4">
-                            <div className="card">
-                                <img src="/botny.png" className="card-img-top" alt="Botny" />
-                                <div className="card-body">
-                                    <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#fd7e14' }}>
-                                        <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#fd7e14' }}></span>
-                                        Bachelors
-                                    </div>
-                                    <h6>
-                                        <a
-                                            href="https://pu.edu.pk/program/show/4001/Institute-of-Botany"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-decoration-none text-dark d-block"
-                                            style={{ pointerEvents: 'auto', cursor: 'pointer' }}
-                                        >
-                                            BS (Hons.) Botany
-                                        </a>
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                        {/* Card 5 */}
-                        <div className="col-md-4 mb-4">
-                            <div className="card">
-                                <img src="/chemistry.png" className="card-img-top" alt="Chemistry" />
-                                <div className="card-body">
-                                    <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#6f42c1' }}>
-                                        <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#6f42c1' }}></span>
-                                        Masters
-                                    </div>
-                                    <h6>
-                                        <a
-                                            href="https://pu.edu.pk/program/show/4401/School-of-Chemistry"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-decoration-none text-dark d-block"
-                                            style={{ pointerEvents: 'auto', cursor: 'pointer' }}
-                                        >
-                                            BS (Hons.) Chemistry
-                                        </a>
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                        {/* Card 6 */}
-                        <div className="col-md-4 mb-4">
-                            <div className="card">
-                                <img src="/english.png" className="card-img-top" alt="English" />
-                                <div className="card-body">
-                                    <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#198754' }}>
-                                        <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#198754' }}></span>
-                                        Diploma
-                                    </div>
-                                    <h6>
-                                        <a
-                                            href="https://pu.edu.pk/program/show/900419/Institute-of-English-Studies"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-decoration-none text-dark d-block"
-                                            style={{ pointerEvents: 'auto', cursor: 'pointer' }}
-                                        >
-                                            BS (Hons.) English
                                         </a>
                                     </h6>
                                 </div>
@@ -352,9 +300,7 @@ function Home() {
                             Research, Innovation & Commercialization (ORIC). Established in March
                             2010, ORIC is entrusted with the management of all financed
                             research-related activities conducted by academic and research units
-                            within the institution. By adhering to the directives of the Higher
-                            Education Commission (HEC) and ORIC, our academic staff contributes
-                            to the advancement of research and innovation.
+                            within the institution.
                         </p>
                         <div className="info-circle">i</div>
                     </div>
