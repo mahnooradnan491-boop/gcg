@@ -7,10 +7,12 @@ import About from './views/about'
 import Faculty from './views/faculty'
 import Gallery from './views/gallery'
 import Programs from './views/programs'
+import Exams from './views/exams'
 import Login from './views/login'
 import Register from './views/register'
 import Admission from './views/admission'
 import Achievements from './views/achievements'
+import BatchChart from './views/BatchChart'
 import ContactManagement from './views/admin/contactmanagement'
 import ContactShow from './views/admin/contactshow'
 import NewsManagement from './views/admin/newsmanagement'
@@ -51,6 +53,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/faculty" element={<Faculty />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/programs" element={<Programs />} />
+        <Route path="/exams" element={<Exams />} />
         <Route
           path="/admission"
           element={
@@ -61,9 +64,12 @@ createRoot(document.getElementById('root')).render(
         />
 
         <Route path="/achievements" element={<Achievements />} />
+        <Route path="/achievements/chart/:batchId" element={<BatchChart />} />
+        
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/admin" element={<LoginAdmin />} />
+        
         <Route
           path="/admin/*"
           element={

@@ -1,10 +1,13 @@
 import Chatbox from '../components/chatbox'
 import Header from '../components/header'
 import Footer from '../components/footer'
-import React from 'react'
+import React, { useState, useEffect } from 'react' 
+import { Link } from 'react-router-dom'
+import axios from 'axios' 
 import './achievements.css'
 
 function Achievements() {
+  
   const passRatios = [
     { year: "2026", title: "Pass Ratio of BSIT Fall Batch 2026" },
     { year: "2025", title: "Pass Ratio of BSIT Fall Batch 2025" },
@@ -12,13 +15,34 @@ function Achievements() {
     { year: "2023", title: "Pass Ratio of BSIT Fall Batch 2023" },
   ];
 
-  const publications = [
-    { title: "Retirement program teaching and no teaching staff", date: "10 August, 2026" },
-    { title: "Plant For Pakistan 2025", date: "10 August, 2026" },
-  ];
+  
+  const [publications, setPublications] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+ 
+  useEffect(() => {
+    const fetchAchievements = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/api/achievements', { withCredentials: true });
+      
+        setPublications(response.data); 
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching achievements:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchAchievements();
+  }, []);
+
+  
+  const formatDate = (dateString) => {
+    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+    return new Date(dateString).toLocaleDateString('en-GB', options);
+  };
 
   return (
-
     <>
       <Chatbox />
       <Header />
@@ -34,6 +58,8 @@ function Achievements() {
           <div className="recent-banner">
             <h2>Achievement that speaks</h2>
           </div>
+          
+         
           <div className="mt-5">
             <p className="text-muted small mb-1 ls-wide">YEARLY</p>
             <h2 className="fw-bold mb-4">PASS RATIO</h2>
@@ -41,25 +67,42 @@ function Achievements() {
               {passRatios.map((item, index) => (
                 <div key={index} className="d-flex justify-content-between align-items-center bg-light p-3 mb-2 rounded shadow-sm">
                   <span className="fw-medium">{item.title}</span>
-                  <a href="#" className="text-dark small text-decoration-none fw-bold">View</a>
+                  <Link to={`/achievements/chart/${item.year}`} className="btn btn-sm btn-success px-3 fw-bold">
+                    View
+                  </Link>
                 </div>
               ))}
             </div>
           </div>
+
+         
           <div className="mt-5 text-start mx-auto" style={{ maxWidth: '900px' }}>
-            <h2 className="fw-bold mb-4">Paper Publications</h2>
+            <h2 className="fw-bold mb-4">Paper Publications & Achievements</h2>
             <div className="pub-list">
-              {publications.map((pub, index) => (
-                <div key={index} className="d-flex justify-content-between align-items-center bg-light p-4 mb-2 rounded shadow-sm">
-                  <span className="fw-medium text-dark">{pub.title}</span>
-                  <div className="text-muted small">
-                    <i className="bi bi-calendar3 me-2"></i>
-                    <span style={{ fontSize: '12px' }}><img src="/icons/clndr.png" alt="clndr-icon" width="12px" /> {pub.date}</span>
+              {loading ? (
+                <div className="text-center my-4 text-muted">Loading achievements...</div>
+              ) : publications.length === 0 ? (
+                <div className="text-center my-4 text-muted">No achievements found.</div>
+              ) : (
+                publications.map((pub, index) => (
+                  <div key={pub._id || index} className="d-flex justify-content-between align-items-center bg-light p-4 mb-2 rounded shadow-sm">
+                    <div>
+                      <span className="fw-medium text-dark d-block mb-1">{pub.title}</span>
+                      {pub.description && <small className="text-muted d-block">{pub.description}</small>}
+                      {pub.category && <span className="badge bg-success mt-2" style={{ fontSize: '10px' }}>{pub.category}</span>}
+                    </div>
+                    <div className="text-muted small text-end flex-shrink-0">
+                      <div style={{ fontSize: '12px' }}>
+                        <img src="/icons/clndr.png" alt="clndr-icon" width="12px" className="me-1" /> 
+                        {formatDate(pub.date)}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))
+              )}
             </div>
           </div>
+
         </div>
       </div>
       <Footer />
@@ -67,4 +110,4 @@ function Achievements() {
   )
 }
 
-export default Achievements;
+export default Achievements

@@ -1,0 +1,23 @@
+.ls-wide {
+    letter-spacing: 2px;
+}
+
+.ratio-list .bg-light,
+.pub-list .bg-light {
+    background-color: #f1f1f1 !important;
+    transition: transform 0.2s;
+    border: none;
+}
+
+.ratio-list .bg-light:hover,
+.pub-list .bg-light:hover {
+    transform: translateX(5px);
+    background-color: #e9e9e9 !important;
+}
+
+.achievements-hero-flex {
+    background-color: #f1f1f1 !important;
+    display: flex;
+    height: 300px;
+    align-items: center;
+}

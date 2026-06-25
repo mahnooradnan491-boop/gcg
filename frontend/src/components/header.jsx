@@ -39,8 +39,14 @@ function Header() {
                             <li>
                                 <Link to="/about" className="nav-link">About</Link>
                             </li>
-                            <li>
+                           
+
+                             <li>
                                 <Link to="/contact" className="nav-link">Contact</Link>
+                            </li>
+
+                             <li>
+                                <Link to="/Exams" className="nav-link">Exams</Link>
                             </li>
                         </ul>
                         <Link to="/register" className="btn btn-success rounded-0 py-3 px-5">Enroll Now <span className="ps-2"><img src="/icons/arrowup.png" alt="arrow-icon" width="12px" /></span></Link>
