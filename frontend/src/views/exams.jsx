@@ -65,7 +65,7 @@ function Exams() {
                   <a href="http://pu.edu.pk/home/datesheets/" target="_blank" rel="noreferrer" className="text-decoration-none">
                     <div className="link-card d-flex align-items-center p-3 bg-white shadow-sm rounded-3 border-start border-success border-4 h-100 transition-all">
                       <div className="icon-box bg-success bg-opacity-10 text-success p-3 rounded-circle me-3">
-                        📅
+                        <img src="/icons/calender.png" alt="icon" width="25px" /> 
                       </div>
                       <div>
                         <h5 className="fw-bold text-dark mb-1">Date Sheets</h5>
@@ -130,4 +130,4 @@ function Exams() {
   )
 }
 
-export default Exams;
+export default Exams
