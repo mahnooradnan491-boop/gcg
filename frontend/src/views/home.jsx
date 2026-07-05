@@ -24,6 +24,25 @@ function Home() {
     const [timetables, setTimetables] = useState([])
     const [selectedItem, setSelectedItem] = useState(null)
 
+
+    
+const [searchTerm, setSearchTerm] = useState('')
+const [selectedCategory, setSelectedCategory] = useState('All')
+
+
+const programsData = [
+    { id: 1, title: 'BS Information Technology', category: 'Bachelors', link: 'https://pu.edu.pk/program/show/900098/Department-of-Information-Technology', img: '/computerscience.png', color: '#fd7e14' },
+    { id: 2, title: 'BS Mathematics', category: 'Masters', link: 'https://pu.edu.pk/program/show/5101/BS-Mathematics-Morning-and-Self-Supporting.html', img: '/civileng.png', color: '#6f42c1' },
+    { id: 3, title: 'BS Statistics', category: 'Bachelors', link: 'https://pu.edu.pk/program/show/900113/College-of-Statistical-Sciences', img: '/computerscience.png', color: '#fd7e14' }
+]
+
+
+const filteredPrograms = programsData.filter(program => {
+    const matchesSearch = program.title.toLowerCase().includes(searchTerm.toLowerCase())
+    const matchesCategory = selectedCategory === 'All' || program.category === selectedCategory
+    return matchesSearch && matchesCategory
+})
+
     useEffect(() => {
         const fetchHomeData = async () => {
             try {
@@ -229,67 +248,73 @@ function Home() {
             </section >
 
             <section className="py-5 bg-light">
-                <div className="container">
-                    <h3 className="mb-4">Search for a program</h3>
-                    <div className="d-flex mb-4">
-                        <input type="text" placeholder="Search for a course" className="form-control rounded-0" />
-                        <button className="btn btn-outline-secondary rounded-0">Bachelor</button>
-                        <button className="btn btn-outline-secondary rounded-0">Masters</button>
-                        <button className="btn btn-outline-secondary rounded-0">Diploma</button>
-                        <button className="btn btn-success rounded-0 px-5 text-nowrap">View All</button>
-                    </div>
-                    <div className="row mt-5">
-                        <div className="col-md-4 mb-4">
-                            <div className="card">
-                                <img src="/computerscience.png" className="card-img-top" alt="Computer Science" />
-                                <div className="card-body">
-                                    <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#fd7e14' }}>
-                                        <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#fd7e14' }}></span>
-                                        Bachelors
-                                    </div>
-                                    <h6>
-                                        <a href="https://pu.edu.pk/program/show/900098/Department-of-Information-Technology" target="_blank" rel="noopener noreferrer" className="text-decoration-none text-dark d-block">
-                                            BS (Hons.) Information Technology
-                                        </a>
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-4 mb-4">
-                            <div className="card">
-                                <img src="/civileng.png" className="card-img-top" alt="Civil Engineering" />
-                                <div className="card-body">
-                                    <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#6f42c1' }}>
-                                        <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#6f42c1' }}></span>
-                                        Masters
-                                    </div>
-                                    <h6>
-                                        <a href="https://pu.edu.pk/program/show/5101/BS-Mathematics-Morning-and-Self-Supporting.html" target="_blank" rel="noopener noreferrer" className="text-decoration-none text-dark d-block">
-                                            BS (Hons.) Mathematics
-                                        </a>
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-4 mb-4">
-                            <div className="card">
-                                <img src="/computerscience.png" className="card-img-top" alt="Computer Science" />
-                                <div className="card-body">
-                                    <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: '#fd7e14' }}>
-                                        <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: '#fd7e14' }}></span>
-                                        Bachelors
-                                    </div>
-                                    <h6>
-                                        <a href="https://pu.edu.pk/program/show/900113/College-of-Statistical-Sciences" target="_blank" rel="noopener noreferrer" className="text-decoration-none text-dark d-block">
-                                            BS (Hons.) Statistics
-                                        </a>
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <div className="container">
+        <h3 className="mb-4">Search for a program</h3>
+        
+        {/* Search Input aur Category Buttons */}
+        <div className="d-flex mb-4">
+            <input 
+                type="text" 
+                placeholder="Search for a course..." 
+                className="form-control rounded-0" 
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <button 
+                className={`btn rounded-0 ${selectedCategory === 'Bachelors' ? 'btn-secondary' : 'btn-outline-secondary'}`}
+                onClick={() => setSelectedCategory('Bachelors')}
+            >
+                Bachelor
+            </button>
+            <button 
+                className={`btn rounded-0 ${selectedCategory === 'Masters' ? 'btn-secondary' : 'btn-outline-secondary'}`}
+                onClick={() => setSelectedCategory('Masters')}
+            >
+                Masters
+            </button>
+            <button 
+                className={`btn rounded-0 ${selectedCategory === 'Diploma' ? 'btn-secondary' : 'btn-outline-secondary'}`}
+                onClick={() => setSelectedCategory('Diploma')}
+            >
+                Diploma
+            </button>
+            <button 
+                className="btn btn-success rounded-0 px-5 text-nowrap"
+                onClick={() => { setSearchTerm(''); setSelectedCategory('All'); }}
+            >
+                View All
+            </button>
+        </div>
+
+    
+        <div className="row mt-5">
+            {filteredPrograms.length === 0 ? (
+                <div className="col-12 text-center py-4">
+                    <p className="text-muted">No programs found matching your criteria.</p>
                 </div>
-            </section>
+            ) : (
+                filteredPrograms.map((program) => (
+                    <div className="col-md-4 mb-4" key={program.id}>
+                        <div className="card h-100">
+                            <img src={program.img} className="card-img-top" alt={program.title} />
+                            <div className="card-body">
+                                <div className="d-flex align-items-center mb-1 text-uppercase fw-bold" style={{ fontSize: '10px', color: program.color }}>
+                                    <span className="rounded-circle me-1" style={{ width: '6px', height: '6px', backgroundColor: program.color }}></span>
+                                    {program.category}
+                                </div>
+                                <h6>
+                                    <a href={program.link} target="_blank" rel="noopener noreferrer" className="text-decoration-none text-dark d-block">
+                                        {program.title}
+                                    </a>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            )}
+        </div>
+    </div>
+</section>
 
             <section className="research-section">
                 <h2 className="research-title">Research & Publications</h2>

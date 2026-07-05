@@ -4,9 +4,9 @@
 
 .hero-flex {
     display: flex;
-    height: 400px;
+    height: 500px;
     align-items: center;
-    background-image: url("../assets/gallerybg.png");
+    background-image: url("../assets/bk.png");
     background-size: cover;
     background-position: center;
 }
