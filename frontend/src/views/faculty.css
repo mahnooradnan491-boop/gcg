@@ -21,6 +21,7 @@ h1.faculty-main-title {
 .faculty-accordion-container {
     max-width: 1140px;
     margin: 0 auto;
+    padding: 0 15px;
 }
 
 .faculty-bar {
@@ -70,14 +71,15 @@ h1.faculty-main-title {
 
 .faculty-img-container {
     position: relative;
-    display: inline-block;
+    display: block;
     width: 100%;
     margin-bottom: 12px;
 }
 
 .faculty-img-style {
     width: 100%;          
-    height: 290px;        
+    height: auto;          
+    aspect-ratio: 4 / 5;   
     object-fit: cover;    
     border-radius: 2px;
     z-index: 2;
@@ -103,6 +105,7 @@ h1.faculty-main-title {
     margin-top: 6px;
     width: 100%;
     padding-left: 2px;
+    word-wrap: break-word;
 }
 
 .faculty-member-name {
@@ -126,18 +129,36 @@ h1.faculty-main-title {
     to { opacity: 1; transform: translateY(0); }
 }
 
+@media (max-width: 1200px) {
+    h1.faculty-main-title {
+        font-size: 44px !important;
+    }
+}
+
 @media (max-width: 992px) {
     .faculty-grid-display-container {
         grid-template-columns: repeat(2, 1fr); 
+    }
+    .faculty-bar {
+        font-size: 20px;
     }
 }
 
 @media (max-width: 576px) {
     .faculty-grid-display-container {
         grid-template-columns: repeat(1, 1fr); 
+        gap: 20px;
     }
     .faculty-individual-card {
         align-items: center;
         text-align: center;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+    .faculty-img-style {
+        aspect-ratio: 1 / 1;
+    }
+    h1.faculty-main-title {
+        font-size: 32px !important;
     }
 }
