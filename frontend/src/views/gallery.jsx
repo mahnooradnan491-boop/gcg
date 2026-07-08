@@ -148,11 +148,54 @@ function Gallery() {
                           <h5 className="fw-bold text-success mb-2">{events[0].eventTitle}</h5>
                           <p className="text-muted small mb-0">{events[0].eventVenue || "Government Graduate College, Gujranwala"}</p>
                         </div>
+
+                        
                       </div>
                     </div>
                   </div>
                 </div>
               )}
+
+
+              <div className="container my-5 pb-5">
+                <div className="row justify-content-center">
+                  <div className="col-md-10 col-lg-8 text-center">
+                    <p className="label text-uppercase text-success fw-bold" style={{ letterSpacing: '2px', fontSize: '14px' }}>Collage Life Video</p>
+                    <h2 className="fw-bold text-dark mb-4" style={{ fontSize: '38px' }}>Watch Our Collage Highlights</h2>
+                    
+                    <div className="shadow rounded-4 overflow-hidden bg-dark position-relative" style={{ aspectRatio: '16/9' }}>
+                      <video 
+                        controls 
+                        className="w-100 h-100"
+                        style={{ objectFit: 'cover' }}
+                      >
+                        <source src="/public/clg.mp4" type="video/mp4" />
+                      </video>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              
+              <div className="container my-5 pb-5">
+                <div className="row justify-content-center">
+                  <div className="col-md-10 col-lg-8 text-center">
+                    <p className="label text-uppercase text-success fw-bold" style={{ letterSpacing: '2px', fontSize: '14px' }}>Collage Life Video</p>
+                    <h2 className="fw-bold text-dark mb-4" style={{ fontSize: '38px' }}>Watch Our Culture Festival</h2>
+                    
+                    <div className="shadow rounded-4 overflow-hidden bg-dark position-relative" style={{ aspectRatio: '16/9' }}>
+                      <video 
+                        controls 
+                        className="w-100 h-100"
+                        style={{ objectFit: 'cover' }}
+                      >
+                        <source src="/public/cultr.mp4" type="video/mp4" />
+                        Aapka browser video tag support nahi karta.
+                      </video>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </>
           )}
 
