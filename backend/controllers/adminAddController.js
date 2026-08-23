@@ -17,7 +17,7 @@ export const addNews = async (req, res) => {
 
 export const addEvent = async (req, res) => {
     const { eventTitle, eventDescription, eventDate, eventVenue, organizer } = req.body
-    const eventImage = req.file?.eventImage?.path
+    const eventImage = req.file?.path ? req.file.path.replace(/^uploads[/\\]/, '') : null;
     try {
         const event = new Event({ eventTitle, eventDescription, eventDate, eventVenue, eventImage, organizer })
         await event.save()

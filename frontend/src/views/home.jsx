@@ -103,28 +103,28 @@ function Home() {
         <>
             <Chatbox />
             <Header />
-            <motion.div 
-                initial="hidden" 
-                animate="visible" 
-                variants={{ 
-                    hidden: { opacity: 0 }, 
-                    visible: { opacity: 1, transition: { staggerChildren: 0.3 } } 
+            <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={{
+                    hidden: { opacity: 0 },
+                    visible: { opacity: 1, transition: { staggerChildren: 0.3 } }
                 }}
                 className="hero p-5"
             >
-                <motion.p 
+                <motion.p
                     variants={{ hidden: { opacity: 0, x: -30 }, visible: { opacity: 1, x: 0 } }}
                     className="text-success"
                 >
                     The quality education is our priority
                 </motion.p>
-                <motion.h1 
+                <motion.h1
                     variants={{ hidden: { opacity: 0, x: -30 }, visible: { opacity: 1, x: 0 } }}
                     className="mb-5"
                 >
                     Government<br />Graduate College<br />Gujranwala.
                 </motion.h1>
-                <motion.div 
+                <motion.div
                     variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
                     className="mb-5"
                 >
@@ -145,26 +145,26 @@ function Home() {
                 </motion.address>
             </motion.div>
 
-            <motion.div 
-                initial="hidden" 
-                whileInView="visible" 
+            <motion.div
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: false, amount: 0.3 }}
                 className="mt-5 px-5 mb-5"
             >
-                <motion.h2 
+                <motion.h2
                     variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 1, y: 0 } }}
                     className="text-center mb-5"
                 >
                     Our Success Stories
                 </motion.h2>
-                <motion.div 
-                    variants={{ 
-                        hidden: { opacity: 0 }, 
-                        visible: { opacity: 1, transition: { staggerChildren: 0.2 } } 
+                <motion.div
+                    variants={{
+                        hidden: { opacity: 0 },
+                        visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
                     }}
                     className="d-flex gap-3"
                 >
-                    <motion.div 
+                    <motion.div
                         variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
                         className="bg-light-grey p-4 flex-fill"
                     >
@@ -174,7 +174,7 @@ function Home() {
                         </div>
                         <p className="mt-4 mb-0">{getStoryData('regular').label}</p>
                     </motion.div>
-                    <motion.div 
+                    <motion.div
                         variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
                         className="p-4 flex-fill box-orange"
                     >
@@ -186,7 +186,7 @@ function Home() {
                             {getStoryData('graduate').label} <img src="/icons/arrowup.png" alt="arrow-icon" width="10px" />
                         </Link>
                     </motion.div>
-                    <motion.div 
+                    <motion.div
                         variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
                         className="p-4 flex-fill box-green"
                     >
@@ -201,12 +201,12 @@ function Home() {
                 </motion.div>
             </motion.div>
 
-            <motion.section 
+            <motion.section
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.6 }}
-                className="news-section" 
+                className="news-section"
                 id='updates'
             >
                 <div className="container">
@@ -225,7 +225,7 @@ function Home() {
                             <img src="/icons/clock.png" alt="icon" width="25px" /> Time Table
                         </button>
                     </div>
-                    <motion.div 
+                    <motion.div
                         key={activeTab}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -266,7 +266,7 @@ function Home() {
                                             <h4 className="mt-2 mb-3">{selectedItem.title || selectedItem.eventTitle}</h4>
                                             {(selectedItem.eventImage || selectedItem.timetableImage) && (
                                                 <img
-                                                    src={`/uploads/${selectedItem.eventImage || selectedItem.timetableImage}`}
+                                                    src={`http://localhost:3000/${selectedItem.eventImage || selectedItem.timetableImage}`}
                                                     alt="Attached Image"
                                                     className="img-fluid rounded mb-3 shadow-sm"
                                                     style={{ maxHeight: '280px', width: '100%', objectFit: 'cover' }}
@@ -293,10 +293,10 @@ function Home() {
                 <div className="container">
                     <h3 className="mb-4">Search for a program</h3>
                     <div className="d-flex mb-4">
-                        <input 
-                            type="text" 
-                            placeholder="Search for a course..." 
-                            className="form-control rounded-0" 
+                        <input
+                            type="text"
+                            placeholder="Search for a course..."
+                            className="form-control rounded-0"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                         />
@@ -312,7 +312,7 @@ function Home() {
                             </div>
                         ) : (
                             filteredPrograms.map((program) => (
-                                <motion.div 
+                                <motion.div
                                     key={program.id}
                                     className="col-md-4 mb-4"
                                     initial={{ opacity: 0, y: 50 }}
@@ -345,7 +345,7 @@ function Home() {
             <section className="research-section">
                 <h2 className="research-title">Research & Publications</h2>
                 <div className="research-container">
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: false, amount: 0.3 }}
