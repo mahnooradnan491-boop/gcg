@@ -41,7 +41,7 @@ export const addTimetable = async (req, res) => {
 
 export const addFaculty = async (req, res) => {
     const { fullName, department, designation } = req.body
-    const image = req.file?.image?.path
+       const eventImage = req.file?.path ? req.file.path.replace(/^uploads[/\\]/, '') : null;
     try {
         const faculty = new Faculty({ fullName, department, designation, image })
         await faculty.save()
@@ -53,7 +53,7 @@ export const addFaculty = async (req, res) => {
 
 export const addAchievement = async (req, res) => {
     const { title, description, date, category } = req.body
-    const image = req.file?.image?.path
+       const image = req.file?.path ? req.file.path.replace(/^uploads[/\\]/, '') : null;
     try {
         const achievement = await new Achievement({ title, description, image, date, category })
         await achievement.save()

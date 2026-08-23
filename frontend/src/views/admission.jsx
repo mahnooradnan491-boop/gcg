@@ -116,8 +116,10 @@ function Admission() {
         setStep(3)
       }
     } catch (err) {
-      alert("Submission failed!")
-    }
+    console.log("ADMISSION ERROR:", err)
+    console.log("RESPONSE:", err.response?.data)
+    alert(err.response?.data?.message || err.message)
+}
   }
   return (
     <div className="admission-page container-fluid d-flex align-items-center justify-content-center" style={{ backgroundColor: '#c8e2d4', minHeight: '100vh' }}>
