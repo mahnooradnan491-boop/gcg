@@ -87,7 +87,14 @@ const admissionSchema = mongoose.Schema({
         enum: ['Morning', 'Evening'],
         default: 'Morning',
         required: true
-    }
+    },
+
+
+    status: {
+    type: String,
+    enum: ['pending', 'approved', 'declined'],
+    default: 'pending'
+}
 })
 
 const Admission = mongoose.model('Admission', admissionSchema)

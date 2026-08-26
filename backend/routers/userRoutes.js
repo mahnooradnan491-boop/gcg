@@ -21,4 +21,6 @@ router.put('/admission', verifyToken, upload.fields([
 router.post('/contact', addContact)
 router.post('/sendemail', verifyToken, sendEmail)
 
+
+
 export default router

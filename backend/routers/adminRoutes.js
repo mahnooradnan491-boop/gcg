@@ -6,11 +6,13 @@ import { updateNews, updateEvent, updateTimetable, updateFaculty, updateAchievem
 import { sendEmail } from '../controllers/sendEmail.js'
 import { verifyToken } from '../middlewares/adminAuthMiddleware.js'
 import upload from '../middlewares/fileupload.js'
+import { updateAdmissionStatus } from '../controllers/userController.js'
 
 const router = express.Router()
 
 router.get('/admissions', getAdmissionData)
 router.get('/admission/:id', getAdmissionDataById)
+router.put('/admission/:id/status', verifyToken, updateAdmissionStatus)
 router.get('/contacts', getContactData)
 router.get('/contact/:id', getContactDataById)
 router.get('/news', getNewsData)
