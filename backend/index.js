@@ -42,6 +42,8 @@ server.use('/api', adminRoutes)
 server.use('/api', userRoutes)
 server.use('/api', successStoryRoutes)
 
+
+
 server.listen(port, () => {
     console.log(`Server is running at ${port}`)
 })

@@ -65,7 +65,6 @@ createRoot(document.getElementById('root')).render(
 
         <Route path="/achievements" element={<Achievements />} />
         <Route path="/achievements/chart/:batchId" element={<BatchChart />} />
-        
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/admin" element={<LoginAdmin />} />
@@ -106,6 +105,7 @@ createRoot(document.getElementById('root')).render(
                         <Route path="/achievement/add" element={<AchievementAdd />} />
                         <Route path="/achievement/:id" element={<AchievementShow />} />
                         <Route path="/Success Stories" element={<ManageSuccessStories />} />
+                        
                       </Routes>
 
                     </div>
