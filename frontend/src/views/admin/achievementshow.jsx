@@ -65,7 +65,7 @@ function AchievementShow() {
             </div>
             <form onSubmit={handleAddAchievement}>
                 <div className="row g-3">
-                    {/* Title Field */}
+               
                     <div className="col-4 mb-2">
                         <label className="small fw-bold text-muted mb-1">Title</label>
                         <input type="text" name="title" className="form-control bg-light py-2 border-secondary-subtle" placeholder="Enter achievement title" value={achievementData.title} onChange={handleChange} required />
@@ -75,7 +75,7 @@ function AchievementShow() {
                         <input type="date" name="date" className="form-control bg-light py-2 border-secondary-subtle" value={achievementData.date.split('T')[0]} onChange={handleChange} required />
                     </div>
 
-                    {/* Category Dropdown */}
+                  
                     <div className="col-4 mb-2">
                         <label className="small fw-bold text-muted mb-1">Category</label>
                         <select name="category" className="form-select bg-light py-2 border-secondary-subtle" onChange={handleChange} value={achievementData.category}>
@@ -86,13 +86,10 @@ function AchievementShow() {
                         </select>
                     </div>
 
-                    {/* Description Field */}
                     <div className="col-12 mb-2">
                         <label className="small fw-bold text-muted mb-1">Description</label>
                         <textarea name="description" rows="2" className="form-control bg-light py-2 border-secondary-subtle" placeholder="Enter achievement description" value={achievementData.description} onChange={handleChange} required></textarea>
                     </div>
-
-                    {/* Image Field with Preview Box */}
                     <div className="col-12 mb-2">
                         <label className="small fw-bold text-muted mb-1">Image</label>
                         <div className="d-flex gap-2">

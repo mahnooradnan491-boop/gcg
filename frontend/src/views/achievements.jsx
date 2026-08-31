@@ -86,11 +86,37 @@ function Achievements() {
               ) : (
                 publications.map((pub, index) => (
                   <div key={pub._id || index} className="d-flex justify-content-between align-items-center bg-light p-4 mb-2 rounded shadow-sm">
-                    <div>
-                      <span className="fw-medium text-dark d-block mb-1">{pub.title}</span>
-                      {pub.description && <small className="text-muted d-block">{pub.description}</small>}
-                      {pub.category && <span className="badge bg-success mt-2" style={{ fontSize: '10px' }}>{pub.category}</span>}
-                    </div>
+                   <div>
+  {pub.image && (
+    <img
+      src={`http://localhost:3000/uploads/${pub.image}`}
+      alt={pub.title}
+      style={{
+        width: '100px',
+        height: '70px',
+        objectFit: 'cover',
+        borderRadius: '8px',
+        marginBottom: '10px'
+      }}
+    />
+  )}
+
+  <span className="fw-medium text-dark d-block mb-1">
+    {pub.title}
+  </span>
+
+  {pub.description && (
+    <small className="text-muted d-block">
+      {pub.description}
+    </small>
+  )}
+
+  {pub.category && (
+    <span className="badge bg-success mt-2">
+      {pub.category}
+    </span>
+  )}
+</div>
                     <div className="text-muted small text-end flex-shrink-0">
                       <div style={{ fontSize: '12px' }}>
                         <img src="/icons/clndr.png" alt="clndr-icon" width="12px" className="me-1" /> 
