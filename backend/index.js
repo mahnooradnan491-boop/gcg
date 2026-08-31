@@ -30,7 +30,9 @@ const corsOptions = {
     credentials: true
 }
 
-server.use(helmet())
+server.use(helmet({
+    crossOriginResourcePolicy: { policy: "cross-origin" }
+}))
 server.use(cors(corsOptions))
 server.use(express.json())
 server.use(cookieParser())
