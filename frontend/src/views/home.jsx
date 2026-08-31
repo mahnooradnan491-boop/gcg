@@ -264,9 +264,9 @@ function Home() {
                                         <div className="news-detail">
                                             <h6>{formatDate(selectedItem.date || selectedItem.eventDate).fullDate}</h6>
                                             <h4 className="mt-2 mb-3">{selectedItem.title || selectedItem.eventTitle}</h4>
-                                            {(selectedItem.eventImage || selectedItem.timetableImage) && (
+                                            {selectedItem && (selectedItem.eventImage || selectedItem.timetableImage) && (
                                                 <img
-                                                    src={`http://localhost:3000/${selectedItem.eventImage || selectedItem.timetableImage}`}
+                                                    src={`http://localhost:3000/uploads/${selectedItem.eventImage || selectedItem.timetableImage}`}
                                                     alt="Attached Image"
                                                     className="img-fluid rounded mb-3 shadow-sm"
                                                     style={{ maxHeight: '280px', width: '100%', objectFit: 'cover' }}
