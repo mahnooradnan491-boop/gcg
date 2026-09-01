@@ -17,7 +17,7 @@ export const addNews = async (req, res) => {
 
 export const addEvent = async (req, res) => {
     const { eventTitle, eventDescription, eventDate, eventVenue, organizer } = req.body
-    const eventImage = req.file?.path ? req.file.path.replace(/^uploads[/\\]/, '') : null;
+    const eventImage = req.file?.filename || null;
     try {
         const event = new Event({ eventTitle, eventDescription, eventDate, eventVenue, eventImage, organizer })
         await event.save()
@@ -29,7 +29,7 @@ export const addEvent = async (req, res) => {
 
 export const addTimetable = async (req, res) => {
     const { className, date } = req.body
-    const timetableImage = req.file?.timetableImage?.path
+const timetableImage = req.file?.filename || null;
     try {
         const timetable = new Timetable({ className, date, timetableImage })
         await timetable.save()
@@ -41,7 +41,8 @@ export const addTimetable = async (req, res) => {
 
 export const addFaculty = async (req, res) => {
     const { fullName, department, designation } = req.body
-       const eventImage = req.file?.path ? req.file.path.replace(/^uploads[/\\]/, '') : null;
+  
+      const image = req.file?.filename || null
     try {
         const faculty = new Faculty({ fullName, department, designation, image })
         await faculty.save()
@@ -53,7 +54,7 @@ export const addFaculty = async (req, res) => {
 
 export const addAchievement = async (req, res) => {
     const { title, description, date, category } = req.body
-       const image = req.file?.path ? req.file.path.replace(/^uploads[/\\]/, '') : null;
+       const image = req.file?.filename || null;
     try {
         const achievement = await new Achievement({ title, description, image, date, category })
         await achievement.save()

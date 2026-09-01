@@ -48,7 +48,7 @@ function AchievementAdd() {
             </div>
             <form onSubmit={handleCreateAchievement}>
                 <div className="row g-3">
-                    {/* Title Field */}
+                    
                     <div className="col-4 mb-2">
                         <label className="small fw-bold text-muted mb-1">Title</label>
                         <input type="text" name="title" className="form-control bg-light py-2 border-secondary-subtle" placeholder="Enter achievement title" onChange={handleChange} required />
@@ -58,7 +58,7 @@ function AchievementAdd() {
                         <input type="date" name="date" className="form-control bg-light py-2 border-secondary-subtle" onChange={handleChange} required />
                     </div>
 
-                    {/* Category Dropdown */}
+                    
                     <div className="col-4 mb-2">
                         <label className="small fw-bold text-muted mb-1">Category</label>
                         <select name="category" className="form-select bg-light py-2 border-secondary-subtle" onChange={handleChange} value={achievementData.category}>
@@ -69,13 +69,13 @@ function AchievementAdd() {
                         </select>
                     </div>
 
-                    {/* Description Field */}
+                   
                     <div className="col-12 mb-2">
                         <label className="small fw-bold text-muted mb-1">Description</label>
                         <textarea name="description" rows="2" className="form-control bg-light py-2 border-secondary-subtle" placeholder="Enter achievement description" onChange={handleChange} required></textarea>
                     </div>
 
-                    {/* Image Field with Preview Box */}
+                    
                     <div className="col-12 mb-2">
                         <label className="small fw-bold text-muted mb-1">Image</label>
                         <div className="d-flex gap-2">
@@ -83,7 +83,7 @@ function AchievementAdd() {
                         </div>
                     </div>
 
-                    {/* Create Button */}
+                   
                     <div className="col-12 mt-4 text-end">
                         <button type="submit" className="btn btn-success px-4 py-2 fw-normal rounded-2 border-0 shadow-sm" style={{ backgroundColor: '#419a51' }}>
                             Create Achievement
