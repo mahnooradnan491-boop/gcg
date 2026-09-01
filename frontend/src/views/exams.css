@@ -21,3 +21,17 @@
     height: 300px;
     align-items: center;
 }
+
+.link-card {
+    transition: all 0.3s ease;
+}
+
+.link-card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08) !important;
+}
+
+.exam-paragraph {
+    text-align: justify;
+    line-height: 1.7;
+    font-size: 15px;
+}
