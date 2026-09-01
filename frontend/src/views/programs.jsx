@@ -1,15 +1,14 @@
-import { useState } from 'react' // 1. Sirf useState import kiya
+import { useState } from 'react'
+import { motion } from 'framer-motion'
 import Chatbox from '../components/chatbox'
 import Header from '../components/header'
 import Footer from '../components/footer'
 
 function Program() {
-  // 2. Search ke liye ek state banayi
   const [searchTerm, setSearchTerm] = useState('')
 
-  // 3. Ek chota helper function banaya taake check ho sake card dikhana hai ya nahi
   const shouldShow = (title, category) => {
-    if (!searchTerm) return true // Agar search khali hai to sab dikhao
+    if (!searchTerm) return true
     
     const search = searchTerm.toLowerCase()
     const isCategoryMatch = category.toLowerCase() === search
@@ -23,17 +22,51 @@ function Program() {
       <Chatbox />
       <Header />
 
-      <div className="program-hero">
-        <p className='program-top'>All the honours degree programs are offered with the affiliation of University of the Punjab</p>
-        <h1><b>Offering Following Programs <br /> At GCG.</b></h1>
-        <button>Enroll Now  <span className="ps-2"><img src="/icons/arrowup.png" alt="arrow-icon" width="12px" /></span></button>
-      </div>
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: { opacity: 0 },
+          visible: { opacity: 1, transition: { staggerChildren: 0.3 } }
+        }}
+        className="program-hero"
+      >
+        <motion.p
+          variants={{ hidden: { opacity: 0, x: -30 }, visible: { opacity: 1, x: 0 } }}
+          className='program-top'
+        >
+          All the honours degree programs are offered with the affiliation of University of the Punjab
+        </motion.p>
+        <motion.h1
+          variants={{ hidden: { opacity: 0, x: -30 }, visible: { opacity: 1, x: 0 } }}
+        >
+          <b>Offering Following Programs <br /> At GCG.</b>
+        </motion.h1>
+        <motion.button
+          variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+        >
+          Enroll Now  <span className="ps-2"><img src="/icons/arrowup.png" alt="arrow-icon" width="12px" /></span>
+        </motion.button>
+      </motion.div>
 
       <section className="py-5 bg-light">
         <div className="container">
-          <h3 className="mb-4 text-center">Search for a program</h3>
-          <div className="d-flex mb-4">
-            {/* Input box ko state se connect kiya */}
+          <motion.h3
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.5 }}
+            className="mb-4 text-center"
+          >
+            Search for a program
+          </motion.h3>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="d-flex mb-4"
+          >
             <input
               type="text"
               placeholder="Search for a course"
@@ -41,17 +74,22 @@ function Program() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
-            {/* Buttons par click karne se auto search hoga */}
             <button className="btn btn-outline-secondary rounded-0" onClick={() => setSearchTerm('Bachelors')}>Bachelor</button>
             <button className="btn btn-outline-secondary rounded-0" onClick={() => setSearchTerm('Masters')}>Masters</button>
             <button className="btn btn-outline-secondary rounded-0" onClick={() => setSearchTerm('Diploma')}>Diploma</button>
             <button className="btn btn-success rounded-0 px-5 text-nowrap" onClick={() => setSearchTerm('')}>View All</button>
-          </div>
+          </motion.div>
           
           <div className="row mt-5">
-            {/* Card 1: IT */}
             {shouldShow("BS Information Technology", "Bachelors") && (
-              <div className="col-md-4 mb-4">
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.4 }}
+                className="col-md-4 mb-4"
+              >
                 <div className="card">
                   <img src="/computerscience.png" className="card-img-top" alt="Computer Science" />
                   <div className="card-body">
@@ -72,12 +110,18 @@ function Program() {
                     </h6>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             )}
 
-            {/* Card 2: Mathematics */}
             {shouldShow("BS Mathematics", "Masters") && (
-              <div className="col-md-4 mb-4">
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.4 }}
+                className="col-md-4 mb-4"
+              >
                 <div className="card">
                   <img src="/civileng.png" className="card-img-top" alt="Civil Engineering" />
                   <div className="card-body">
@@ -98,12 +142,18 @@ function Program() {
                     </h6>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             )}
 
-            {/* Card 3: Statistics */}
             {shouldShow("BS Statistics", "Bachelors") && (
-              <div className="col-md-4 mb-4">
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.4 }}
+                className="col-md-4 mb-4"
+              >
                 <div className="card">
                   <img src="/computerscience.png" className="card-img-top" alt="Computer Science" />
                   <div className="card-body">
@@ -124,12 +174,18 @@ function Program() {
                     </h6>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             )}
 
-            {/* Card 4: Botany */}
             {shouldShow("BS Botany", "Bachelors") && (
-              <div className="col-md-4 mb-4">
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.4 }}
+                className="col-md-4 mb-4"
+              >
                 <div className="card">
                   <img src="/botny.png" className="card-img-top" alt="Botny" />
                   <div className="card-body">
@@ -150,12 +206,18 @@ function Program() {
                     </h6>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             )}
 
-            {/* Card 5: Chemistry */}
             {shouldShow("BS Chemistry", "Masters") && (
-              <div className="col-md-4 mb-4">
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.4 }}
+                className="col-md-4 mb-4"
+              >
                 <div className="card">
                   <img src="/chemistry.png" className="card-img-top" alt="Chemistry" />
                   <div className="card-body">
@@ -176,12 +238,18 @@ function Program() {
                     </h6>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             )}
 
-            {/* Card 6: English */}
             {shouldShow("BS English", "Diploma") && (
-              <div className="col-md-4 mb-4">
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.4 }}
+                className="col-md-4 mb-4"
+              >
                 <div className="card">
                   <img src="/english.png" className="card-img-top" alt="English" />
                   <div className="card-body">
@@ -202,12 +270,18 @@ function Program() {
                     </h6>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             )}
 
-            {/* Card 7: Zoology */}
             {shouldShow("BS Zoology", "Masters") && (
-              <div className="col-md-4 mb-4">
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.4 }}
+                className="col-md-4 mb-4"
+              >
                 <div className="card">
                   <img src="/zology.png" className="card-img-top" alt="Zology" />
                   <div className="card-body">
@@ -228,12 +302,18 @@ function Program() {
                     </h6>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             )}
 
-            {/* Card 8: Economics */}
             {shouldShow("BS Economics", "Masters") && (
-              <div className="col-md-4 mb-4">
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.4 }}
+                className="col-md-4 mb-4"
+              >
                 <div className="card">
                   <img src="/economics.png" className="card-img-top" alt="Economics" />
                   <div className="card-body">
@@ -254,12 +334,18 @@ function Program() {
                     </h6>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             )}
 
-            {/* Card 9: Physics */}
             {shouldShow("BS Physics", "Masters") && (
-              <div className="col-md-4 mb-4">
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.4 }}
+                className="col-md-4 mb-4"
+              >
                 <div className="card">
                   <img src="/physics.png" className="card-img-top" alt="Physics" />
                   <div className="card-body">
@@ -280,7 +366,7 @@ function Program() {
                     </h6>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             )}
           </div>
         </div>
