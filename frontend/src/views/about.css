@@ -6,9 +6,10 @@
 .principal-image-style {
     width: 100%;
     max-width: 380px;
-    border-radius: 4px;
+    border-radius: 8px;
     position: relative;
     z-index: 2;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
 }
 
 .principal-circle-overlay {
@@ -20,23 +21,28 @@
     top: 50px;
     left: -15px;
     z-index: 3;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
 .label-box {
     background-color: var(--primary-color) !important;
     color: white !important;
-    padding: 10px 35px !important;
+    padding: 12px 38px !important;
     display: inline-block;
     font-weight: 600;
     font-size: 24px;
     margin: 0;
-    border-radius: 2px;
+    border-radius: 4px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .about-title-container {
     position: relative;
     display: flex;
     align-items: center;
+    margin-bottom: 2rem;
 }
 
 .center-divider-line {
@@ -46,19 +52,14 @@
     width: 100%;
     height: 2px;
     background-color: var(--secondary-color);
-    opacity: 0.3;
+    opacity: 0.4;
     z-index: 1;
+    transform-origin: left;
 }
-
-.label-box {
-    position: relative;
-    z-index: 2;
-}
-
 
 .content-para {
     text-align: justify;
-    line-height: 1.10;
+    line-height: 1.6;
     color: #333;
     font-size: 14.5px;
     margin-bottom: 20px;
@@ -74,18 +75,45 @@
 .find-us-label-outside {
     text-align: right;
     font-size: 32px;
-    font-weight: 500;
-    margin-bottom: 25px;
-    text-align: right;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #222;
 }
 
 .black-info-card {
-    background-color: #050a1b !important;
+    background: linear-gradient(135deg, #050a1b 0%, #0c1633 100%) !important;
     color: white;
-    padding: 60px 40px;
-    border-radius: 4px;
+    padding: 40px 35px;
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 20px 40px rgba(5, 10, 27, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Modern sweeping light border/glow animation for the box lines */
+.black-info-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.05),
+        transparent
+    );
+    animation: cardShine 6s infinite;
+}
+
+@keyframes cardShine {
+    0% { left: -100%; }
+    20% { left: 100%; }
+    100% { left: 100%; }
 }
 
 .info-list {
@@ -95,9 +123,32 @@
 }
 
 .info-list li {
-    font-size: 1.25rem;
-    font-weight: 600;
-    padding: 22px 0;
-    border-bottom: 1.5px solid rgba(255, 255, 255, 0.5);
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     text-align: right;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Subtle line glow/indicator effect on hover for the list items */
+.info-list li::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #4ade80;
+    transition: width 0.3s ease;
+}
+
+.info-list li:hover::after {
+    width: 100%;
+}
+
+.info-list li:last-child {
+    border-bottom: none;
 }
