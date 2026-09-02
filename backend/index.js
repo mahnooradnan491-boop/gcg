@@ -10,6 +10,7 @@ import userRoutes from './routers/userRoutes.js'
 import checkAdmin from './middlewares/checkadmin.js'
 import checkStats from './middlewares/checkstats.js'
 import successStoryRoutes from './routers/successStoryRoutes.js'
+import facultyRoutes from './routers/facultyRoutes.js'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
@@ -43,6 +44,7 @@ server.use('/api', authRoutes)
 server.use('/api', adminRoutes)
 server.use('/api', userRoutes)
 server.use('/api', successStoryRoutes)
+server.use('/api', facultyRoutes)
 
 
 
