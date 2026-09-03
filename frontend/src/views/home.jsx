@@ -218,9 +218,7 @@ function Home() {
                         <button className={activeTab === 'newsevents' ? 'active' : ''} onClick={() => setActiveTab('newsevents')} type="button">
                             <img src="/icons/info.png" alt="icon" width="25px" /> News & Events
                         </button>
-                        <button className={activeTab === 'exams' ? 'active' : ''} onClick={() => setActiveTab('exams')} type="button">
-                            <img src="/icons/calender.png" alt="icon" width="25px" /> Exams Date Sheet
-                        </button>
+                        
                         <button className={activeTab === 'timetable' ? 'active' : ''} onClick={() => setActiveTab('timetable')} type="button">
                             <img src="/icons/clock.png" alt="icon" width="25px" /> Time Table
                         </button>
