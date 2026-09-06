@@ -1,0 +1,244 @@
+/* Container & Layout */
+.app-container {
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  padding: 1.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.main-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Navigation Header */
+.portal-header {
+  background-color: #ffffff;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.portal-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+.service-nav {
+  display: flex;
+  background-color: #f3f4f6;
+  padding: 0.25rem;
+  border-radius: 8px;
+  gap: 0.25rem;
+}
+
+.nav-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #4b5563;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+  color: #111827;
+}
+
+.nav-btn.active {
+  background-color: #4f46e5;
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.download-btn {
+  background-color: #059669;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease;
+}
+
+.download-btn:hover {
+  background-color: #047857;
+}
+
+/* Grid Layout: Split 50/50 */
+.split-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 992px) {
+  .split-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Card Section Styles */
+.card {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+/* Form Styles */
+.doc-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 0.875rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: #374151;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.875rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
+
+/* Printable Document Preview Styles */
+.document-paper {
+  padding: 2.5rem;
+  border: 1px solid #e5e7eb;
+  background-color: #ffffff;
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  color: #1f2937;
+  min-height: 600px;
+  line-height: 1.6;
+  box-sizing: border-box;
+}
+
+.doc-header {
+  text-align: center;
+  border-bottom: 2px solid #1f2937;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.institution-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.document-subtitle {
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-family: sans-serif;
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+}
+
+.doc-date {
+  text-align: right;
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-family: sans-serif;
+}
+
+.doc-heading {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.125rem;
+  text-decoration: underline;
+  text-transform: uppercase;
+  margin: 1rem 0;
+}
+
+.doc-body {
+  font-size: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.doc-body p {
+  margin: 0;
+}
+
+.signature-block {
+  padding-top: 3rem;
+}
+
+.signatory-name {
+  font-weight: 700;
+}
+
+.signatory-title {
+  font-size: 0.75rem;
+  color: #4b5563;
+}
+
+.certificate-footer {
+  padding-top: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.seal-box {
+  border-top: 1px solid #9ca3af;
+  padding-top: 0.25rem;
+  text-align: center;
+  width: 10rem;
+  font-size: 0.75rem;
+}

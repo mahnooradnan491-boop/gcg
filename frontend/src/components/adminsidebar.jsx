@@ -13,6 +13,7 @@ function AdminSidebar() {
         { id: 'faculty', label: 'Faculty' },
         { id: 'achievements', label: 'Achievements' },
         { id: 'Success Stories', label: 'Success Stories' },
+        { id:'Services',label:'Services' }
     ]
 
     const activeTab = window.location.pathname

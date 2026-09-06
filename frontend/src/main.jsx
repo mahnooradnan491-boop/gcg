@@ -42,6 +42,7 @@ import AdminInfo from './components/admininfo'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min'
 import './main.css'
+import Services from './views/admin/services'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -105,7 +106,7 @@ createRoot(document.getElementById('root')).render(
                         <Route path="/achievement/add" element={<AchievementAdd />} />
                         <Route path="/achievement/:id" element={<AchievementShow />} />
                         <Route path="/Success Stories" element={<ManageSuccessStories />} />
-                        
+                         <Route path="/Services" element={<Services />} />
                       </Routes>
 
                     </div>
