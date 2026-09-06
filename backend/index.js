@@ -1,9 +1,10 @@
+import 'dotenv/config' // <-- YEH SAB SE UPAR HONA CHAHIYE
+
 import express from 'express'
 import mongoose from 'mongoose'
 import cors from 'cors'
 import helmet from 'helmet'
 import cookieParser from 'cookie-parser'
-import dotenv from 'dotenv'
 import authRoutes from './routers/authRoutes.js'
 import adminRoutes from './routers/adminRoutes.js'
 import userRoutes from './routers/userRoutes.js'
@@ -16,14 +17,13 @@ import { fileURLToPath } from 'url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-dotenv.config()
-
 const server = express()
 const port = process.env.PORT || 3000
 
 mongoose.connect(process.env.MONGO_URI).then(async () => {
     await checkAdmin()
     await checkStats()
+    console.log("Database connected successfully!") 
 })
 
 const corsOptions = {
@@ -45,8 +45,6 @@ server.use('/api', adminRoutes)
 server.use('/api', userRoutes)
 server.use('/api', successStoryRoutes)
 server.use('/api', facultyRoutes)
-
-
 
 server.listen(port, () => {
     console.log(`Server is running at ${port}`)
