@@ -318,6 +318,15 @@ function Gallery() {
 
               )}
 
+
+               <div className="col-lg-12 col-md-6 col-sm-4 md-4">
+                <img
+                src="/public/cleanlines.png"
+                alt="pic"
+                className="img-fluid rounded shadow-sm"
+              
+                />
+               </div>
               <div className="container my-5 pb-5">
 
                 <div className="row justify-content-center">

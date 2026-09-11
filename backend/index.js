@@ -1,4 +1,4 @@
-import 'dotenv/config' // <-- YEH SAB SE UPAR HONA CHAHIYE
+import 'dotenv/config' 
 
 import express from 'express'
 import mongoose from 'mongoose'
