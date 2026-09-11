@@ -227,40 +227,41 @@ function Faculty() {
         }
     ];
 
-    const updatedFacultyList = facultyList.map((dept) => {
-        const newMembers = dynamicFaculty
-            .filter((faculty) => faculty.department === dept.id)
-            .map((faculty) => ({
-                role: faculty.designation,
-                name: faculty.fullName,
-                img: faculty.image
-                    ? `http://localhost:3000/uploads/${faculty.image}`
-                    : ''
-            }));
+    // Deep copy of facultyList to avoid modifying original array directly
+    const updatedFacultyList = facultyList.map(dept => ({
+        ...dept,
+        members: [...dept.members]
+    }));
 
-        return {
-            ...dept,
-            members: [...dept.members, ...newMembers]
-        };
-    });
-
+    // Match and push dynamic faculty into their respective departments safely (handling case and spaces)
     dynamicFaculty.forEach((faculty) => {
-        const exists = updatedFacultyList.some(
-            (dept) => dept.id === faculty.department
+        if (!faculty.department) return;
+
+        const matchedDept = updatedFacultyList.find(
+            (dept) => dept.id.trim().toLowerCase() === faculty.department.trim().toLowerCase()
         );
 
-        if (!exists) {
+        const formattedImg = faculty.image
+            ? (faculty.image.startsWith('http') ? faculty.image : `http://localhost:3000/uploads/${faculty.image}`)
+            : '';
+
+        const newMember = {
+            role: faculty.designation,
+            name: faculty.fullName,
+            img: formattedImg
+        };
+
+        if (matchedDept) {
+            // Check if member already exists to prevent duplicate rendering
+            const alreadyExists = matchedDept.members.some(m => m.name.toLowerCase() === newMember.name.toLowerCase());
+            if (!alreadyExists) {
+                matchedDept.members.push(newMember);
+            }
+        } else {
+            // If department doesn't exist at all, push a new department block
             updatedFacultyList.push({
                 id: faculty.department,
-                members: [
-                    {
-                        role: faculty.designation,
-                        name: faculty.fullName,
-                        img: faculty.image
-                            ? `http://localhost:3000/uploads/${faculty.image}`
-                            : ''
-                    }
-                ]
+                members: [newMember]
             });
         }
     });
