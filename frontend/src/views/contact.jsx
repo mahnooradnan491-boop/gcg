@@ -72,8 +72,8 @@ function Contact() {
         <div className='contact-info mx-auto px-4 mt-5'>
           <div className="row justify-content-center">
             <div className="info-left col-lg-6">
-              <p><img src="/icons/email.png" alt="email-icon" width="50" className='me-3' /> abc@gmail.com</p>
-              <p><img src="/icons/phone.png" alt="phone-icon" width="50" className='me-3' /> +92 300 1234567</p>
+              <p><img src="/icons/email.png" alt="email-icon" width="50" className='me-3' /> gpc.st.grw.@gmail.com </p>
+              <p><img src="/icons/phone.png" alt="phone-icon" width="50" className='me-3' /> 055 9330686 </p>
             </div>
             <div className="map col-lg-6">
               <iframe
