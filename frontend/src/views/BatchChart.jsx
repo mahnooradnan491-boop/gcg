@@ -10,11 +10,11 @@ function BatchChart() {
   const batchDataMapping = {
     '2026': [
       { name: 'Passed', students: 85, color: '#419a51' },
-      { name: 'Failed', students: 15, color: '#dc3545' }
+      { name: 'Failed', students: 5, color: '#dc3545' }
     ],
     '2025': [
       { name: 'Passed', students: 78, color: '#419a51' },
-      { name: 'Failed', students: 22, color: '#dc3545' }
+      { name: 'Failed', students: 5, color: '#dc3545' }
     ],
     '2024': [
       { name: 'Passed', students: 90, color: '#419a51' },
@@ -22,7 +22,7 @@ function BatchChart() {
     ],
     '2023': [
       { name: 'Passed', students: 82, color: '#419a51' },
-      { name: 'Failed', students: 18, color: '#dc3545' }
+      { name: 'Failed', students: 10, color: '#dc3545' }
     ]
   };
 
