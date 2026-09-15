@@ -34,7 +34,6 @@ function Footer() {
                                 <li><Link to="/programs" className="nav-link">How to Apply</Link></li>
                                 <li><Link to="/faculty" className="nav-link">Tuition Fees, Scholarship</Link></li>
                                 <li><Link to="/gallery" className="nav-link">Mission & Vision</Link></li>
-                                <li><Link to="/career" className="nav-link">Career</Link></li>
                                 <li><Link to="/about" className="nav-link">About</Link></li>
                                 <li><Link to="/contact" className="nav-link">Contact</Link></li>
                             </ul>

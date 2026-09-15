@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import Chatbox from '../components/chatbox'
 import Header from '../components/header'
 import Footer from '../components/footer'
+import { Link } from 'react-router-dom'
 
 function Program() {
   const [searchTerm, setSearchTerm] = useState('')
@@ -45,7 +46,10 @@ function Program() {
         <motion.button
           variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
         >
-          Enroll Now  <span className="ps-2"><img src="/icons/arrowup.png" alt="arrow-icon" width="12px" /></span>
+          <motion.a href='https://pu.edu.pk/program'
+          className='btn btn-successd-inline-flex align-items-center px-4 py-2 text-white text-decoration-none"'> 
+  Enroll Now<span className="ps-2"><img src="/icons/arrowup.png" alt="arrow-icon" width="12px" /></span>
+       </motion.a>
         </motion.button>
       </motion.div>
 
