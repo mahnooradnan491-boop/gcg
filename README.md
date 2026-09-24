@@ -22,7 +22,7 @@ Official web application repository for **Govt. Graduate College for Boys, Satel
 
 ---
 
-## 👥 Project Team
+##  Project Team
 
 * **Mehak Ismail**
 * **Mahnoor Adnan**
