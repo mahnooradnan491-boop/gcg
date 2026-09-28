@@ -124,7 +124,12 @@ function About() {
                                                 transition={{ duration: 0.4, delay: 0.1 }}
                                                 whileHover={{ x: -8, color: '#4ade80' }}
                                             >
+                                               <a 
+                                                href="https://pu.edu.pk/"
+                                                    target="_blank"
+                                                 rel="noopener noreferrer">
                                                 University of the Punjab
+                                               </a>
                                             </motion.li>
                                             <motion.li 
                                                 initial={{ opacity: 0, x: 30 }}
@@ -133,7 +138,12 @@ function About() {
                                                 transition={{ duration: 0.4, delay: 0.25 }}
                                                 whileHover={{ x: -8, color: '#4ade80' }}
                                             >
+                                                <a 
+                                                href='https://hed.punjab.gov.pk/'
+                                                target="blank"
+                                                rel="noopener noreferrer">
                                                 Higher Education Department, Punjab
+                                                </a>
                                             </motion.li>
                                             <motion.li 
                                                 initial={{ opacity: 0, x: 30 }}
@@ -142,7 +152,12 @@ function About() {
                                                 transition={{ duration: 0.4, delay: 0.4 }}
                                                 whileHover={{ x: -8, color: '#4ade80' }}
                                             >
+                                                <a
+                                                href='https://punjab.gov.pk/'
+                                                target="blank">
+
                                                 Punjab Portal
+                                                </a>
                                             </motion.li>
                                             <motion.li 
                                                 initial={{ opacity: 0, x: 30 }}
@@ -151,7 +166,11 @@ function About() {
                                                 transition={{ duration: 0.4, delay: 0.55 }}
                                                 whileHover={{ x: -8, color: '#4ade80' }}
                                             >
+                                                <a
+                                                href='https://punjabhec.gov.pk/'
+                                                target="blank">
                                                 Punjab Higher Education Commission
+                                                </a>
                                             </motion.li>
                                         </ul>
                                     </div>
